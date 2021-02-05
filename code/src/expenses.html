@@ -1,0 +1,76 @@
+<!doctype html>
+
+<!--Lavante Hammond-->
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Expenses | Myfy </title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial scale=1">
+    <link rel="#" href="#" />
+    <style>
+
+    </style>
+</head>
+<body>
+    <header>
+        <h2>
+            Expenses
+        </h2>
+    </header>
+
+
+    <div>
+        <p>
+            Enter your other living expenses. <br />
+            *These should be monthly necessity items related to your home such as basic utilities, groceries, or phone.
+        </p>
+    </div>
+
+    <!--Expenses form component-->
+    <form>
+        <div>
+            <table style="width: 100%">
+                <tr>
+                    <td>Type of expense</td>
+                    <td>Date of Month Due</td>
+                    <td>Amount</td>
+                    <td>Priority</td>
+                </tr>
+                <tr>
+                    <td><input type="text" placeholder="$$$" size="50" /> </td>
+                    <td><input type="date"> </td>
+                    <td><input type="number" /> </td>
+                    <td><input type="range" step="3" min="0" max="12" /></td>
+                </tr>
+                <tr>
+                    <td><input type="text" placeholder="$$$" size="50" /> </td>
+                    <td><input type="date"> </td>
+                    <td><input type="number" /> </td>
+                    <td>
+                        <label>
+                            Low
+                        </label>
+                            <input type="radio" name="priority" value="low" />
+                        
+
+                        <label>Med</label>
+                        <input type="radio" name="priority" value="med" />
+                        <label>High</label>
+                        <input type="radio" name="priority" value="high" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <button type="button">Back</button>
+            <button type="submit">Next</button>
+        </div>
+    </form>
+
+    <script>
+
+    </script>
+</body>
+</html>
