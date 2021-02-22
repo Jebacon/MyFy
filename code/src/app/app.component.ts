@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './login/login.html',
-  styleUrls: ['./app.component.css']
+  templateUrl: './app.component.html',
+  styles: []
 })
+
 export class AppComponent {
   title = 'MyFy - One place for all your finances.';
 }
