@@ -1,0 +1,44 @@
+<!--Expenses form component-->
+<form>
+    <div>
+        <table style="width: 100%">
+            <tr>
+                <td>Type of expense</td>
+                <td>Date of Month Due</td>
+                <td>Amount</td>
+                <td>Priority</td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="$$$" size="50" /> </td>
+                <td><input type="date"> </td>
+                <td><input type="number" /> </td>
+                <td><input type="range" step="3" min="0" max="12" /></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="$$$" size="50" /> </td>
+                <td><input type="date"> </td>
+                <td><input type="number" /> </td>
+                <td>
+                    <label>
+                        Low
+                    </label>
+                        <input type="radio" name="priority" value="low" />
+                    
+
+                    <label>Med</label>
+                    <input type="radio" name="priority" value="med" />
+                    <label>High</label>
+                    <input type="radio" name="priority" value="high" />
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <button type="button">Back</button>
+        <button type="submit">Next</button>
+    </div>
+</form>
+
+<script>
+
+</script>
