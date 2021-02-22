@@ -1,16 +1,38 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AccountsetupComponent } from './accountsetup/accountsetup.component';
+import { ExpensesComponent } from './expenses/expenses.component';
+import { IncomeComponent } from './income/income.component';
+import { IncomeSourcesComponent } from './income-sources/income-sources.component';
+import { HousingComponent } from './housing/housing.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    routingComponents,
+    AccountsetupComponent,
+    ExpensesComponent,
+    IncomeComponent,
+    IncomeSourcesComponent,
+    HousingComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RouterModule.forRoot([
+      {
+        path: 'login',
+        component: LoginComponent
+      },
+      {
+        path: '',
+        component: HomeComponent
+      }
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
