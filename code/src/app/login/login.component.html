@@ -1,52 +1,75 @@
-﻿<app-toolbar></app-toolbar>
+﻿<!-- Created by Lavante Hammond & Ashim Chalise -->
+
+<app-toolbar></app-toolbar>
 
 
+<section class="hero is-info is-fullheight is-bold">
+    <div class="hero-body">
+    <div class="container">
+        <div class="card has-text-centered has-background-success">
+            <div class="card-content">
+                  <figure class="image is-48x48">
+                    <img src="assets/img/TopMLogo.png" alt="Placeholder image">
+                  </figure>
+          
+              <div class="content is-size-3 has-text-light">
+                Welcome back to MyFy! One place for all your finances.
+                <br>
+                Please log in to continue.
+                <br>
+              </div>
+            </div>
+          </div>
+          <br>
+          <br>
+          <br>
+        <div class="field">
+            <p class="control">
+              <input class="input" type="email" placeholder="Email" required>
+            </p>
+          </div>
+          <div class="field">
+            <p class="control">
+              <input class="input" type="password" placeholder="Password" required>
+            </p>
+          </div>
+          <label class="checkbox">
+            <input type="checkbox">
+            Remember me
+          </label>
+          <br>
+          <br>
+          <div class="field">
+            <p class="control has-text-centered">
+              <button class="button is-success">
+                Let's Budget
+              </button>
+            </p>
+          </div>
+    </div>
+ </div>
+</section>
 
+=======
+﻿<form>
+    <div>
+        <label>Email</label>
+        <input type="text" placeholder="Email" required />
 
+        <label>Password</label>
+        <input type="text" placeholder="Password" required/>
+    </div>
+    <div>
+        
+        <label>
+            <input type="checkbox" checked="checked" /> Remeber Me
+        </label>
+    </div>
 
-<!doctype html>
+    <button type="submit">Let's Budget</button>
+</form>
 
-<!--Lavante Hammond-->
+<script>
 
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <title>Login | Myfy </title>
-    <base href="/" />
-    <meta name="viewport" content="width=device-width, initial scale=1">
-    <link rel="#" href="#" /> 
-    <style>
+</script>
 
-    </style>
-</head>
-<body>
-    <header>
-        <h2>
-            Login Page
-        </h2>
-    </header>
-    
-    <!--Login form component-->
-    <form>
-        <div>
-            <label>Email</label>
-            <input type="text" placeholder="Email" required />
-
-            <label>Password</label>
-            <input type="password" placeholder="Password" required/>
-        </div>
-        <div>
-            
-            <label>
-                <input type="checkbox" checked="checked" /> Remeber Me
-            </label>
-        </div>
-
-        <button type="submit">Let's Budget</button>
-    </form>
-
-    <script>
-
-    </script>
-</body>
-</html>
