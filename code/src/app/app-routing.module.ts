@@ -18,6 +18,6 @@ const routes: Routes = [
 export class AppRoutingModule { }
 
 export const routingComponents = [LoginComponent, ToolbarComponent, HomeComponent]
-=======
-export const routingComponents = [LoginComponent]
+
+
 
