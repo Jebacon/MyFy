@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
+import {LoginComponent} from './login/login.component';
 import { AccountsetupComponent } from './accountsetup/accountsetup.component';
 import { ExpensesComponent } from './expenses/expenses.component';
 import { IncomeComponent } from './income/income.component';
@@ -13,6 +14,7 @@ import { HousingComponent } from './housing/housing.component';
   declarations: [
     AppComponent,
     routingComponents,
+    LoginComponent,
     AccountsetupComponent,
     ExpensesComponent,
     IncomeComponent,
