@@ -9,6 +9,9 @@ import { ExpensesComponent } from './expenses/expenses.component';
 import { IncomeComponent } from './income/income.component';
 import { IncomeSourcesComponent } from './income-sources/income-sources.component';
 import { HousingComponent } from './housing/housing.component';
+import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './login/login.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
 
 @NgModule({
   declarations: [
