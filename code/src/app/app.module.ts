@@ -32,6 +32,10 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
         component: LoginComponent
       },
       {
+        path: 'accountsetup',
+        component: AccountsetupComponent
+      },
+      {
         path: '',
         component: HomeComponent
       }
