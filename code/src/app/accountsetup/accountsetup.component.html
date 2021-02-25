@@ -5,7 +5,7 @@
 
 <section class="hero is-info is-fullheight is-bold">
     <div class="hero-body">
-    <div class="container">
+    <div class="container" ng-app="userPost" ng-controller="userController">
         <div class="card has-text-centered has-background-success">
             <div class="card-content">
                   <figure class="image is-48x48">
@@ -19,28 +19,28 @@
                   </div>
               </div>
             </div>
-          <form>
+          <form name="userForm" ng-submit="onSubmit()">
                 <div class="field">
                     <p class="control">
-                      <input class="input" type="text" placeholder="First Name" required>
+                      <input class="input" type="text" ng-model="user.fName" placeholder="First Name" required>
                     </p>
                   </div>
                   <div class="field">
                     <p class="control">
-                      <input class="input" type="text" placeholder="Last Name" required>
+                      <input class="input" type="text" ng-model="user.lName" placeholder="Last Name" required>
                     </p>
                   </div>
         
             <div class="field">
                 <p class="control">
-                  <input class="input" type="email" placeholder="Email" required>
+                  <input class="input" type="email" ng-model="user.Email" placeholder="Email" required>
                 </p>
               </div>
         
             <div>
                 <div class="field">
                     <p class="control">
-                      <input class="input" id="password" type="password" placeholder="Password" required>
+                      <input class="input" id="password" type="password" ng-model="user.Password" placeholder="Password" required>
                     </p>
                   </div>
                   <div class="field">
@@ -50,8 +50,6 @@
                   </div>
                 <span id="message"></span>
             </div>        
-            
-        </form>
           <label class="checkbox">
             <input type="checkbox">
             Remember me
@@ -60,16 +58,40 @@
           <br>
           <div class="field">
             <p class="control has-text-centered">
-              <button class="button is-success">
+              <button class="button is-success" type="submit">
                 Let's Budget
               </button>
             </p>
-          </div>
+          </div>                    
+        </form>
     </div>
 </div>
 </section>
 
 <script>
+var postApp = angular.module('userPost', []);
+    postApp.controller('userController', function($scope, $http) {
+      $scope.user = {};
+        $scope.onSubmit = function() {
+        $http({
+          method  : 'POST',
+          url     : 'addUser',
+          data    : $scope.user,
+          headers : { 'Content-Type': 'application/x-www-form-urlencoded' } 
+         })
+          .success(function(data) {
+            if (data.errors) {
+              $scope.errorName = data.errors.name;
+              $scope.errorUserName = data.errors.username;
+              $scope.errorEmail = data.errors.email;
+            } else {
+              $scope.message = data.message;
+            }
+          });
+        };
+    });
+
+
     $('#password, #confirm_password').on('keyup', function () {
         if ($('#password').val() == $('#confirm_password').val()) {
             $('#message').html('Passwords Match').css('color', 'green');
