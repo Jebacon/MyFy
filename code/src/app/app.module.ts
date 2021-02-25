@@ -12,6 +12,7 @@ import { HousingComponent } from './housing/housing.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { TeaminfoComponent } from './teaminfo/teaminfo.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     ExpensesComponent,
     IncomeComponent,
     IncomeSourcesComponent,
-    HousingComponent
+    HousingComponent,
+    TeaminfoComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +36,10 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
       {
         path: 'accountsetup',
         component: AccountsetupComponent
+      },
+      {
+        path: 'teaminfo',
+        component: TeaminfoComponent
       },
       {
         path: '',
