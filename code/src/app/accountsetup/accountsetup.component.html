@@ -19,28 +19,28 @@
                   </div>
               </div>
             </div>
-          <form>
+          <form #user="ngForm" (ng-submit)="addUser(user.value)">
                 <div class="field">
                     <p class="control">
-                      <input class="input" id="fName" type="text" placeholder="First Name" required>
+                      <input class="input" type="text" ng-model="fName" placeholder="First Name" required>
                     </p>
                   </div>
                   <div class="field">
                     <p class="control">
-                      <input class="input" id="lName" type="text" placeholder="Last Name" required>
+                      <input class="input" type="text" ng-model="lName" placeholder="Last Name" required>
                     </p>
                   </div>
         
             <div class="field">
                 <p class="control">
-                  <input class="input" id="email" type="email" placeholder="Email" required>
+                  <input class="input" type="email" ng-model="email" placeholder="Email" required>
                 </p>
               </div>
         
             <div>
                 <div class="field">
                     <p class="control">
-                      <input class="input" id="password" type="password" placeholder="Password" required>
+                      <input class="input" id="password" type="password" ng-model="Password" placeholder="Password" required>
                     </p>
                   </div>
                   <div class="field">
@@ -50,8 +50,6 @@
                   </div>
                 <span id="message"></span>
             </div>        
-            
-        </form>
           <label class="checkbox">
             <input type="checkbox">
             Remember me
@@ -64,12 +62,14 @@
                 Let's Budget
               </button>
             </p>
-          </div>
+          </div>                    
+        </form>
     </div>
 </div>
 </section>
 
 <script>
+
     $('#password, #confirm_password').on('keyup', function () {
         if ($('#password').val() == $('#confirm_password').val()) {
             $('#message').html('Passwords Match').css('color', 'green');

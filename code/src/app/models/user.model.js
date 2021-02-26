@@ -4,22 +4,36 @@ const sql = require("./db.js");
 const User = function(user) {
   this.fName = user.fName;
   this.lName = user.lName;
-  this.email = user.emial;
+  this.email = user.email;
   this.password = user.password;
 };
 
-User.create = (newCustomer, result) => {
-  sql.query("INSERT INTO customers SET ?", newCustomer, (err, res) => {
+User.create = (user, result) => {
+  sql.query("INSERT INTO Users(FNAME, LNAME, PASSWORD, EMAIL, ISADMIN, INITIALCREATION) VALUES(?, ?, ?, ?, 0, now());",[user.fName, user.lName, user.password, user.email], (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
       return;
     }
 
-    console.log("created customer: ", { id: res.insertId, ...newCustomer });
-    result(null, { id: res.insertId, ...newCustomer });
+    console.log("created user: ", {...user });
+    result(null, {...user });
   });
 };
+
+User.login = (user, result) => {
+  sql.query('SELECT EMAIL, PASSWORD FROM Users WHERE EMAIL = ? AND PASSWORD = ?;', [user.email, user.password], (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+      return;
+    } if (res.length > 1) {
+      console.log("Login Accepted:", res);
+      result(null, res);
+      return;
+  }
+  })
+}
 
 User.findById = (customerId, result) => {
   sql.query(`SELECT * FROM customers WHERE id = ${customerId}`, (err, res) => {
@@ -107,5 +121,6 @@ User.removeAll = result => {
     result(null, res);
   });
 };
+
 
 module.exports = User;
