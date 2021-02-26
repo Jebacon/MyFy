@@ -1,9 +1,8 @@
+const { nextTick } = require('process');
 const User = require('../models/user.model');
 
 // Create and Save a new User Object into the DB.
 exports.create = (req, res) => {
-    console.log(req.params);
-
     const user = new User({
         fName: req.params.fName,
         lName: req.params.lName,
@@ -15,7 +14,7 @@ exports.create = (req, res) => {
           if (err) {
               console.log(err);
               res.status(500).send({
-                  message: err.message || "That email is already in use!"
+                  message: err.message || "That email is already in use!"              
               })
           }
       });

@@ -37,16 +37,16 @@ User.login = (user, result) => {
 User.findByEmail = (user, result) => {
   sql.query(`SELECT EMAIL FROM Users WHERE EMAIL = ?`,[user.email], (err, res) => {
     if (err) {
-      console.log("error: ", err);
+      console.log(err);
       result(err, null);
-      return;
+      return next(err);
     }
     if (res.length == 1) {
       console.log("found user: ", res);
       result(null, res);
-      return;
+      return next(err);
     } else {
-      result({ kind: "Already in use:" }, null);
+      result("Good to go!", null);
       return;
     }
   });
