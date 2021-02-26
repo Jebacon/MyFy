@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
 import { DatabaseService } from '../services/database.service';
 import { User } from '../models/user.model'
 import { isNull } from '@angular/compiler/src/output/output_ast';
+=======
+import { User } from './accountsetup.model'; 
+import { HttpClientModule } from '@angular/common/http';
+>>>>>>> origin/Pozil
 
 @Component({
   selector: 'app-accountsetup',
