@@ -7,6 +7,6 @@ module.exports = app => {
     app.get("/all", user.getAll);
 
     //Add New User
-    app.post("/newCustomer/:fName&:lName&:email&:password", user.create);
+    app.post("/newUser/:fName&:lName&:email&:password", user.create);
 
     app.get("/login/:email&:password", user.login)};
