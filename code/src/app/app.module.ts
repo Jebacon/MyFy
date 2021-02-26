@@ -13,7 +13,6 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
