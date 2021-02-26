@@ -10,19 +10,11 @@ exports.create = (req, res) => {
         password: req.params.password
       });
 
-      User.findByEmail(user, (err, data) => {
-          if (err) {
-              console.log(err);
-              res.status(500).send({
-                  message: err.message || "That email is already in use!"              
-              })
-          }
-      });
-
     User.create(user,(err, data) => {
-       res.send(data);
-    });
+        res.send(data);
+        });
     };
+
 
 exports.getAll = (req, res) => {
     User.getAll((err, data) => {
@@ -43,6 +35,15 @@ exports.login = (req, res) => {
 
     User.login(user, (err, data) => {
         res.send(data);
-    })
-}
+    });
+};
+
+exports.findByEmail = (req, res) => {
+    User.findByEmail(req.params.email, (err, data) => {
+        if (err) {
+            res.send("no user by that email")
+        }
+        res.send(data);
+    });
+};
 
