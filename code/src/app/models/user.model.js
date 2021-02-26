@@ -1,6 +1,5 @@
 const sql = require("./db.js");
 
-// constructor
 const User = function(user) {
   this.fName = user.fName;
   this.lName = user.lName;
@@ -9,7 +8,7 @@ const User = function(user) {
 };
 
 User.create = (user, result) => {
-  sql.query("INSERT INTO Users(FNAME, LNAME, PASSWORD, EMAIL, ISADMIN, INITIALCREATION) VALUES(?, ?, ?, ?, 0, now());",[user.fName, user.lName, user.password, user.email], (err, res) => {
+  sql.query("INSERT INTO Users(FNAME, LNAME, EMAIL, PASSWORD, ISADMIN, INITIALCREATION) VALUES(?, ?, ?, ?, 0, now());",[user.fName, user.lName, user.email, user.password], (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -35,22 +34,21 @@ User.login = (user, result) => {
   })
 }
 
-User.findById = (customerId, result) => {
-  sql.query(`SELECT * FROM customers WHERE id = ${customerId}`, (err, res) => {
+User.findByEmail = (user, result) => {
+  sql.query(`SELECT EMAIL FROM Users WHERE EMAIL = ?`,[user.email], (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
       return;
     }
-
-    if (res.length) {
-      console.log("found customer: ", res[0]);
-      result(null, res[0]);
+    if (res.length == 1) {
+      console.log("found user: ", res);
+      result(null, res);
+      return;
+    } else {
+      result({ kind: "Already in use:" }, null);
       return;
     }
-
-    // not found Customer with the id
-    result({ kind: "not_found" }, null);
   });
 };
 

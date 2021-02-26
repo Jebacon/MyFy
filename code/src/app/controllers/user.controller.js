@@ -11,8 +11,17 @@ exports.create = (req, res) => {
         password: req.params.password
       });
 
+      User.findByEmail(user, (err, data) => {
+          if (err) {
+              console.log(err);
+              res.status(500).send({
+                  message: err.message || "That email is already in use!"
+              })
+          }
+      });
+
     User.create(user,(err, data) => {
-        res.send(data);
+       res.send(data);
     });
     };
 
