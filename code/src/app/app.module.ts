@@ -12,6 +12,8 @@ import { HousingComponent } from './housing/housing.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { DashboarComponent } from './dashboar/dashboar.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     ExpensesComponent,
     IncomeComponent,
     IncomeSourcesComponent,
-    HousingComponent
+    HousingComponent,
+    DashboarComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
