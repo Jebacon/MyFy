@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { DatabaseService } from '../services/database.service';
 import { User } from '../models/user.model'
 import { isNull } from '@angular/compiler/src/output/output_ast';
@@ -7,6 +8,11 @@ import { isNull } from '@angular/compiler/src/output/output_ast';
 import { User } from './accountsetup.model'; 
 import { HttpClientModule } from '@angular/common/http';
 >>>>>>> origin/Pozil
+=======
+import { DatabaseService } from '../services/database.service';
+import { User } from '../models/user.model'
+import { isNull } from '@angular/compiler/src/output/output_ast';
+>>>>>>> origin/Bacon
 
 @Component({
   selector: 'app-accountsetup',
