@@ -12,7 +12,11 @@ import { HousingComponent } from './housing/housing.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+<<<<<<< HEAD
+import { TeaminfoComponent } from './teaminfo/teaminfo.component';
+=======
 import { FormsModule } from '@angular/forms';
+>>>>>>> master
 
 @NgModule({
   declarations: [
@@ -22,8 +26,13 @@ import { FormsModule } from '@angular/forms';
     ExpensesComponent,
     IncomeComponent,
     IncomeSourcesComponent,
+<<<<<<< HEAD
+    HousingComponent,
+    TeaminfoComponent
+=======
     AccountsetupComponent,
     HousingComponent
+>>>>>>> master
   ],
   imports: [
     BrowserModule,
@@ -35,6 +44,14 @@ import { FormsModule } from '@angular/forms';
       {
         path: 'login',
         component: LoginComponent
+      },
+      {
+        path: 'accountsetup',
+        component: AccountsetupComponent
+      },
+      {
+        path: 'teaminfo',
+        component: TeaminfoComponent
       },
       {
         path: '',
