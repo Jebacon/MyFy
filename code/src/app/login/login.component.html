@@ -2,7 +2,7 @@
 
 <app-toolbar></app-toolbar>
 
-
+<body ng-app="LoginApp">
 <section class="hero is-info is-fullheight is-bold">
     <div class="hero-body">
     <div class="container">
@@ -23,16 +23,18 @@
           <br>
           <br>
           <br>
+        <form ng-submit ng-controller="LoginController">
         <div class="field">
             <p class="control">
-              <input class="input" type="email" placeholder="Email" required>
+              <input class="input" ng-model="email" type="email" placeholder="Email" required>
             </p>
           </div>
           <div class="field">
             <p class="control">
-              <input class="input" type="password" placeholder="Password" required>
+              <input class="input" ng-model="password" type="password" placeholder="Password" required>
             </p>
           </div>
+          </form>
           <label class="checkbox">
             <input type="checkbox">
             Remember me
@@ -41,7 +43,7 @@
           <br>
           <div class="field">
             <p class="control has-text-centered">
-              <button class="button is-success">
+              <button class="button is-success" id="submit">
                 Let's Budget
               </button>
             </p>
@@ -49,4 +51,29 @@
     </div>
  </div>
 </section>
+</body>
 
+<script>
+  var app = angular.module('LoginApp', []);
+  app.controller('LoginController', function($scope, $http) {
+      $scope.submit = function(){
+          $http({
+              method:'POST',
+              url:"/login/auth",
+              data : {
+                  email: $scope.email,
+                  password: $scope.password
+              },
+              headers: {
+                  'Content-Type': 'application/json'
+              }
+          })
+              .success(function(response){
+                  $scope.result = response;
+                  console.log($scope.result);
+              })
+              .error(function(){
+                  console.log("error");
+              });
+      };
+  </script>

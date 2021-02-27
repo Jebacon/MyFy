@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
 import { AccountsetupComponent } from './accountsetup/accountsetup.component';
 import { ExpensesComponent } from './expenses/expenses.component';
 import { IncomeComponent } from './income/income.component';
@@ -14,6 +14,9 @@ import { LoginComponent } from './login/login.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { DashboarComponent } from './dashboar/dashboar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { TeaminfoComponent } from './teaminfo/teaminfo.component';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -24,20 +27,36 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     IncomeComponent,
     IncomeSourcesComponent,
     HousingComponent,
-    DashboarComponent,
-    DashboardComponent
+    DashboardComponent,
+    TeaminfoComponent
+
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    HttpClientModule,
     AppRoutingModule,
+    HttpClientModule,
     RouterModule.forRoot([
       {
         path: 'login',
         component: LoginComponent
       },
       {
+        path: 'accountsetup',
+        component: AccountsetupComponent
+      },
+      {
+        path: 'teaminfo',
+        component: TeaminfoComponent
+      },
+      {
         path: '',
         component: HomeComponent
+      },
+      {
+        path: 'account-setup',
+        component: AccountsetupComponent
       }
     ])
   ],
