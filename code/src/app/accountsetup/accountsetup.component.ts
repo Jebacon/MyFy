@@ -44,7 +44,6 @@ export class AccountsetupComponent implements OnInit {
           if (response === null) {
             //this displays to the user the email is taken
             this.message = "There exists an account by that email already"
-            //haldo
           } else{
             //displays to the user that the account was created successfuly 
             this.message = "Account creation successful!"
