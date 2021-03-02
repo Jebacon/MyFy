@@ -1,0 +1,74 @@
+<body>
+<style>
+    .side-nav{
+        height: 100%;
+        width: 0;
+        position:fixed;
+        z-index: 1;
+        right:0;
+        overflow-x: hiddden;
+        transition: 0.5s;
+    }
+
+    ul.nav-list{
+        list-style-type: none;
+    }
+
+    #main{
+        transition:margin-right .5s;
+        padding: 20px;
+    }
+    
+</style>
+
+
+<div class ="tool-bar" id="toolbar">
+    <h1> MyFy</h1> 
+
+    <button class = "help">?</button>
+
+    <button type="menu"class="menu-btn" id ="menubtn">  </button>
+
+</div>
+
+<div class="side-nav" id ="sidenav">
+    <ul class ="nav-list">
+       <li> <a href="">Make a bud-e</a> </li>
+       <li> <a href="">Find a bud-e</a></li> 
+       <li> <a href="">Manage a bud-e</a></li>
+        <li> <a href="">Educational Area</a></li>
+        <button type="button" onclick="closeNav()" >close</button> 
+    </ul>
+
+</div>
+
+
+
+<div class = "dashboard-intro" id = "intro">
+
+</div>
+
+
+<div class = "portfolio" >
+
+</div>
+
+
+</body>
+
+<script>
+document.getElementById('menubtn').addEventListener('click', openNav);
+//document.getElementById('main').addEventListener('click', closeNav);
+
+
+function openNav() {
+document.getElementById("sidenav").style.width = "250px";
+document.getElementById("main").style.marginLeft  = "250px";
+}
+
+function closeNav(){
+    document.getElementById("sidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft  = "0";
+}
+</script>
+
