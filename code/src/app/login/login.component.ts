@@ -4,6 +4,7 @@ import { DatabaseService } from '../services/database.service';
 import { User } from '../models/user.model'
 import { Observable } from 'rxjs';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,6 +16,7 @@ export class LoginComponent implements OnInit {
   constructor(private dbService: DatabaseService) { }
   //an instantiated user for ease of data use
   user: User = {
+    id: 0,
     fName: '',
     lName: '',
     email: '',
@@ -31,17 +33,15 @@ export class LoginComponent implements OnInit {
     this.user.email = (document.getElementById("email") as HTMLInputElement).value
     this.user.password = (document.getElementById("password") as HTMLInputElement).value
     var data = "login/"+this.user.email+"&"+this.user.password
-    let returned: any
-    var fuck = this.dbService.get(data)
-    //fuck.subscribe(val => console.log(val))
-    fuck.forEach(val => this.sort(val))
-    console.log(returned)
+    var dbData = this.dbService.get(data)
+    dbData.forEach(val => this.sort(val))
   }
 
-  sort(data:Map<any,any>): void{
-    console.log("sorting");
-    data.get("ID");
-    console.log(this.user.id);//test
-    //data.forEach((val: any) => console.log(val));
+  sort(data:any): void{
+    this.user.id = data[0]['ID']
+    this.user.fName = data[0]['FNAME']
+    this.user.lName = data[0]['LNAME']
+    this.user.email = data[0]['EMAIL']
+    this.user.password = data[0]['PASSWORD']
   }
 }
