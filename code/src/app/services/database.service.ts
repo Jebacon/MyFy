@@ -12,7 +12,7 @@ export class DatabaseService {
     constructor(private http: HttpClient) {}
 
     //generalized http get method
-    get(data: string): Observable<User> {
+    get(data: string): Observable<any> {
         return this.http.get(baseUrl+data);
     }
     //generalized http post method
