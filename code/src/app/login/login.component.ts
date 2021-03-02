@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
   sort(data:Map<any,any>): void{
     console.log("sorting");
     data.get("ID");
-    console.log(this.user.id);
+    console.log(this.user.id);//test
     //data.forEach((val: any) => console.log(val));
   }
 }
