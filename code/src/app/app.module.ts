@@ -12,8 +12,11 @@ import { HousingComponent } from './housing/housing.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { DashboarComponent } from './dashboar/dashboar.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { TeaminfoComponent } from './teaminfo/teaminfo.component';
 import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -23,8 +26,10 @@ import { FormsModule } from '@angular/forms';
     ExpensesComponent,
     IncomeComponent,
     IncomeSourcesComponent,
-    TeaminfoComponent,
-    HousingComponent
+    HousingComponent,
+    DashboardComponent,
+    TeaminfoComponent
+
   ],
   imports: [
     BrowserModule,
