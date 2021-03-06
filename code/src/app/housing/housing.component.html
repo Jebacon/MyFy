@@ -5,16 +5,17 @@
             Do you rent or own your home?
         </p>
 
-        <input type="radio" name="rentOwn" value ="rent" required />
+        <input type="radio" id="rentOwn" value ="rent" required />
         <label>Rent</label>
 
-        <input type="radio" name="rentOwn" value="own" required />
+        <input type="radio" id="rentOwn" value="own" required />
         <label>Own</label>
     </div>
 
     <div>
         <label>How much do you pay per month?</label>
-        <input type="number" placeholder="Enter an estimate in $" required />
+        <label for="costs">Enter Amount</label>
+        <input type="text" id="costs" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" value="" data-type="currency" placeholder="Enter an estimate in $" required />
     </div>
 
     <div>
