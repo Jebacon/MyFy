@@ -1,1 +1,5 @@
-{}
+{
+  "dependencies": {
+    "bulma-social": "^2.0.0"
+  }
+}

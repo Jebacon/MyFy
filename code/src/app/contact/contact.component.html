@@ -1,0 +1,39 @@
+<!-- Created by Ashim-->
+<!-- This site is for contacting the team. It displays a page with placeholders for name, email and message.-->
+<app-toolbar></app-toolbar>
+
+<!-- We start the section here. we create a "hero-body" which is a full page layout in which we put different
+input fields.-->
+<section class = "hero is-info is-bold is-fullheight">
+    <div class = "hero-body">
+        <div class = "container">
+            <h1 class = "title"> Contact Us!</h1>
+
+            <!--Here, we have the different fields to take input.-->
+            <form>
+                <div class = 'field'>
+                    <label class = "label"> Name </label>
+                    <input type = "text" name = "name" class = "input" placeholder = "Name" ng-model="name">
+                </div>
+                <br>
+                <div class = 'field'>
+                    <label class = "label"> Email </label>
+                    <input type = "email" name = "email" class = "input" placeholder = " Email" ng-model="email">
+                </div>
+                <br>
+                <div class = 'field'>
+                    <label class = "label"> Message </label>
+                    <textarea name = "message" class = "textarea" placeholder = 
+                    "Please type your compliments/concerns here." ng-model = "message"></textarea>
+                </div>
+                <div class="field">
+                    <p class="control has-text-centered">
+                      <button class="button is-success" id="submit">
+                        Send
+                      </button>
+                    </p>
+                  </div>
+            </form>
+        </div>
+    </div>
+</section>

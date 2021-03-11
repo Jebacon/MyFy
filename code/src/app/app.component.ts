@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styles: []
+  styles: ['https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma-rtl.min.css']
 })
 
 export class AppComponent {

@@ -1,6 +1,10 @@
-<nav class="navbar is-dark">
+<!--Author- Ashim Chalise-->
+<!--This html page is for our toolbar that is on top and helps us navigate through the different pages.-->
 
-    <!-- logo -->
+<nav class="navbar is-dark">
+<!--We have the color, and different buttons here to navigate.-->
+
+    <!-- logo of our site. -->
     <div class="navbar-brand">
       <a routerLink = "" class="navbar-item">
         <img src="assets/img/MyFyLogo.png">
@@ -8,12 +12,12 @@
     </div>
     <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
-      <a routerLink="/teaminfo" class="navbar-item">
-        About the team
+      <a routerLink="/why-my-fy" class="navbar-item">
+        Why MyFy
       </a>
 
-      <a class="navbar-item">
-        Contact Us
+      <a routerLink="/who-is-it-for"class="navbar-item">
+        Who's it for
       </a>
 
       <div class="navbar-item has-dropdown is-hoverable">
@@ -22,12 +26,12 @@
         </a>
 
         <div class="navbar-dropdown">
-          <a class="navbar-item">
-            Who's it for
+          <a routerLink = "/contact" class="navbar-item">
+            Contact Us
           </a>
-          <hr class="navbar-divider">
-          <a class="navbar-item">
-            Why MyFy
+          <hr class = "navbar-divider">
+          <a routerLink="/teaminfo" class="navbar-item">
+            About the team
           </a>
         </div>
       </div>

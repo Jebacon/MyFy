@@ -14,6 +14,9 @@ import { LoginComponent } from './login/login.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { TeaminfoComponent } from './teaminfo/teaminfo.component';
 import { FormsModule } from '@angular/forms';
+import { ContactComponent } from './contact/contact.component';
+import { WhoIsItForComponent } from './who-is-it-for/who-is-it-for.component';
+import { WhyMyFyComponent } from './why-my-fy/why-my-fy.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,10 @@ import { FormsModule } from '@angular/forms';
     IncomeComponent,
     IncomeSourcesComponent,
     TeaminfoComponent,
-    HousingComponent
+    HousingComponent,
+    ContactComponent,
+    WhoIsItForComponent,
+    WhyMyFyComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +58,18 @@ import { FormsModule } from '@angular/forms';
       {
         path: 'account-setup',
         component: AccountsetupComponent
+      },
+      {
+        path: 'contact',
+        component: ContactComponent
+      },
+      {
+        path: 'who-is-it-for',
+        component: WhoIsItForComponent
+      },
+      {
+        path: 'why-my-fy',
+        component: WhyMyFyComponent
       }
     ])
   ],

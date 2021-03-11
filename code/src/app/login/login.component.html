@@ -1,13 +1,16 @@
 ﻿<!-- Created by Lavante Hammond & Ashim Chalise -->
-
+<!--This website is to help the user login to our app. It asks for the login credentials and proceeds ahead.-->
 <app-toolbar></app-toolbar>
 
+<!--This section is creating the layout of the login app, and putting variables in place to capture the input
+and send to the API.-->
 <body ng-app="LoginApp">
 <section class="hero is-info is-fullheight is-bold">
     <div class="hero-body">
     <div class="container">
         <div class="card has-text-centered has-background-success">
             <div class="card-content">
+              <!--The image is the logo of our company that appears on top tab at beside the website name.-->
                   <figure class="image is-48x48">
                     <img src="assets/img/TopMLogo.png" alt="Placeholder image">
                   </figure>
@@ -53,6 +56,7 @@
 </section>
 </body>
 
+<!--Here, Brandon and Jon have created a program to capture and route the data to the database.-->
 <script>
   var app = angular.module('LoginApp', []);
   app.controller('LoginController', function($scope, $http) {
@@ -76,4 +80,5 @@
                   console.log("error");
               });
       };
-  </script>
+  });
+</script>
