@@ -4,6 +4,7 @@ import { DatabaseService } from '../services/database.service';
 import { User } from '../models/user.model'
 import { Observable } from 'rxjs';
 import { ThrowStmt } from '@angular/compiler';
+import { Router } from '@angular/router'; 
 
 
 @Component({
@@ -14,7 +15,7 @@ import { ThrowStmt } from '@angular/compiler';
 export class LoginComponent implements OnInit {
 
 
-  constructor(private dbService: DatabaseService) { }
+  constructor(private dbService: DatabaseService, private router: Router) { }
   //an instantiated user for ease of data use
   user: User = {
     id: "",
@@ -52,6 +53,7 @@ export class LoginComponent implements OnInit {
     storageID.setItem("Email", data[0]["EMAIL"]);
     storageID.setItem("Password", data[0]["PASSWORD"]);
     this.message = "Success!"
+    this.router.navigate(['dashboard'])
     } catch (Error) {
      this.message = "No user found by that email and password"
     }
