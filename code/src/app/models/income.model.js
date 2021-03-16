@@ -4,12 +4,12 @@ const sql = require("./db.js");
 const Income = function(_income) {
   this.SRCNAME =_income.SRCNAME;
   this.AMOUNT = _income.AMOUNT;
-  this.PAYCYLCE = _income.PAYCYLCE;
-  this.USERID = _expense.USERID;
+  this.PAYCYCLE = _income.PAYCYCLE;
+  this.USERID = _income.USERID;
 };
 
 Income.create = (_income, result) => {
-  sql.query("INSERT INTO Income(SRCNAME, AMOUNT, PAYCYCLE, USERID) VALUES(?, ?, ?, ?);",[_income.SRCNAME, _income.AMOUNT, _income.PAYCYLCE, _income.USERID], (err, res) => {
+  sql.query("INSERT INTO Income(SRCNAME, AMOUNT, PAYCYCLE, USERID) VALUES(?, ?, ?, ?);",[_income.SRCNAME, _income.AMOUNT, _income.PAYCYCLE, _income.USERID], (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -36,10 +36,10 @@ Income.getAll = result => {
   });
 };
 
-Income.updateById = (INCOMEID, USERID, result) => {
+Income.updateById = (_income, result) => {
   sql.query(
-    "UPDATE Income SET SRCNAME = ?, AMOUNT = ?, PAYCYCLE = ? WHERE INCOMEID = ? and USERID = ?",
-    [_income.SRCNAME, _income.AMOUNT, INCOMEID, USERID],
+    "UPDATE Income SET SRCNAME = ?, AMOUNT = ?, PAYCYCLE = ? WHERE INCOME_INCOMEID = ? and INCOME.USERID = ?",
+    [_income.SRCNAME, _income.AMOUNT,_income.PAYCYCLE,_income.INCOMEID, _income.USERID],
     (err, res) => {
       if (err) {
         console.log("error: ", err);

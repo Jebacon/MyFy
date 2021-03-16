@@ -8,7 +8,7 @@ module.exports = app => {
     app.get("/all", user.getAll);
 
     //Test method to grab all income entries
-    app.get("/all", _income.getAll);
+    app.get("/allIncome", _income.getAll);
 
     //Add New User
     app.post("/newUser/:fName&:lName&:email&:password", user.create);
