@@ -47,6 +47,10 @@ export class LoginComponent implements OnInit {
     this.user.lName = data[0]['LNAME']
     this.user.email = data[0]['EMAIL']
     this.user.password = data[0]['PASSWORD']
+    let storageID = window.sessionStorage;
+    storageID.setItem("ID",data[0]["ID"]);
+    storageID.setItem("Email", data[0]["EMAIL"]);
+    storageID.setItem("Password", data[0]["PASSWORD"]);
     this.message = "Success!"
     } catch (Error) {
      this.message = "No user found by that email and password"

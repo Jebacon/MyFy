@@ -47,7 +47,7 @@ export class AccountsetupComponent implements OnInit {
           } else{
             //displays to the user that the account was created successfuly 
             this.message = "Account creation successful!"
-            console.log("User succesffully created");
+            console.log(response);
             this.created = true;
           }
         },

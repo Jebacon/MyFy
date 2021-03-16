@@ -1,15 +1,15 @@
 const sql = require("./db.js");
 
-const User = function(user) {
-  this.fName = user.fName;
-  this.lName = user.lName;
-  this.email = user.email;
-  this.password = user.password;
-  this.newEmail = user.newEmail;
+const Income = function(income) {
+  this.id = income.id;
+  this.srcName = income.srcName;
+  this.amount = income.amount;
+  this.paycycle = income.paycycle;
+  this.userId = income.userId;
 };
 
-User.create = (user, result) => {
-  sql.query("INSERT INTO Users(FNAME, LNAME, EMAIL, PASSWORD, ISADMIN, INITIALCREATION) VALUES(?, ?, ?, ?, 0, now());",[user.fName, user.lName, user.email, user.password], (err, res) => {
+Income.create = (income, result) => {
+  sql.query("INSERT INTO Income(SRCNAME, AMOUNT, PAYCYCLE, USERID) VALUES(?, ?, ?, ?, 0, now());",[ income.srcName, income.amount, income.paycycle, income.userId], (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -20,9 +20,9 @@ User.create = (user, result) => {
     result(null, {...user });
   });
 };
-
-User.login = (user, result) => {
-  sql.query('SELECT ID,EMAIL, PASSWORD, FNAME, LNAME FROM Users WHERE EMAIL = ? AND PASSWORD = ?;', [user.email, user.password], (err, res) => {
+/*
+Income.login = (income, result) => {
+  sql.query('SELECT ID,EMAIL, PASSWORD, FNAME, LNAME FROM Users WHERE EMAIL = ? AND PASSWORD = ?;', [income.email, user.password], (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -34,7 +34,7 @@ User.login = (user, result) => {
   })
 }
 
-User.findByEmail = (user, result) => {
+Income.findByEmail = (user, result) => {
   sql.query(`SELECT EMAIL FROM Users WHERE EMAIL = ?`,[user.email], (err, res) => {
     if (err) {
       console.log(err);
@@ -51,9 +51,10 @@ User.findByEmail = (user, result) => {
     }
   });
 };
+*/
 
-User.getAll = result => {
-  sql.query("SELECT * FROM Users", (err, res) => {
+Income.getAll = result => {
+  sql.query("SELECT * FROM Income", (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
@@ -64,10 +65,11 @@ User.getAll = result => {
     result(null, res);
   });
 };
-
-User.updateEmail = (user, result) => {
+/*
+Income.updateById = (id, customer, result) => {
   sql.query(
-    "UPDATE Users SET EMAIL = ? WHERE EMAIL = ?", [user.newEmail, user.email],
+    "UPDATE customers SET email = ?, name = ?, active = ? WHERE id = ?",
+    [customer.email, customer.name, customer.active, id],
     (err, res) => {
       if (err) {
         console.log("error: ", err);
@@ -81,36 +83,14 @@ User.updateEmail = (user, result) => {
         return;
       }
 
-      console.log("updated User: " + user.email);
-      result(null, {...user.email });
+      console.log("updated customer: ", { id: id, ...customer });
+      result(null, { id: id, ...customer });
     }
   );
 };
 
-User.updatePassword = (user, result) => {
-  sql.query(
-    "UPDATE Users SET PASSWORD = ? WHERE EMAIL = ?", [user.password, user.email],
-    (err, res) => {
-      if (err) {
-        console.log("error: ", err);
-        result(null, err);
-        return;
-      }
-
-      if (res.affectedRows == 0) {
-        // not found Customer with the id
-        result({ kind: "not_found" }, null);
-        return;
-      }
-
-      console.log("updated User: " +user.email);
-      result(null, {...user.email });
-    }
-  );
-};
-
-User.remove = (user, result) => {
-  sql.query("DELETE FROM Users WHERE EMAIL = ? AND PASSWORD = ?", [user.email, user.password], (err, res) => {
+Income.remove = (id, result) => {
+  sql.query("DELETE FROM User WHERE id = ?", id, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
@@ -118,16 +98,17 @@ User.remove = (user, result) => {
     }
 
     if (res.affectedRows == 0) {
+      // not found Customer with the id
       result({ kind: "not_found" }, null);
       return;
     }
 
-    console.log("Deleted User: ", user.email);
+    console.log("deleted user with id: ", id);
     result(null, res);
   });
 };
 
-User.removeAll = result => {
+Income.removeAll = result => {
   sql.query("DELETE FROM customers", (err, res) => {
     if (err) {
       console.log("error: ", err);
@@ -139,6 +120,7 @@ User.removeAll = result => {
     result(null, res);
   });
 };
+*/
 
 
-module.exports = User;
+module.exports = Income;
