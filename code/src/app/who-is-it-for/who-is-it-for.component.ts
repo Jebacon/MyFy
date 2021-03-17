@@ -11,5 +11,4 @@ export class WhoIsItForComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

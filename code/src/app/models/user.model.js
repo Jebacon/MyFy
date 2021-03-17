@@ -21,16 +21,15 @@ User.create = (user, result) => {
 };
 
 User.login = (user, result) => {
-  sql.query('SELECT EMAIL, PASSWORD FROM Users WHERE EMAIL = ? AND PASSWORD = ?;', [user.email, user.password], (err, res) => {
+  sql.query('SELECT ID,EMAIL, PASSWORD, FNAME, LNAME FROM Users WHERE EMAIL = ? AND PASSWORD = ?;', [user.email, user.password], (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
       return;
-    } if (res.length > 1) {
+    } 
       console.log("Login Accepted:", res);
       result(null, res);
       return;
-  }
   })
 }
 
