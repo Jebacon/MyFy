@@ -5,6 +5,7 @@ const User = function(user) {
   this.lName = user.lName;
   this.email = user.email;
   this.password = user.password;
+  this.newEmail = user.newEmail;
 };
 
 User.create = (user, result) => {
@@ -64,10 +65,9 @@ User.getAll = result => {
   });
 };
 
-User.updateById = (id, customer, result) => {
+User.updateEmail = (user, result) => {
   sql.query(
-    "UPDATE customers SET email = ?, name = ?, active = ? WHERE id = ?",
-    [customer.email, customer.name, customer.active, id],
+    "UPDATE Users SET EMAIL = ? WHERE EMAIL = ?", [user.newEmail, user.email],
     (err, res) => {
       if (err) {
         console.log("error: ", err);
@@ -81,14 +81,36 @@ User.updateById = (id, customer, result) => {
         return;
       }
 
-      console.log("updated customer: ", { id: id, ...customer });
-      result(null, { id: id, ...customer });
+      console.log("updated User: " + user.email);
+      result(null, {...user.email });
     }
   );
 };
 
-User.remove = (id, result) => {
-  sql.query("DELETE FROM customers WHERE id = ?", id, (err, res) => {
+User.updatePassword = (user, result) => {
+  sql.query(
+    "UPDATE Users SET PASSWORD = ? WHERE EMAIL = ?", [user.password, user.email],
+    (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(null, err);
+        return;
+      }
+
+      if (res.affectedRows == 0) {
+        // not found Customer with the id
+        result({ kind: "not_found" }, null);
+        return;
+      }
+
+      console.log("updated User: " +user.email);
+      result(null, {...user.email });
+    }
+  );
+};
+
+User.remove = (user, result) => {
+  sql.query("DELETE FROM Users WHERE EMAIL = ? AND PASSWORD = ?", [user.email, user.password], (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
@@ -96,12 +118,11 @@ User.remove = (id, result) => {
     }
 
     if (res.affectedRows == 0) {
-      // not found Customer with the id
       result({ kind: "not_found" }, null);
       return;
     }
 
-    console.log("deleted customer with id: ", id);
+    console.log("Deleted User: ", user.email);
     result(null, res);
   });
 };
