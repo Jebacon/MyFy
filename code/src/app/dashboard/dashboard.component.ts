@@ -14,7 +14,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     let storageID = window.sessionStorage;
     if(storageID.getItem("Email") == null || storageID.getItem("Password") == null){
-      console.log("foiled again")
+      console.log("Please login first")
       this.router.navigate(['login'])
     } else {
       var email = storageID.getItem("Email")
@@ -37,7 +37,7 @@ export class DashboardComponent implements OnInit {
       this.message = "Welcome, " +data[0]["FNAME"]+" "+data[0]["LNAME"]
 
     } catch (Error) {
-      this.message = "cucks never prevail"
+      this.message = "Failure to gather users information"
     }
   }
 
