@@ -27,7 +27,7 @@ exports.getAll = (req, res) => {
     });
 };
 exports.updateById = (req, res) =>{
-    Income.updateById(req.params.INCOMEID, req.params.USERID,(err,data) =>{
+    Income.updateById(req.params.SRCNAME, req.params.AMOUNT,req.params.PAYCYCLE, req.params.INCOMEID,(err,data) =>{
         if(err){
             res.send("update failed: No Income source by with that ID")
         }

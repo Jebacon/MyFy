@@ -3,7 +3,7 @@ const { Income } = require("../models/income.model");
 
 module.exports = app => {
     const user = require("../controllers/user.controller");
-    const income = require("../controllers/income.controller");
+    const _income = require("../controllers/income.controller");
 
 
     //User CRUD Group
@@ -23,6 +23,16 @@ module.exports = app => {
 
     //End User CRUD Group
     
-    app.get("/allIncome", income.getAll);
+   
+    //Test method to grab all income entries
+    app.get("/allIncome", _income.getAll);
+
+     //Income CRUD group
+    app.post("/newIncome/:SRCNAME&:AMOUNT&:PAYCYCLE&:USERID", _income.create);    
+
+    app.post("/updateById/:SRCNAME&:AMOUNT&:PAYCYCLE&:INCOMEID", _income.updateById);    
+
+    app.delete("/deleteIncome/:INCOMEID", _income.remove);
+
     
 };
