@@ -38,7 +38,7 @@ Income.getAll = result => {
 
 Income.updateById = (_income, result) => {
   sql.query(
-    "UPDATE Income SET SRCNAME = ?, AMOUNT = ?, PAYCYCLE = ? WHERE INCOME_INCOMEID = ? and INCOME.USERID = ?",
+    "UPDATE Income SET SRCNAME = ?, AMOUNT = ?, PAYCYCLE = ? WHERE INCOME.INCOMEID = ? and INCOME.USERID = ?",
     [_income.SRCNAME, _income.AMOUNT,_income.PAYCYCLE,_income.INCOMEID, _income.USERID],
     (err, res) => {
       if (err) {
