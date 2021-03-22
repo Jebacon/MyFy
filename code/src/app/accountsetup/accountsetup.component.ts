@@ -35,10 +35,8 @@ export class AccountsetupComponent implements OnInit {
 
     //checks to insure the two passwords provided are the same
     if(this.user.password === repass){
-      //constructs a string to be posted
-      var data = "newUser/"+this.user.fName+"&"+this.user.lName+"&"+this.user.email+"&"+this.user.password
       //posts the data to add the user to the database
-      this.dbService.post(data).subscribe(
+      this.dbService.post("newUser",{"fName": this.user.fName, "lName":this.user.lName, "email":this.user.email, "password":this.user.password}).subscribe(
         response => {
           //if the response is empty it means an account exists already by the email given
           if (response === null) {
