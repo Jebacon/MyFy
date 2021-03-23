@@ -38,14 +38,14 @@ exports.findByIncomeId = (req, res) =>{
     
 };
 exports.updateIncome = (req, res) => {
-    Income.findByIncomeId(req.body.INCOMEID, req.body.USERID,(err, data) => {
-     
-        const _income = new Income({
-                       
-            new_SRCNAME:req.body.new_SRCNAME,           
-            new_AMOUNT: req.body,new_AMOUNT,           
-            new_PAYCYCLE: req.body.new_PAYCYCLE,            
-          });
+    const _income = new Income({
+        INCOMEID: req.body.INCOMEID,
+        USERID: req.body.USERID,
+        new_SRCNAME:req.body.new_SRCNAME,           
+        new_AMOUNT: req.body.new_AMOUNT,           
+        new_PAYCYCLE: req.body.new_PAYCYCLE,      
+    });
+    Income.findByIncomeId(_income,(err, data) => {       
 
           Income.updateIncome(_income, (err, data) => {
               res.send(data);

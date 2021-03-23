@@ -47,7 +47,7 @@ Income.findByIncomeId = (_income, result) => {
       return;// next(err);
     }else {
       //console.log(res);
-      result(res);
+      result(null, res);
       return;
     }
   });
