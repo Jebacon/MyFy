@@ -35,7 +35,7 @@ module.exports = app => {
     
     //working
     app.get("/findByIncomeId", _income.findByIncomeId);
-    //Not working
+    // working
     app.post("/updateIncome", _income.updateIncome);   
     
     

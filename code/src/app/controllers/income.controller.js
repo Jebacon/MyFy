@@ -50,17 +50,17 @@ exports.updateIncome = (req, res) => {
           Income.updateIncome(_income, (err, data) => {
               res.send(data);
           })
-        //res.send("Updated Income entry!");
+       
     });
 }
 exports.remove = (req, res) =>{
     const _income = new Income({
         SRCNAME: req.body.SRCNAME,
-        USERID: req.body.USERID
-    })
+        USERID: req.body.USERID,
+    });
 
     Income.remove(_income,(err, data) =>{
-        res.send.data;
+        res.send(data);
     })
-    res.send("Deleted: " + _income.SRCNAME)
-}
+    //res.send("Deleted: " + _income.SRCNAME)
+};

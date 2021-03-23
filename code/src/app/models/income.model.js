@@ -42,11 +42,11 @@ Income.getAll = result => {
 Income.findByIncomeId = (_income, result) => {
   sql.query(`SELECT SRCNAME FROM Income WHERE INCOMEID = ? and USERID = ?`,[_income.INCOMEID, _income.USERID], (err, res) => {
     if (err) {
-      //console.log(err);
+     
       result(err, null);
-      return;// next(err);
+      return;
     }else {
-      //console.log(res);
+     
       result(null, res);
       return;
     }
@@ -58,17 +58,15 @@ Income.updateIncome = (_income, result) => {
     [_income.new_SRCNAME, _income.new_AMOUNT,_income.new_PAYCYCLE,_income.INCOMEID, _income.USERID],
     (err, res) => {
       if (err) {
-       // console.log("error: ", err);
+       
         result(err, null);
         return;
       }
       
-      if (res.affectedRows == 0) {
-        // not found income with the id
+      if (res.affectedRows == 0) {        
         result({ kind: "not_found" }, null);
         return;
       }
-
       console.log("updated income entry with ID: " + _income.INCOMEID);
       result(null, {..._income.INCOMEID });
     }
@@ -79,21 +77,13 @@ Income.remove = (_income, result) => {
   sql.query("DELETE FROM Income WHERE SRCNAME = ? and USERID = ?", [_income.SRCNAME, _income.USERID], (err, res) => {
     if (err) {
       console.log("error: ", err);
-      result(null, err);
-      return;
-    }
-
-    if (res.affectedRows == 0) {
-      // not found Income with the id
-      result({ kind: "not_found" }, null);
+      result(err, null);
       return;
     }else{
-      console.log("deleted income with ID: " + _income.INCOMEID);
-      result(null, {..._income.INCOMEID });
+      console.log("deleted income name: " + _income.SRCNAME);
+      result(null, _income.SRCNAME);
 
-    }
-
-   
+    }   
   });
 };
 
