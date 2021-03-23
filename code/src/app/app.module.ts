@@ -12,12 +12,7 @@ import { HousingComponent } from './housing/housing.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { TeaminfoComponent } from './teaminfo/teaminfo.component';
 import { FormsModule } from '@angular/forms';
-import { DashboardToolbarComponent } from './dashboard-toolbar/dashboard-toolbar.component';
-import { DashboardPortfolioComponent } from './dashboard-portfolio/dashboard-portfolio.component';
-
 
 @NgModule({
   declarations: [
@@ -27,12 +22,8 @@ import { DashboardPortfolioComponent } from './dashboard-portfolio/dashboard-por
     ExpensesComponent,
     IncomeComponent,
     IncomeSourcesComponent,
-    HousingComponent,
-    DashboardComponent,
-    TeaminfoComponent,
-    DashboardToolbarComponent,
-    DashboardPortfolioComponent
-
+    AccountsetupComponent,
+    HousingComponent
   ],
   imports: [
     BrowserModule,
@@ -46,23 +37,13 @@ import { DashboardPortfolioComponent } from './dashboard-portfolio/dashboard-por
         component: LoginComponent
       },
       {
-        path: 'accountsetup',
-        component: AccountsetupComponent
-      },
-      {
-        path: 'teaminfo',
-        component: TeaminfoComponent
-      },
-      {
         path: '',
         component: HomeComponent
       },
       {
         path: 'account-setup',
         component: AccountsetupComponent
-      },
-      { path: 'housing', 
-      component: HousingComponent}
+      }
     ])
   ],
   providers: [],
