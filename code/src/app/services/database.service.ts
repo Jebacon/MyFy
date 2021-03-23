@@ -12,12 +12,13 @@ export class DatabaseService {
     constructor(private http: HttpClient) {}
 
     //generalized http get method
-    get(data: string): Observable<any> {
-        return this.http.get(baseUrl+data);
+    get(data: any): Observable<any> {
+        var send = JSON.stringify(data)
+        return this.http.get(baseUrl);
     }
     //generalized http post method
-    post(data: string): Observable<any> {
-        return this.http.post(baseUrl+data,"");
+    post(URL: string, data: object): Observable<any> {
+        return this.http.post(baseUrl+URL,data);
     }
     //generalized http delete method
     delete(data: User): Observable<any> {

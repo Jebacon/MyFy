@@ -19,7 +19,11 @@ export class DashboardComponent implements OnInit {
     } else {
       var email = storageID.getItem("Email")
       var pass = storageID.getItem("Password")
+<<<<<<< HEAD
+      var dbData = this.dbService.post("login",{"email": email, "password": pass})
+=======
       var dbData = this.dbService.get("login/"+email+"&"+pass)
+>>>>>>> master
       console.log(email)
       console.log(pass)
       dbData.forEach(val => this.sort(val))

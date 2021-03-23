@@ -4,11 +4,11 @@ const User = require('../models/user.model');
 // Create and Save a new User Object into the DB.
 exports.create = (req, res) => {
     const user = new User({
-        fName: req.params.fName,
-        lName: req.params.lName,
-        email: req.params.email,
-        password: req.params.password
-      });
+        fName: req.body.fName,
+        lName: req.body.lName,
+        email: req.body.email,
+        password: req.body.password
+    });
 
     User.create(user,(err, data) => {
         res.send(data);
@@ -29,8 +29,8 @@ exports.getAll = (req, res) => {
 
 exports.login = (req, res) => {
     const user = new User({
-        email: req.params.email,
-        password: req.params.password
+        email: req.body.email,
+        password: req.body.password
     });
 
     User.login(user, (err, data) => {
@@ -40,8 +40,13 @@ exports.login = (req, res) => {
 
 exports.remove = (req, res) => {
     const user = new User({
+<<<<<<< HEAD
+        email: req.body.email,
+        password: req.body.password
+=======
         email: req.params.email,
         password: req.params.password
+>>>>>>> master
       });
 
       User.remove(user, (err, data) => {
@@ -63,8 +68,13 @@ exports.findByEmail = (req, res) => {
 exports.updateEmail = (req, res) => {
     User.findByEmail(req.params.email, (err, data) => {
         const user = new User({
+<<<<<<< HEAD
+            email: req.body.email,
+            newEmail: req.body.newEmail,
+=======
             email: req.params.email,
             newEmail: req.params.newEmail,
+>>>>>>> master
           });
 
           User.updateEmail(user, (err, data) => {
@@ -77,8 +87,13 @@ exports.updateEmail = (req, res) => {
 exports.updatePassword = (req, res) => {
     User.updatePassword(req.params.email, (err, data) => {
         const user = new User({
+<<<<<<< HEAD
+            email: req.body.email,
+            password: req.body.password
+=======
             email: req.params.email,
             password: req.params.password
+>>>>>>> master
           });
 
           User.updatePassword(user, (err, data) => {
