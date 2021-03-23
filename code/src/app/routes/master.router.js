@@ -24,17 +24,23 @@ module.exports = app => {
     //End User CRUD Group
     
    
-    //Test method to grab all income entries
-    //Works
+    //Test method to grab all income entries - updated to body style syntax 3/23-JS
+    //Works - before switch to body style - works after
     app.get("/allIncome", _income.getAll);
 
      //Income CRUD group
-     //Add new income source- works
-    app.post("/newIncome/:SRCNAME&:AMOUNT&:PAYCYCLE&:USERID", _income.create);    
+     //Add new income source- works  - before switch to body style - works after
+    app.post("/newIncome",_income.create);    
 
-    app.post("/updateById/:SRCNAME&:AMOUNT&:PAYCYCLE&:INCOMEID&:USERID", _income.updateById);    
-    // deletes entry of income source - working
-    app.delete("/deleteIncome/:SRCNAME&:USERID", _income.remove);
+    
+    //working
+    app.get("/findByIncomeId", _income.findByIncomeId);
+    //Not working
+    app.post("/updateIncome", _income.updateIncome);   
+    
+    
+    // deletes entry of income source - working - before switch to body style
+    app.delete("/deleteIncome", _income.remove);
 
     
 };

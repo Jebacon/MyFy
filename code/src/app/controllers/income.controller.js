@@ -4,10 +4,10 @@ const Income = require('../models/income.model');
 // Create and Save a new User Object into the DB.
 exports.create = (req, res) => {
     const _income = new Income({
-        SRCNAME: req.params.SRCNAME,
-        AMOUNT: req.params.AMOUNT,
-        PAYCYCLE: req.params.PAYCYCLE,
-        USERID: req.params.USERID
+        SRCNAME: req.body.SRCNAME,
+        AMOUNT: req.body.AMOUNT,
+        PAYCYCLE: req.body.PAYCYCLE,
+        USERID: req.body.USERID
       });
 
     Income.create(_income,(err, data) => {
@@ -21,30 +21,42 @@ exports.getAll = (req, res) => {
     if (err)
         res.status(500).send({
         message:
-        err.message || "Some error occurred while retrieving users."
+        err.message || "Some error occurred while retrieving income."
         });
         else res.send(data);
     });
 };
-exports.updateById = (req, res) => {
-    Income.updateById(req.params.SRCNAME, req.params.AMOUNT, req.params.PAYCYCLE, req.params.INCOMEID, req.params.USERID,(err, data) => {
+exports.findByIncomeId = (req, res) =>{
+    const _income = new Income({
+        INCOMEID: req.body.INCOMEID,
+        USERID: req.body.USERID,
+    });
+    Income.findByIncomeId(_income, (err, data) => {
+        res.send(data);
+        
+    })
+    
+};
+exports.updateIncome = (req, res) => {
+    Income.findByIncomeId(req.body.INCOMEID, req.body.USERID,(err, data) => {
+     
         const _income = new Income({
-            SRCNAME: req.params.SRCNAME,
-            AMOUNT:req.params.AMOUNT,
-            PAYCYCLE: req.params.PAYCYCLE,
-            USERID: req.params.USERID,
+                       
+            new_SRCNAME:req.body.new_SRCNAME,           
+            new_AMOUNT: req.body,new_AMOUNT,           
+            new_PAYCYCLE: req.body.new_PAYCYCLE,            
           });
 
-          Income.updateById(_income, (err, data) => {
-              res.send.data;
-          });
-        res.send("Updated Income entry!");
+          Income.updateIncome(_income, (err, data) => {
+              res.send(data);
+          })
+        //res.send("Updated Income entry!");
     });
 }
 exports.remove = (req, res) =>{
     const _income = new Income({
-        SRCNAME: req.params.SRCNAME,
-        USERID: req.params.USERID
+        SRCNAME: req.body.SRCNAME,
+        USERID: req.body.USERID
     })
 
     Income.remove(_income,(err, data) =>{
