@@ -4,9 +4,9 @@ const Housing = require('../models/housing.model');
 // Create and Save a new User Object into the DB.
 exports.create = (req, res) => {
     const housing = new Housing({
-        ownership: req.params.ownership,        
-        costs: req.params.costs,
-        userid: req.params.User.id
+        OWNERSHIP: req.body.OWNERSHIP,        
+        COSTS: req.body.COSTS,
+        USERID: req.body.USERID
       });
 
     Housing.create(housing,(err, data) => {
@@ -25,6 +25,47 @@ exports.getAll = (req, res) => {
         else res.send(data);
     });
 };
+exports.findByHousingId = (req, res) =>{
+    const housing = new housing({
+        HOUSINGID: req.body.HOUSINGID,
+        USERID: req.body.USERID,
+    });
+    Housing.findByHousingId(housing, (err, data) => {
+        res.send(data);
+        
+    })
+    
+};
+exports.updateHousing = (req, res) => {
+    const housing= new housing({
+        HOUSINGID: req.body.HOUSINGID,
+        USERID: req.body.USERID,
+        new_OWNERSHIP:req.body.new_OWNERSHIP,           
+        new_COSTS: req.body.new_COSTS,           
+             
+    });
+    Income.findByHousingId(housing,(err, data) => {       
+
+          Income.updateHousing(housing, (err, data) => {
+              res.send(data);
+          })
+       
+    });
+}
+exports.remove = (req, res) =>{
+    const housing = new Housing({
+        HOUSINGID: req.body.HOUSINGID,
+        OWNERSHIP: req.body.OWNERSHIP,
+        COSTS: req.body.COSTS,
+        USERID: req.body.USERID,
+    });
+
+    Housing.remove(housing,(err, data) =>{
+        res.send(data);
+    })
+    //res.send("Deleted: " + _income.SRCNAME)
+};
+
 
 
 

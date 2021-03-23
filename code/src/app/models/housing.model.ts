@@ -1,6 +1,6 @@
 export class Housing {
-    houseid?: any;
-    ownership?: string;
-    costs?: string;
-    userid?: number;
+    HOUSINGID?: any;
+    OWNERSHIP?: string;
+    COSTS?: number;
+    USERID?: number;
 }
