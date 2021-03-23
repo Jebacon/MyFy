@@ -40,13 +40,8 @@ exports.login = (req, res) => {
 
 exports.remove = (req, res) => {
     const user = new User({
-<<<<<<< HEAD
         email: req.body.email,
         password: req.body.password
-=======
-        email: req.params.email,
-        password: req.params.password
->>>>>>> master
       });
 
       User.remove(user, (err, data) => {
@@ -68,13 +63,8 @@ exports.findByEmail = (req, res) => {
 exports.updateEmail = (req, res) => {
     User.findByEmail(req.params.email, (err, data) => {
         const user = new User({
-<<<<<<< HEAD
             email: req.body.email,
             newEmail: req.body.newEmail,
-=======
-            email: req.params.email,
-            newEmail: req.params.newEmail,
->>>>>>> master
           });
 
           User.updateEmail(user, (err, data) => {
@@ -87,13 +77,8 @@ exports.updateEmail = (req, res) => {
 exports.updatePassword = (req, res) => {
     User.updatePassword(req.params.email, (err, data) => {
         const user = new User({
-<<<<<<< HEAD
             email: req.body.email,
             password: req.body.password
-=======
-            email: req.params.email,
-            password: req.params.password
->>>>>>> master
           });
 
           User.updatePassword(user, (err, data) => {
