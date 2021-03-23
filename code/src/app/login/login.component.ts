@@ -34,11 +34,8 @@ export class LoginComponent implements OnInit {
   login(): void {
     this.user.email = (document.getElementById("email") as HTMLInputElement).value
     this.user.password = (document.getElementById("password") as HTMLInputElement).value
-    var data = "login/"+this.user.email+"&"+this.user.password
-    var dbData = this.dbService.get(data)
-    sessionStorage.getItem("ID");
-    let storageID = window.sessionStorage;
-    storageID.setItem("ID",data[0]);
+    var data = this.user.email+"&"+this.user.password
+    var dbData = this.dbService.post("login",{"email": this.user.email, "password":this.user.password})
     //pulls the data out of its object form for sorting
     dbData.forEach(val => this.sort(val))
 
