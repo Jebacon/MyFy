@@ -42,6 +42,7 @@ exports.remove = (req, res) => {
     const user = new User({
         email: req.body.email,
         password: req.body.password
+
       });
 
       User.remove(user, (err, data) => {
@@ -77,6 +78,7 @@ exports.updateEmail = (req, res) => {
 exports.updatePassword = (req, res) => {
     User.updatePassword(req.params.email, (err, data) => {
         const user = new User({
+
             email: req.body.email,
             password: req.body.password
           });
