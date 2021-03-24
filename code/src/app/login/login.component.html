@@ -52,30 +52,3 @@ and send to the API.-->
  </div>
 </section>
 </body>
-
-<!--Here, Brandon and Jon have created a program to capture and route the data to the database.-->
-<script>
-  var app = angular.module('LoginApp', []);
-  app.controller('LoginController', function($scope, $http) {
-      $scope.submit = function(){
-          $http({
-              method:'POST',
-              url:"/login/auth",
-              data : {
-                  email: $scope.email,
-                  password: $scope.password
-              },
-              headers: {
-                  'Content-Type': 'application/json'
-              }
-          })
-              .success(function(response){
-                  $scope.result = response;
-                  console.log($scope.result);
-              })
-              .error(function(){
-                  console.log("error");
-              });
-      };
-  });
-</script>
