@@ -9,9 +9,15 @@ import { DatabaseService } from '../services/database.service';
 
 export class DashboardComponent implements OnInit {
 
+  public incomeSalary: any[] = [{
+    id: 1,
+    salary: ' '
+  }];
+
   constructor(private dbService: DatabaseService, private router: Router) { }
   message = "test"
   ngOnInit(): void {
+
     let storageID = window.sessionStorage;
     if(storageID.getItem("Email") == null || storageID.getItem("Password") == null){
       console.log("Please login first")
@@ -39,6 +45,21 @@ export class DashboardComponent implements OnInit {
     } catch (Error) {
       this.message = "Failure to gather users information"
     }
+  }
+  
+  addIncomeSalary() {
+    this.incomeSalary.push({
+      id: this.incomeSalary.length + 1,
+      salary: ''
+    });
+  }
+
+  //removeIncomeSalary(i: number) {
+    //this.IncomeSalary.splice(i, 1);
+  //}
+
+  logValue() {
+    console.log(this.incomeSalary);
   }
 
 }

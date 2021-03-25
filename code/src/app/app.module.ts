@@ -20,7 +20,7 @@ import { WhoIsItForComponent } from './who-is-it-for/who-is-it-for.component';
 import { WhyMyFyComponent } from './why-my-fy/why-my-fy.component';
 import { DashboardToolbarComponent } from './dashboard-toolbar/dashboard-toolbar.component';
 import { DashboardPortfolioComponent } from './dashboard-portfolio/dashboard-portfolio.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -47,6 +47,7 @@ import { DashboardPortfolioComponent } from './dashboard-portfolio/dashboard-por
     HttpClientModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
       {
         path: 'login',

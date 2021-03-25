@@ -46,26 +46,32 @@
         <div class="container section">
           <div id="Income" class="content-tab">
             <!-- Income tab, add salary-->
-            <div class="field has-addons">
-              <p class="control">
-                <span class="select">
-                  <select>
-                    <option>Select Frequency</option>
-                    <option>Bi-weekly</option>
-                    <option>Monthly</option>
-                    <option>Yearly</option>
-                  </select>
-                </span>
-              </p>
-              <p class="control">
-                <input class="input" type="number" placeholder="Salary">
-              </p>
-              <p class="control">
-                <a class="button has-background-success-light">
-                  Add another field
-                </a>
-              </p>
-            </div>
+
+            <!--This code below is  how I am getting the add another field. It goes to the button too where we have (click) and addIncomeSalary()-->
+            <section *ngFor="let salary of incomeSalary; let i =index;">
+              <div class="field has-addons">
+                <p class="control">
+                  <span class="select">
+                    <select>
+                      <option>Select Frequency</option>
+                      <option>Bi-weekly</option>
+                      <option>Monthly</option>
+                      <option>Yearly</option>
+                    </select>
+                  </span>
+                </p>
+                <p class="control">
+                  <input class="input" [(ngModel)]="salary.salary" name="salary_{{i}}" type="number"
+                    placeholder="Salary" />
+                </p>
+                <p class="control">
+
+                  <button class="button has-background-success-light" (click)="addIncomeSalary()" id="incomeSalary">
+                    Add another field
+                  </button>
+                </p>
+              </div>
+            </section>
             <br>
             <!-- Income tab, add dividend-->
             <div class="field has-addons">
