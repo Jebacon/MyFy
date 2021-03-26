@@ -5,6 +5,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { SettingsComponent } from './settings/settings.component';
 
 
 const routes: Routes = [
@@ -12,7 +13,8 @@ const routes: Routes = [
   { path: 'toolbar', component: ToolbarComponent},
   { path: 'home', component: HomeComponent},
   { path: 'account-setup', component: AccountsetupComponent},
-  {path: 'dashboard', component: DashboardComponent}
+  { path: 'dashboard', component: DashboardComponent},
+  { path: 'settings', component: SettingsComponent}
 ];
 
 @NgModule({
@@ -20,4 +22,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents = [LoginComponent, ToolbarComponent, HomeComponent, AccountsetupComponent, DashboardComponent]
+export const routingComponents = [LoginComponent, ToolbarComponent, HomeComponent, AccountsetupComponent, DashboardComponent, SettingsComponent]

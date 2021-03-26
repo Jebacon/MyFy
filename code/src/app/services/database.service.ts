@@ -21,7 +21,7 @@ export class DatabaseService {
         return this.http.post(baseUrl+URL,data);
     }
     //generalized http delete method
-    delete(data: User): Observable<any> {
-        return this.http.delete(baseUrl+"delete/"+data.email+"&"+data.password);
+    delete(URL: string, data: any): Observable<any> {
+        return this.http.delete(baseUrl+URL,data);
     }
 }

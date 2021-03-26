@@ -52,7 +52,7 @@ exports.remove = (req, res) => {
 }
 
 exports.findByEmail = (req, res) => {
-    User.findByEmail(req.params.email, (err, data) => {
+    User.findByEmail(req.body.email, (err, data) => {
         if (err) {
             res.send("No user by that email/password.")
         }
@@ -61,7 +61,7 @@ exports.findByEmail = (req, res) => {
 }
 
 exports.updateEmail = (req, res) => {
-    User.findByEmail(req.params.email, (err, data) => {
+    User.findByEmail(req.body.email, (err, data) => {
         const user = new User({
             email: req.body.email,
             newEmail: req.body.newEmail,
@@ -75,7 +75,7 @@ exports.updateEmail = (req, res) => {
 }
 
 exports.updatePassword = (req, res) => {
-    User.updatePassword(req.params.email, (err, data) => {
+    User.updatePassword(req.body.email, (err, data) => {
         const user = new User({
             email: req.body.email,
             password: req.body.password

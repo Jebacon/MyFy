@@ -17,6 +17,7 @@ import { TeaminfoComponent } from './teaminfo/teaminfo.component';
 import { FormsModule } from '@angular/forms';
 import { DashboardToolbarComponent } from './dashboard-toolbar/dashboard-toolbar.component';
 import { DashboardPortfolioComponent } from './dashboard-portfolio/dashboard-portfolio.component';
+import { SettingsComponent } from './settings/settings.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { DashboardPortfolioComponent } from './dashboard-portfolio/dashboard-por
     DashboardComponent,
     TeaminfoComponent,
     DashboardToolbarComponent,
-    DashboardPortfolioComponent
+    DashboardPortfolioComponent,
+    SettingsComponent
 
   ],
   imports: [
