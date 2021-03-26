@@ -42,9 +42,8 @@ User.login = (user, result) => {
       console.log("Login Accepted:", res);
       result(null, res);
       return;
+  });
   }
-  })
-}
 
 User.findByEmail = (user, result) => {
   sql.query(`SELECT EMAIL FROM Users WHERE EMAIL = ?`,[user.email], (err, res) => {
@@ -184,7 +183,7 @@ User.remove = (user, result) => {
       return;
     }
 
-    console.log("deleted customer with id: ", id);
+    console.log("deleted user with id: ", id);
     result(null, res);
   });
 };

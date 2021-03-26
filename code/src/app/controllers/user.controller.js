@@ -6,10 +6,10 @@ const User = require('../models/user.model');
 // Controller method to handle User Create requests.
 exports.create = (req, res) => {
     const user = new User({
-        fName: req.params.fName,
-        lName: req.params.lName,
-        email: req.params.email,
-        password: req.params.password
+        fName: req.body.fName,
+        lName: req.body.lName,
+        email: req.body.email,
+        password: req.body.password
       });
 
     User.create(user,(err, data) => {
