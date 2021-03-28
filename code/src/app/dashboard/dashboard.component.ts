@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DatabaseService } from '../services/database.service';
 
 @Component({
   selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  templateUrl: './dashboard.component.html'
 })
+
 export class DashboardComponent implements OnInit {
 
   constructor(private dbService: DatabaseService, private router: Router) { }
