@@ -1,46 +1,45 @@
-// Josiah Stadler 3/16
 const sql = require("./db.js");
 
-const  Debt = function(debt) {
-  this.DEBT_NAME = debt.DEBT_NAME;
-  this.BALANCE = debt.BALANCE;
-  this.RATE = debt.RATE;
-  this.PAYTIME = debt.PAYTIME;
-  this.USERID = debt.USERID;
+const Debt = function(debt) {
+  this.debtName = debt.debtName;
+  this.balance = debt.balance;
+  this.rate = debt.rate;
+  this.payTime = debt.payTime;
+  this.userId = debt.userId;
+  this.debtId = debt.debtId;
 };
 
 Debt.create = (debt, result) => {
-  sql.query("INSERT INTO debt(DEBT_NAME, BALANCE, RATE, PAYTIME, USERID) VALUES(?, ?, ?, ?);",[debt.DEBT_NAME,debt.BALANCE, debt.RATE, debt.PAYTIME, debt.USERID], (err, res) => {
+  sql.query("INSERT INTO debt(DEBT_NAME, BALANCE, RATE, PAYTIME, USERID) VALUES(?, ?, ?, ?, ?);",[debt.debtName, debt.balance, debt.rate, debt.payTime, debt.userId], (err, res) => {
+    console.log(debt.payTime);
     if (err) {
       console.log("error: ", err);
       result(err, null);
       return;
     }
 
-    console.log("debt entry created: ", {...debt });
+    console.log("Debt Created: ", {...debt });
     result(null, {...debt });
   });
 };
 
+Debt.getUserDebts = (debt, result) => {
+    sql.query("SELECT * FROM debt WHERE USERID = ?;",[debt.userId], (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(null, err);
+        return;
+      }
+  
+      console.log("User Debts: ", {...res });
+      result(null, {...res });
+    });
+  };
 
 
-User.getAll = result => {
-  sql.query("SELECT * FROM Users", (err, res) => {
-    if (err) {
-      console.log("error: ", err);
-      result(null, err);
-      return;
-    }
-
-    console.log("customers: ", res);
-    result(null, res);
-  });
-};
-
-debt.updateById = (DEBTID, USERID, result) => {
+Debt.updateDebt = (debt, result) => {
   sql.query(
-    "UPDATE debt SET DEBT_NAME = ?, BALANCE = ?, RATE = ?, PAYTIME = ? WHERE DEBTID = ? and USERID = ?",
-    [debt.DEBT_NAME, debt.BALANCE, debt.RATE, debt.PAYTIME, DEBTID, USERID],
+    "UPDATE debt SET DEBT_NAME = ?, BALANCE = ?, RATE = ?, PAYTIME = ?  WHERE DEBTID = ?", [debt.debtName, debt.balance, debt.rate, debt.payTime, debt.debtId],
     (err, res) => {
       if (err) {
         console.log("error: ", err);
@@ -49,48 +48,68 @@ debt.updateById = (DEBTID, USERID, result) => {
       }
 
       if (res.affectedRows == 0) {
-        // not found Customer with the id
         result({ kind: "not_found" }, null);
         return;
       }
 
-      console.log("updated debt entry: ", { DEBTID: DEBTID, ...debt });
-      result(null, { DEBTID: DEBTID, ...debt });
+      console.log("updated User: " + debt.debtId);
+      result(null, {...debt.debtId });
     }
   );
 };
 
-Debt.remove = (DEBTID, result) => {
-  sql.query("DELETE FROM debt WHERE DEBTID = ?", DEBTID, (err, res) => {
+Debt.findbyDebtId = (debt, result) => {
+  sql.query("SELECT * FROM debt WHERE DEBTID = ?" , [debt.debtId], (err, res) => {
     if (err) {
-      console.log("error: ", err);
+      console.log("Sql Error!");
       result(null, err);
       return;
-    }
-
-    if (res.affectedRows == 0) {
-      // not found Customer with the id
-      result({ kind: "not_found" }, null);
+    } if (res.length == 0) {
+      console.log("No Debt found by the ID: " + debt.debtId);
+      result(err);
       return;
     }
-
-    console.log("deleted debt entry with debtID: ", DEBTID);
+    console.log("Debt ID found for:" + debt.debtId)
     result(null, res);
-  });
-};
+  })
+}
 
-Debt.removeAll = result => {
-  sql.query("DELETE FROM debt", (err, res) => {
-    if (err) {
-      console.log("error: ", err);
-      result(null, err);
-      return;
-    }
+Debt.remove = (debt, result) => {
+    sql.query("DELETE FROM debt WHERE DEBTID = ?", [debt.debtId], (err, res) => {
+        console.log(debt.debtId);
+        if (err) {
+        console.log("error: ", err);
+        result(null, err);
+        return;
+      }
+  
+      if (res.affectedRows == 0) {
+        result({ kind: "Debt Data Not Found." }, null);
+        return;
+      }
 
-    console.log(`deleted ${res.affectedRows} debt entries`);
-    result(null, res);
-  });
-};
+      console.log("Deleted Debt ID: ", debt.debtId);
+      result(null, res);
+    });
+  };
+
+Debt.removeAll = (debt, result) => {
+    sql.query("DELETE FROM debt WHERE USERID = ?", [debt.userId], (err, res) =>{
+        if (err) {
+            console.log("error: ", err);
+            result(null, err);
+            return;
+        }
+
+        if (res.affectedRow == 0) {
+            result("Not Found:" + null);
+            return;
+        }
+
+        console.log("Deleted Debt for: ", debt.userId);
+        result(null, res);
+    })
+}
 
 
 module.exports = Debt;

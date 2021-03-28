@@ -1,21 +1,23 @@
 const { nextTick } = require('process');
 const User = require('../models/user.model');
 
-// Create and Save a new User Object into the DB.
+//Controller code to handle the passing of requests and parsing the JSON body to the proper model method.
+
+// Controller method to handle User Create requests.
 exports.create = (req, res) => {
     const user = new User({
         fName: req.body.fName,
         lName: req.body.lName,
         email: req.body.email,
         password: req.body.password
-    });
+      });
 
     User.create(user,(err, data) => {
         res.send(data);
         });
     };
 
-
+//Test method to find all Users, basically to test if API is working.
 exports.getAll = (req, res) => {
     User.getAll((err, data) => {
     if (err)
@@ -27,10 +29,11 @@ exports.getAll = (req, res) => {
     });
 };
 
+//Login function.
 exports.login = (req, res) => {
     const user = new User({
-        email: req.body.email,
-        password: req.body.password
+        email: req.params.email,
+        password: req.params.password
     });
 
     User.login(user, (err, data) => {
@@ -38,6 +41,7 @@ exports.login = (req, res) => {
     });
 };
 
+//Delete User, Email and Password Combination required.
 exports.remove = (req, res) => {
     const user = new User({
         email: req.body.email,
@@ -45,46 +49,71 @@ exports.remove = (req, res) => {
       });
 
       User.remove(user, (err, data) => {
-          res.send.data;
+          if (err) {
+              res.send("No user found for that email/password combinaton.")
+          }
+          res.send(data);
       })
 
       res.send("Deleted: " + user.email)
 }
 
-exports.findByEmail = (req, res) => {
-    User.findByEmail(req.body.email, (err, data) => {
-        if (err) {
-            res.send("No user by that email/password.")
-        }
-        res.send(data);
-    });
-}
-
+///Controller Method updates User Email.
 exports.updateEmail = (req, res) => {
-    User.findByEmail(req.body.email, (err, data) => {
+    User.findbyEmail(req.params.email, (err, data) => {
         const user = new User({
             email: req.body.email,
             newEmail: req.body.newEmail,
           });
 
           User.updateEmail(user, (err, data) => {
-              res.send.data;
+              res.send(data);
           })
         res.send("Updated Email!");
     });
 }
 
+//Controller method to update Password.
 exports.updatePassword = (req, res) => {
-    User.updatePassword(req.body.email, (err, data) => {
+    User.updatePassword(req.params.email, (err, data) => {
         const user = new User({
             email: req.body.email,
             password: req.body.password
           });
 
           User.updatePassword(user, (err, data) => {
-              res.send.data;
+              res.send(data);
           })
         res.send("Updated Password!");
     });
 };
 
+
+
+exports.updatefName = (req, res) => {
+    User.findByEmail(req.params.email, (err, data) => {
+        const user = new User({
+            email: req.body.email,
+            fName: req.body.fName
+          });
+
+          User.updatefName(user, (err, data) => {
+              res.send(data);
+          })
+        res.send("Updated First Name!");
+    });
+};
+
+exports.updatelName = (req, res) => {
+    User.findbyEmail(req.params.email, (err, data) => {
+        const user = new User({
+            email: req.body.email,
+            lName: req.body.lName
+          });
+
+          User.updatelName(user, (err, data) => {
+              res.send(data);
+          })
+        res.send("Updated Password!");
+    });
+};
