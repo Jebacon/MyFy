@@ -2,12 +2,14 @@ const { User } = require("../models/user.model");
 const { Debt } = require("../models/debt.model");
 const { Expenses } = require("../models/expenses.model");
 const { Invest } = require("../models/invest.model");
+const { Housing } = require("../models/housing.model");
 
 module.exports = app => {
     const _user = require("../controllers/user.controller");
     const _debt = require("../controllers/debt.controller");
     const _expenses = require("../controllers/expenses.controller");
     const _invest = require("../controllers/invest.controller");
+    const _housing = require("../controllers/housing.controller");
 
 
     //Begin User CRUD Group
@@ -94,4 +96,26 @@ module.exports = app => {
     app.delete("/deleteUserInvestments", _invest.removeAll);
 
     //End Invest CRUD Group 
+
+    //Begin Housing CRUD Group
+
+    //Add New Housing entry.
+    app.post("/newHousing", _housing.create);
+
+    //Get all Housing entries.
+    app.get("/getAllHousing", _housing.getAll);
+
+    //Updates an individual Hosuing entry.
+    app.post("/updateHousing", _housing.updateHousing);
+
+    //Finds an individual Hosuing entry.
+    app.post("/findByHousingId", _housing.findByHousingId);
+
+    //Deletes a single Housing entry.
+    app.delete("/deleteHousing", _housing.remove);
+
+    //Deletes all Housing entries.
+    //app.delete("/deleteAllHousing", _housing.removeAll);
+
+    //End Housing CRUD Group 
 };
