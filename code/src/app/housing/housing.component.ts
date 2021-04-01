@@ -14,9 +14,9 @@ export class HousingComponent implements OnInit {
   constructor(private dbService: DatabaseService) { }
 
   housing: Housing = {
-    ownership: '',
-    costs: '',
-    userid: 0,
+    OWNERSHIP: '',
+    COSTS: 0,
+    USERID: 0,
   };
   created = false;
   message = ""
@@ -24,11 +24,11 @@ export class HousingComponent implements OnInit {
   ngOnInit(): void {
   }
   addHousing(): void {
-    this.housing.ownership = (document.getElementById("rentOwn") as HTMLInputElement).value
-    this.housing.costs = (document.getElementById("costs") as HTMLInputElement).value
-    this.housing.userid = this.housing.userid
-    var data = "newHousing/"+this.housing.ownership+"&"+ this.housing.costs+"&"+ this.housing.userid
-    this.dbService.post(data).subscribe(
+    this.housing.OWNERSHIP = (document.getElementById("rentOwn") as HTMLInputElement).value
+    this.housing.COSTS = (document.getElementById("costs") as HTMLInputElement).valueAsNumber
+    this.housing.USERID = this.housing.USERID  
+    var data = this.housing.OWNERSHIP+"&"+ this.housing.COSTS+"&"+ this.housing.USERID
+    var dbData = this.dbService.post("newHousing", {data}).subscribe(
       response => {
         if(response === null){
           this.message = "Unable to add housing expense entry at this time"
