@@ -3,6 +3,7 @@ const { Debt } = require("../models/debt.model");
 const { Expenses } = require("../models/expenses.model");
 const { Invest } = require("../models/invest.model");
 const { Housing } = require("../models/housing.model");
+const { Discr_expense } = require("../models/debt.model");
 
 module.exports = app => {
     const _user = require("../controllers/user.controller");
@@ -10,7 +11,7 @@ module.exports = app => {
     const _expenses = require("../controllers/expenses.controller");
     const _invest = require("../controllers/invest.controller");
     const _housing = require("../controllers/housing.controller");
-
+    const _discr_expense = require("../controller/discr_expense.controler")
 
     //Begin User CRUD Group
 
@@ -118,4 +119,26 @@ module.exports = app => {
     //app.delete("/deleteAllHousing", _housing.removeAll);
 
     //End Housing CRUD Group 
+
+
+     //Begin Discr_exp CRUD Group
+
+    //Posts new Discr object to the database.
+    app.post("/newDiscr_Exp", _discr_expense.create);
+
+    //Get's all of a User's Discr_Exp.
+    app.post("/getUserDiscr_Exp", _discr_expense.getUserDiscr_expense);
+
+    //Updates a Discr_Exp object in the database.
+    app.post("/updateDiscrExp", _discr_expense.updateDiscrExp);
+
+    ///Deletes a single debt object.
+    app.delete("/deleteDiscr_Exp", _discr_expense.remove);
+
+    //Deletes ALL debt objects for any user.
+    app.delete("/deleteUserDiscr_Exp", _discr_expense.removeAll);
+
+
+    //End Discr_Exp CRUD Group
+
 };
