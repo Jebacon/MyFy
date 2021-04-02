@@ -7,7 +7,6 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SettingsComponent } from './settings/settings.component';
 
-
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'toolbar', component: ToolbarComponent},

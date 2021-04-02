@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 declare const openTab: any;
 
 @Component({
@@ -9,7 +10,7 @@ declare const openTab: any;
 
 export class AppComponent {
   title = 'MyFy - One place for all your finances.';
-  
+ 
   openTab(){
     openTab();
   }
