@@ -16,8 +16,17 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { TeaminfoComponent } from './teaminfo/teaminfo.component';
 import { FormsModule } from '@angular/forms';
 import { DashboardToolbarComponent } from './dashboard-toolbar/dashboard-toolbar.component';
-import { DashboardPortfolioComponent } from './dashboard-portfolio/dashboard-portfolio.component';
-import { SettingsComponent } from './settings/settings.component';
+import { AssessmentComponent } from './assessment/assessment.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { ChartsModule } from 'ng2-charts';
+import { CardComponent } from './card/card.component';
+import { DashComponent } from './dash/dash.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { LayoutModule } from '@angular/cdk/layout';
 
 
 @NgModule({
@@ -32,8 +41,9 @@ import { SettingsComponent } from './settings/settings.component';
     DashboardComponent,
     TeaminfoComponent,
     DashboardToolbarComponent,
-    DashboardPortfolioComponent,
-    SettingsComponent
+    AssessmentComponent,
+    CardComponent,
+    DashComponent
 
   ],
   imports: [
@@ -62,8 +72,20 @@ import { SettingsComponent } from './settings/settings.component';
       {
         path: 'account-setup',
         component: AccountsetupComponent
+      },
+      {
+
+        path: 'dash', component: DashComponent
+
       }
-    ])
+    ]),
+    NoopAnimationsModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule,
+    LayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
