@@ -19,6 +19,7 @@ import { DashboardToolbarComponent } from './dashboard-toolbar/dashboard-toolbar
 import { AssessmentComponent } from './assessment/assessment.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartsModule } from 'ng2-charts';
+
 import { CardComponent } from './card/card.component';
 import { DashComponent } from './dash/dash.component';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -27,6 +28,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { LayoutModule } from '@angular/cdk/layout';
+import { BarChartComponent } from './charts/bar-chart/bar-chart.component';
 
 
 @NgModule({
@@ -43,7 +45,8 @@ import { LayoutModule } from '@angular/cdk/layout';
     DashboardToolbarComponent,
     AssessmentComponent,
     CardComponent,
-    DashComponent
+    DashComponent,
+    BarChartComponent
 
   ],
   imports: [
@@ -51,7 +54,9 @@ import { LayoutModule } from '@angular/cdk/layout';
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
+    ChartsModule,
     HttpClientModule,
+
     RouterModule.forRoot([
       {
         path: 'login',
