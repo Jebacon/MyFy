@@ -3,7 +3,7 @@ const { Debt } = require("../models/debt.model");
 const { Expenses } = require("../models/expenses.model");
 const { Invest } = require("../models/invest.model");
 const { Housing } = require("../models/housing.model");
-const { Discr_expense } = require("../models/debt.model");
+const { Discr_expense } = require("../models/discr_expense.model");
 
 module.exports = app => {
     const _user = require("../controllers/user.controller");
@@ -11,7 +11,7 @@ module.exports = app => {
     const _expenses = require("../controllers/expenses.controller");
     const _invest = require("../controllers/invest.controller");
     const _housing = require("../controllers/housing.controller");
-    const _discr_expense = require("../controller/discr_expense.controler")
+    const _discr_expense = require("../controllers/discr_expense.controller")
 
     //Begin User CRUD Group
 
@@ -98,44 +98,44 @@ module.exports = app => {
 
     //End Invest CRUD Group 
 
-    //Begin Housing CRUD Group
+    //Begin Housing CRUD Group- ALL working 4/3
 
-    //Add New Housing entry.
+    //Add New Housing entry.- Works 4/3
     app.post("/newHousing", _housing.create);
 
-    //Get all Housing entries.
+    //Get all Housing entries. - Works 4/3
     app.get("/getAllHousing", _housing.getAll);
 
-    //Updates an individual Hosuing entry.
+    //Updates an individual Hosuing entry.- Works 4/3
     app.post("/updateHousing", _housing.updateHousing);
 
-    //Finds an individual Hosuing entry.
-    app.post("/findByHousingId", _housing.findByHousingId);
+    //Finds an individual Hosuing entry.- Works 4/3
+    app.post("/findByUserId", _housing.findByUserId);
 
-    //Deletes a single Housing entry.
+    //Deletes a single Housing entry.-Works 4/3
     app.delete("/deleteHousing", _housing.remove);
 
-    //Deletes all Housing entries.
-    //app.delete("/deleteAllHousing", _housing.removeAll);
+    //Deletes all Housing entries for a specific user.-Works 4/3
+    app.delete("/deleteUserHousing", _housing.removeAll);
 
     //End Housing CRUD Group 
 
 
-     //Begin Discr_exp CRUD Group
+    //Begin Discr_exp CRUD Group - ALL working as of 4/3
 
-    //Posts new Discr object to the database.
+    //Posts new Discr object to the database.-Working 4/3
     app.post("/newDiscr_Exp", _discr_expense.create);
 
-    //Get's all of a User's Discr_Exp.
+    //Get's all of a User's Discr_Exp.-Working 4/3
     app.post("/getUserDiscr_Exp", _discr_expense.getUserDiscr_expense);
 
-    //Updates a Discr_Exp object in the database.
+    //Updates a Discr_Exp object in the database.-Working 4/3
     app.post("/updateDiscrExp", _discr_expense.updateDiscrExp);
 
-    ///Deletes a single debt object.
+    ///Deletes a single discr_Exp object.-Working 4/3
     app.delete("/deleteDiscr_Exp", _discr_expense.remove);
 
-    //Deletes ALL debt objects for any user.
+    //Deletes ALL discr_exp objects for any user.-Working 4/3
     app.delete("/deleteUserDiscr_Exp", _discr_expense.removeAll);
 
 

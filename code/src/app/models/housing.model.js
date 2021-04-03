@@ -21,8 +21,8 @@ Housing.create = (_housing, result) => {
     result(null, {..._housing });
   });
 };
-Housing.findByHousingId = (_housing, result) => {
-  sql.query(`SELECT HOUSINGID FROM Housing WHERE HOUSINGID = ? and USERID = ?`,[_housing.HOUSINGID, _housing.USERID], (err, res) => {
+Housing.findByUserId = (_housing, result) => {
+  sql.query(`SELECT * FROM Housing WHERE USERID = ?`,[_housing.USERID], (err, res) => {
     if (err) {
      
       result(err, null);
@@ -30,6 +30,7 @@ Housing.findByHousingId = (_housing, result) => {
     }else {
      
       result(null, res);
+      console.log("Found: ", res);
       return;
     }
   });
@@ -83,6 +84,23 @@ Housing.remove = (_housing, result) => {
 
     console.log("deleted housing entry for entry with houseid: ", _housing.HOUSINGID);
     result(null, res);
+  });
+};
+Housing.removeAll = (_housing, result) => {
+  sql.query("DELETE FROM Housing WHERE USERID = ?", [_housing.USERID], (err, res) =>{
+      if (err) {
+          console.log("error: ", err);
+          result(null, err);
+          return;
+      }
+
+      if (res.affectedRow == 0) {
+          result("Not Found:" + null);
+          return;
+      }
+
+      console.log("Deleted Housing Entries for user with ID: ", _housing.USERID);
+      result(null, res);
   });
 };
 module.exports = Housing;

@@ -25,12 +25,12 @@ exports.getAll = (req, res) => {
         else res.send(data);
     });
 };
-exports.findByHousingId = (req, res) =>{
+exports.findByUserId = (req, res) =>{
     const _housing = new Housing({
-        HOUSINGID: req.body.HOUSINGID,
+        
         USERID: req.body.USERID,
     });
-    Housing.findByHousingId(_housing, (err, data) => {
+    Housing.findByUserId(_housing, (err, data) => {
         res.send(data);
         
     })
@@ -64,6 +64,16 @@ exports.remove = (req, res) =>{
         res.send(data);
     })
     //res.send("Deleted: " + _income.SRCNAME)
+};
+exports.removeAll = (req, res) => {
+    const _housing = new Housing({
+        USERID: req.body.USERID
+    });
+
+    Housing.removeAll(_housing, (err, data) => {
+        res.send.data;
+    })
+    res.send("Deleted All Housing entries For user with ID: " + _housing.USERID);
 };
 
 
