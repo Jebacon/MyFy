@@ -2,6 +2,7 @@ const { User } = require("../models/user.model");
 const { Debt } = require("../models/debt.model");
 const { Expenses } = require("../models/expenses.model");
 const { Invest } = require("../models/invest.model");
+const { Income } = require("../models/income.model");
 const { Housing } = require("../models/housing.model");
 const { Discr_expense } = require("../models/discr_expense.model");
 
@@ -10,6 +11,7 @@ module.exports = app => {
     const _debt = require("../controllers/debt.controller");
     const _expenses = require("../controllers/expenses.controller");
     const _invest = require("../controllers/invest.controller");
+    const _income = require("../controllers/income.controller");
     const _housing = require("../controllers/housing.controller");
     const _discr_expense = require("../controllers/discr_expense.controller")
 
@@ -140,5 +142,46 @@ module.exports = app => {
 
 
     //End Discr_Exp CRUD Group
+
+     //Begin Housing CRUD Group- ALL working 4/3
+
+    //Add New Housing entry.- Works 4/3
+    app.post("/newHousing", _housing.create);
+
+    //Get all Housing entries. - Works 4/3
+    app.get("/getAllHousing", _housing.getAll);
+
+    //Updates an individual Hosuing entry.- Works 4/3
+    app.post("/updateHousing", _housing.updateHousing);
+
+    //Finds an individual Hosuing entry.- Works 4/3
+    app.post("/findByUserId", _housing.findByUserId);
+
+    //Deletes a single Housing entry.-Works 4/3
+    app.delete("/deleteHousing", _housing.remove);
+
+    //Deletes all Housing entries for a specific user.-Works 4/3
+    app.delete("/deleteUserHousing", _housing.removeAll);
+
+    //End Housing CRUD Group 
+
+
+    //Begin Income CRUD Group 
+
+    //Posts new Income object to the database.
+    app.post("/newIncome", _income.create);
+
+    //Get's all of a User's Income entries
+    app.post("/getUserIncome", _income.getUserIncome);
+
+    //Updates an Income object in the database.
+    app.post("/updateIncome", _income.updateIncome);
+
+    ///Deletes a single Income object.
+    app.delete("/deleteIncome", _income.remove);
+
+    //Deletes ALL Income objects for any user.
+    app.delete("/deleteUserIncome", _income.removeAll);
+
 
 };
