@@ -1,4 +1,5 @@
 // Josiah Stadler 3/16
+
 const sql = require("./db.js");
 
 const Income = function(_income) {
@@ -24,7 +25,18 @@ Income.create = (_income, result) => {
     result(null, {..._income });
   });
 };
+Income.getUserIncome = (_income, result) => {
+  sql.query("SELECT * FROM Income WHERE USERID = ?",[_income.USERID], (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
 
+    console.log("User Income Entries: ", {..._income });
+    result(null, {..._income });
+  });
+};
 
 
 Income.getAll = result => {
@@ -74,31 +86,37 @@ Income.updateIncome = (_income, result) => {
 };
 
 Income.remove = (_income, result) => {
-  sql.query("DELETE FROM Income WHERE SRCNAME = ? and USERID = ?", [_income.SRCNAME, _income.USERID], (err, res) => {
+  sql.query("DELETE FROM Income WHERE SRCNAME = ? AND USERID = ?", [_income.SRCNAME,_income.USERID], (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
       return;
     }else{
-      console.log("deleted income name: " + _income.SRCNAME);
+      console.log("deleted income entry with name: " + _income.SRCNAME);
       result(null, _income.SRCNAME);
 
     }   
   });
 };
 
-Income.removeAll = result => {
-  sql.query("DELETE FROM Income", (err, res) => {
-    if (err) {
-      console.log("error: ", err);
-      result(null, err);
-      return;
-    }
+Income.removeAll = (_income, result) => {
+  sql.query("DELETE FROM Income WHERE USERID = ?", [_income.USERID], (err, res) =>{
+      if (err) {
+          console.log("error: ", err);
+          result(null, err);
+          return;
+      }
 
-    console.log(`deleted ${res.affectedRows} Income entries`);
-    result(null, res);
-  });
-};
+      if (res.affectedRow == 0) {
+          result("Not Found:" + null);
+          return;
+      }
+
+      console.log("Deleted Income entries for user with ID for: ", _income.USERID);
+      result(null, res);
+  })
+}
+
 
 
 module.exports = Income;

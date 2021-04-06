@@ -82,6 +82,9 @@ import { BarChartComponent } from './charts/bar-chart/bar-chart.component';
 
         path: 'dash', component: DashComponent
 
+      },
+      {
+        path: 'income', component: IncomeComponent
       }
     ]),
     NoopAnimationsModule,

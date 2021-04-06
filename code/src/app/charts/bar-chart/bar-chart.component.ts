@@ -25,6 +25,12 @@ export class BarChartComponent  {
   constructor() { }
 
   ngOnInit() {
+    //make query call for user.invest whatever. 
+    //Ask Jon
+    // - done it in login and account setup.ts
+    //- look at login.ts line 34-38 and sortingmethod below it. 
+    //baseIncome = getUserIncome();
+    //look at services. db,services.ts http services
   }
 }
 

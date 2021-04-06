@@ -168,20 +168,21 @@ module.exports = app => {
 
     //Begin Income CRUD Group 
 
-    //Posts new Income object to the database.
+    //Get all Housing entries. - Works 4/3
+    app.get("/getAllIncome", _income.getAll);
+
+    //Posts new Income object to the database. - works 4/6
     app.post("/newIncome", _income.create);
+
+    //Deletes a single Income object.- works 4/6
+    app.delete("/deleteIncome", _income.remove);
+
+    //Deletes ALL Income objects for a user.- NOT WORKING
+    app.delete("/deleteUserIncome", _income.removeAll);
 
     //Get's all of a User's Income entries
     app.post("/getUserIncome", _income.getUserIncome);
-
+    
     //Updates an Income object in the database.
     app.post("/updateIncome", _income.updateIncome);
-
-    ///Deletes a single Income object.
-    app.delete("/deleteIncome", _income.remove);
-
-    //Deletes ALL Income objects for any user.
-    app.delete("/deleteUserIncome", _income.removeAll);
-
-
 };

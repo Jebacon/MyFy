@@ -1,7 +1,7 @@
 const { nextTick } = require('process');
 const Income = require('../models/income.model');
 
-// Create and Save a new User Object into the DB.
+// Create and Save a new income Object into the DB.
 exports.create = (req, res) => {
     const _income = new Income({
         SRCNAME: req.body.SRCNAME,
@@ -63,4 +63,23 @@ exports.remove = (req, res) =>{
         res.send(data);
     })
     //res.send("Deleted: " + _income.SRCNAME)
+}
+exports.removeAll = (req, res) => {
+    const _income = new Income({
+        USERID: req.body.USERID
+    });
+
+    Income.removeAll(_income, (err, data) => {
+        res.send.data;
+    })
+    res.send("Deleted All Incomes For: " + _income.USERID);
+}
+exports.getUserIncome = (req, res) => {
+    const _income = new Income({
+        USERID: req.body.USERID,
+    });
+
+    Income.getUserIncome(_income, (err, data) => {
+        res.send(data);
+    });
 };

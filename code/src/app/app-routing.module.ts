@@ -6,14 +6,15 @@ import { LoginComponent } from './login/login.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SettingsComponent } from './settings/settings.component';
-
+import { IncomeComponent} from './income/income.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'toolbar', component: ToolbarComponent},
   { path: 'home', component: HomeComponent},
   { path: 'account-setup', component: AccountsetupComponent},
   { path: 'dashboard', component: DashboardComponent},
-  { path: 'settings', component: SettingsComponent}
+  { path: 'settings', component: SettingsComponent},
+  {path: 'income', component: IncomeComponent}
 ];
 
 @NgModule({
