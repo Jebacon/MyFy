@@ -86,6 +86,9 @@ module.exports = app => {
     //Get all User Investments.
     app.post("/getUserInvestments", _invest.getUserInvestments);
 
+    //Grabs the sum of all investments.
+    app.post("/getUserInvestmentSum", _invest.getUserInvestmentSum);
+
     //Updates an individual User investment.
     app.post("/updateInvestment", _invest.updateInvestments);
 

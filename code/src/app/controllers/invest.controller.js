@@ -27,6 +27,16 @@ exports.getUserInvestments = (req, res) => {
     });
 };
 
+exports.getUserInvestmentSum = (req, res) => {
+    const invest = new Invest({
+        userId: req.body.userId,
+    });
+
+    Invest.getUserInvestmentSum(invest, (err, data) => {
+        res.send(data);
+    })
+}
+
 //Update specific investments 
 exports.updateInvestments = (req, res) => {
     const invest = new Invest({

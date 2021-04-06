@@ -175,7 +175,7 @@ User.updateName = (user, result) => {
     "UPDATE Users SET FNAME = ? ,LNAME = ?  WHERE EMAIL = ?", [user.fName, user.lName, user.email],
     (err, res) => {
       if (err) {
-        console.log("error: ", err);
+        console.log("error: ", err.sqlMessage);
         result(null, err);
         return;
       }
