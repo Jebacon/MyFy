@@ -19,7 +19,7 @@
           </div>
         </div>
       </div>
-      <form #user="ngForm" on-submit="addUser()" novalidate>
+      <form #user="ngForm" on-submit="addUser()">
         <div class="field">
           <p class="control">
             <input
@@ -53,6 +53,7 @@
               id="email"
               ng-model="email"
               placeholder="Email"
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$"
               required
             />
           </p>

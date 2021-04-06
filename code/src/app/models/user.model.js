@@ -13,12 +13,12 @@ User.create = (user, result) => {
   sql.query("INSERT INTO Users(FNAME, LNAME, EMAIL, PASSWORD, ISADMIN, INITIALCREATION) VALUES(?, ?, ?, ?, 0, now());",[user.fName, user.lName, user.email, user.password], (err, res) => {
     if (err) {
       console.log("error: ", err);
-      result(err, null);
+      result(err, err);
       return;
     }
 
     console.log("created user: ", {...user });
-    result(null, {...user });
+    result({...user, 'sqlMessage':"success" }, {...user, 'sqlMessage':"success" });
   });
 };
 
@@ -72,8 +72,8 @@ User.updateName = (user, result) => {
     (err, res) => {
       if (err) {
         console.log("error: ", err);
-        result(null, err);
-        return;
+        result(err, err);
+        return err;
       }
 
       if (res.affectedRows == 0) {
@@ -83,7 +83,7 @@ User.updateName = (user, result) => {
       }
 
       console.log("updated User: "+  user.email + user.lName + user.fName);
-      result(null, {...user.email });
+      result({...user.email }, {...user.email });
     }
   );
 };

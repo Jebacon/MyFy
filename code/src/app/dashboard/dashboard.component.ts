@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from '../models/user.model';
 import { DatabaseService } from '../services/database.service';
 
 @Component({
@@ -8,9 +9,24 @@ import { DatabaseService } from '../services/database.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-
+  user: User = {
+    id: "",
+    fName: '',
+    lName: '',
+    email: '',
+    password: '',
+  };
+  verification: User = {
+    id: "null",
+    fName: '',
+    lName: '',
+    email: '',
+    password: '',
+  }
+  verified = false
   constructor(private dbService: DatabaseService, private router: Router) { }
-  message = "test"
+  message = ""
+  dataT="Income"
   ngOnInit(): void {
     let storageID = window.sessionStorage;
     if(storageID.getItem("Email") == null || storageID.getItem("Password") == null){
@@ -23,22 +39,74 @@ export class DashboardComponent implements OnInit {
       console.log(email)
       console.log(pass)
       dbData.forEach(val => this.sort(val))
+
+      this.getIncomeData()
+    }
+  }
+  getIncomeData():void{
+    var table = (document.getElementById("incomeTable") as HTMLTableElement)
+    var newRow = table.insertRow(-1)
+    var name = (document.getElementById("incomeName") as HTMLInputElement).value
+    var wage = (document.getElementById("incomeWage") as HTMLInputElement).value
+    var freq = (document.getElementById("incomeFreq") as HTMLInputElement).value
+    newRow.innerHTML = "<td>"+name+"</td><td>"+wage+"</td><td>"+freq+'</td><td><button on-click= "deleteIncome(this)" />delete</td>'
+
+    //table.append("name", "1","never")
+  }
+  deleteIncome(r: any): void{
+    console.log("FUCK THIS")
+    var i = r.parentNode.rowIndex;
+    (document.getElementById("incomeTable")as HTMLTableElement).deleteRow(i)
+  }
+  async verifyStep(data?: string): Promise<void>{
+    console.log("verify step")
+    //once verification happens successfully the verification ID is no longer null and we wont ping the server to verify us endlessly
+    if(this.verification.id == "null"){
+      await this.verify()
+    }
+    var v_ID = (this.user.id == this.verification.id)
+    var v_email = (this.user.email === this.verification.email)
+    var v_password = (this.user.password === this.verification.password)
+    console.log('ID: '+v_ID+'  EMAIL: '+v_email+'  PASSWORD: '+v_password)
+    if(v_ID && v_email && v_password){
+      console.log("verification success")
+      this.message = ""
+    } else {
+      this.message = "Failed to verify credentials"
     }
   }
 
-  sort(data:any): void{
-    try{
-      let sortID = window.sessionStorage
-      var email = data[0]['EMAIL']
-      var pass = data[0]['PASSWORD']
-      sortID.setItem("ID",data[0]["ID"]);
-      sortID.setItem("Email", data[0]["EMAIL"]);
-      sortID.setItem("Password", data[0]["PASSWORD"]);
-      this.message = "Welcome, " +data[0]["FNAME"]+" "+data[0]["LNAME"]
-
-    } catch (Error) {
-      this.message = "Failure to gather users information"
+  async verify(): Promise<void>{
+    let storageID = window.sessionStorage;
+    this.user.id = storageID.getItem("ID")!;
+    this.user.email = storageID.getItem("Email")!
+    this.user.password = storageID.getItem("Password")!
+    var dbData = this.dbService.post("login",{"email": (document.getElementById("verify-email") as HTMLInputElement).value, "password": (document.getElementById("verify-password") as HTMLInputElement).value})
+      //pulls the data out of its object form for sorting
+    await dbData.forEach(val => this.sort(val))
     }
-  }
-
+    //sorts login data for ease of use
+    sort(data:any): void{
+      try{
+      this.verification.id = data[0]["ID"];
+      this.verification.email = data[0]["EMAIL"];
+      this.verification.password = data[0]["PASSWORD"];
+      console.log("verification assets")
+      } catch (Error) {
+      this.verified = false
+      }
+    }
+    dataType(data: string) : void{
+      console.log(data)
+      if(data == "Income"){
+        this.getIncomeData()
+      } else if (data == "Debt"){
+        console.log("congrats its debt")
+      } else if (data == "Expense"){
+        console.log("propogate me daddy")
+      }
+    }
+    handleData() : void{
+      console.log("consider it done")
+    }
 }

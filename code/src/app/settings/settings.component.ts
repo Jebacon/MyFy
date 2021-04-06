@@ -83,9 +83,12 @@ export class SettingsComponent implements OnInit {
   deleteAccount(): void {
     console.log("deleting account")
     var con = confirm("This will delete your account. Are you sure?")
-    console.log((document.getElementById("deleteAccountVerify-email") as HTMLInputElement).value)
-    var dbData = this.dbService.post("deleteUser",{"email": (document.getElementById("deleteAccountVerify-email") as HTMLInputElement).value, "password": (document.getElementById("deleteAccountVerify-password") as HTMLInputElement).value})
-    dbData.forEach(val => function(val:any): void{
+    var success = true
+    //checks if the user confirmed the delete
+    if(con){
+      console.log((document.getElementById("deleteAccountVerify-email") as HTMLInputElement).value)
+      var dbData = this.dbService.post("deleteUser",{"email": (document.getElementById("deleteAccountVerify-email") as HTMLInputElement).value, "password": (document.getElementById("deleteAccountVerify-password") as HTMLInputElement).value})
+      dbData.forEach(val => (val:any): void =>{
       try{
         console.log(val)
         console.log("deletion Successful")
@@ -93,12 +96,14 @@ export class SettingsComponent implements OnInit {
         console.log(Error)
         }
     })
-    //checks if the user confirmed the delete
-    if(con){
-      console.log("user deleted")
-      window.sessionStorage.clear()
-      alert("Your account has been deleted!")
-      this.router.navigate(["/"])
+      if(success){
+        console.log("user deleted")
+        window.sessionStorage.clear()
+        alert("Your account has been deleted!")
+        this.router.navigate(["/"])
+      }else {
+        alert("Account deletion failed")
+      }
     } else {
       console.log("user deletion aborted")
     }
@@ -106,11 +111,13 @@ export class SettingsComponent implements OnInit {
   updateEmail(): void {
     console.log("Updating Email")
     var newEmail = (document.getElementById("changeEmail-newEmail") as HTMLInputElement).value
-    var dbData = this.dbService.post("updateEmail",{"newEmail": newEmail, "email": window.sessionStorage.getItem("Email")}).subscribe(data => this.updateEmailHelper(data, newEmail))
+    this.dbService.post("updateEmail",{"newEmail": newEmail, "email": window.sessionStorage.getItem("Email")}).subscribe(data => this.updateEmailHelper(data, newEmail))
   }
   updateEmailHelper(data:any, newEmail: string) : void{
-    if(data.code == "ER_DUP_ENTRY"){
+    if(data.code == "ER_DUP_ENTRY" ){
       alert("This email has already been taken")
+    } else if(data.code == "UNKNOWN_CODE_PLEASE_REPORT") {
+      alert("Email must be good shit")
     } else {
       alert("Email Updated Successfully")
       window.sessionStorage.setItem("Email", newEmail)
@@ -119,28 +126,28 @@ export class SettingsComponent implements OnInit {
   updatePassword(): void {
     console.log("Updating Password")
     var newPassword = (document.getElementById("changePassword-newPassword") as HTMLInputElement).value
-    var dbData = this.dbService.post("updatePassword",{"newPassword": newPassword, "email": window.sessionStorage.getItem("Email")})
-    dbData.forEach(val => function(val:any): void{
-      try{
-        console.log(val)
-        } catch (Error) {
-        console.log(Error)
-        }
-    })
-    window.sessionStorage.setItem("Password", newPassword)
+    this.dbService.post("updatePassword",{"newPassword": newPassword, "email": window.sessionStorage.getItem("Email")}).subscribe(data => this.updatePasswordHelper(data, newPassword))
+  }
+  updatePasswordHelper(data:any, newPassword: string) : void{
+    if(data.code == "UNKNOWN_CODE_PLEASE_REPORT"){
+      alert("The password must be of atleast 3 characters length")
+    } else {
+      alert("Password succesfully updated")
+      window.sessionStorage.setItem("Password", newPassword)
+    }
   }
   updateName(): void {
     console.log("Updating Name")
     var newFname = (document.getElementById("changeName-newFName") as HTMLInputElement).value
     var newLname = (document.getElementById("changeName-newLName") as HTMLInputElement).value
-    var dbData = this.dbService.post("updateName",{"email": window.sessionStorage.getItem("Email"), "fName": newFname, "lName": newLname})
-    dbData.forEach(val => function(val:any): void{
-      try{
-        console.log(val)
-        } catch (Error) {
-        console.log(Error)
-        }
-    })
+    this.dbService.post("updateName",{"email": window.sessionStorage.getItem("Email"), "fName": newFname, "lName": newLname}).subscribe(data => this.updateNameHelper(data))
+  }
+  updateNameHelper(data:any) : void {
+    if(data.code == "UNKNOWN_CODE_PLEASE_REPORT"){
+      alert("Name must be atleast 1 character long")
+    } else {
+      alert("Name updated successfully")
+    }
   }
   //Handles toggling divs and setting values to be handled by other methods
   toggleDiv(data: string): void {
