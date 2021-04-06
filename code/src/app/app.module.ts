@@ -19,8 +19,20 @@ import { ContactComponent } from './contact/contact.component';
 import { WhoIsItForComponent } from './who-is-it-for/who-is-it-for.component';
 import { WhyMyFyComponent } from './why-my-fy/why-my-fy.component';
 import { DashboardToolbarComponent } from './dashboard-toolbar/dashboard-toolbar.component';
-import { DashboardPortfolioComponent } from './dashboard-portfolio/dashboard-portfolio.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { AssessmentComponent } from './assessment/assessment.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { ChartsModule } from 'ng2-charts';
+
+import { CardComponent } from './card/card.component';
+import { DashComponent } from './dash/dash.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { LayoutModule } from '@angular/cdk/layout';
+import { BarChartComponent } from './charts/bar-chart/bar-chart.component';
+
 
 @NgModule({
   declarations: [
@@ -38,7 +50,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     WhoIsItForComponent,
     WhyMyFyComponent,
     DashboardToolbarComponent,
-    DashboardPortfolioComponent
+    AssessmentComponent,
+    CardComponent,
+    DashComponent,
+    BarChartComponent
 
   ],
   imports: [
@@ -46,8 +61,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
+    ChartsModule,
     HttpClientModule,
-    ReactiveFormsModule,
     RouterModule.forRoot([
       {
         path: 'login',
@@ -70,18 +85,18 @@ import { ReactiveFormsModule } from '@angular/forms';
         component: AccountsetupComponent
       },
       {
-        path: 'contact',
-        component: ContactComponent
-      },
-      {
-        path: 'who-is-it-for',
-        component: WhoIsItForComponent
-      },
-      {
-        path: 'why-my-fy',
-        component: WhyMyFyComponent
+
+        path: 'dash', component: DashComponent
+
       }
-    ])
+    ]),
+    NoopAnimationsModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule,
+    LayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
