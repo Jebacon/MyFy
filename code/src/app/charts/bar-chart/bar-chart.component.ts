@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { Label } from 'ng2-charts';
-
+import { Income} from '../models/income.model'
 @Component({
   selector: 'app-chart',
   templateUrl: './bar-chart.component.html',
   styleUrls: [ './bar-chart.component.css' ]
 })
-export class BarChartComponent  {
+export class BarChartComponent implements OnInit {
   public barChartOptions: ChartOptions = {
     responsive: true,
   };
@@ -22,7 +22,12 @@ export class BarChartComponent  {
       { data: [(28), 48, 40, 19, 86, 27, 90], label: 'Actual'}
     ];
 
-  constructor() { }
+  constructor() {
+    _income: Income = {
+      INCOMEID:"",
+
+    }
+   }
 
   ngOnInit() {
     //make query call for user.invest whatever. 
