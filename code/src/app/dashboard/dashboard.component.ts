@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../models/user.model';
 import { DatabaseService } from '../services/database.service';
+import * as $ from 'jquery'
 
 @Component({
   selector: 'app-dashboard',
@@ -23,6 +24,7 @@ export class DashboardComponent implements OnInit {
     email: '',
     password: '',
   }
+  rows = 0
   verified = false
   constructor(private dbService: DatabaseService, private router: Router) { }
   message = ""
@@ -44,19 +46,26 @@ export class DashboardComponent implements OnInit {
     }
   }
   getIncomeData():void{
+    this.rows += 1
     var table = (document.getElementById("incomeTable") as HTMLTableElement)
     var newRow = table.insertRow(-1)
     var name = (document.getElementById("incomeName") as HTMLInputElement).value
     var wage = (document.getElementById("incomeWage") as HTMLInputElement).value
     var freq = (document.getElementById("incomeFreq") as HTMLInputElement).value
-    newRow.innerHTML = "<td>"+name+"</td><td>"+wage+"</td><td>"+freq+'</td><td><button on-click= "deleteIncome(this)" />delete</td>'
+    var button = document.createElement('button')
+    button.setAttribute("id", "delete"+this.rows)
+    button.textContent = "delete"
+    button.setAttribute("type","button")
+    button.setAttribute("onClick", "$(this).closest('tr').remove()")
+    //button.addEventListener("click", this.deleteIncome, false)
+    //button.setAttribute("formtarget","self")
+    newRow.innerHTML = "<td>"+name+"</td><td>"+wage+"</td><td>"+freq+"</td>"
+    newRow.appendChild(button)
 
     //table.append("name", "1","never")
   }
-  deleteIncome(r: any): void{
-    console.log("FUCK THIS")
-    var i = r.parentNode.rowIndex;
-    (document.getElementById("incomeTable")as HTMLTableElement).deleteRow(i)
+  deleteIncome(r:any): void{
+    (document.getElementById("incomeTable") as HTMLTableElement).deleteRow(r.rowIndex)
   }
   async verifyStep(data?: string): Promise<void>{
     console.log("verify step")
