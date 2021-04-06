@@ -19,7 +19,9 @@ module.exports = app => {
 
     app.post("/updatePassword", user.updatePassword);
 
-    app.delete("/deleteUser", user.remove);
+    app.post("/deleteUser", user.remove);
+
+    app.post("/updateName", user.updateName);
 
     //End User CRUD Group
     

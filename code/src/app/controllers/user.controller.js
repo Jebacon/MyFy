@@ -43,12 +43,9 @@ exports.remove = (req, res) => {
         email: req.body.email,
         password: req.body.password
       });
-
       User.remove(user, (err, data) => {
-          res.send.data;
+          res.send(data);
       })
-
-      res.send("Deleted: " + user.email)
 }
 
 exports.findByEmail = (req, res) => {
@@ -68,23 +65,35 @@ exports.updateEmail = (req, res) => {
           });
 
           User.updateEmail(user, (err, data) => {
-              res.send.data;
+              res.send(data);
           })
-        res.send("Updated Email!");
     });
 }
 
 exports.updatePassword = (req, res) => {
-    User.updatePassword(req.body.email, (err, data) => {
+    User.updatePassword(req.body.newPassword, (err, data) => {
         const user = new User({
             email: req.body.email,
-            password: req.body.password
+            newPassword: req.body.newPassword
           });
 
           User.updatePassword(user, (err, data) => {
-              res.send.data;
+              res.send(data);
           })
-        res.send("Updated Password!");
     });
 };
+
+exports.updateName = (req, res) => {
+    User.findByEmail(req.body.email, (err, data) => {
+        const user = new User({
+            email: req.body.email,
+            fName: req.body.fName,
+            lName: req.body.lName
+        });
+
+        User.updateName(user, (err, data => {
+            res.send(data);
+        }))
+    })
+}
 
