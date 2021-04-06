@@ -177,12 +177,12 @@ module.exports = app => {
     //Deletes a single Income object.- works 4/6
     app.delete("/deleteIncome", _income.remove);
 
-    //Deletes ALL Income objects for a user.- NOT WORKING
+    //Deletes ALL Income objects for a user.- works 4/6
     app.delete("/deleteUserIncome", _income.removeAll);
 
-    //Get's all of a User's Income entries
+    //Get's all of a User's Income entries - working 4/6
     app.post("/getUserIncome", _income.getUserIncome);
     
-    //Updates an Income object in the database.
+    //Updates an Income object in the database.-working 4/6
     app.post("/updateIncome", _income.updateIncome);
 };

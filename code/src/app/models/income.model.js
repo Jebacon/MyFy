@@ -33,8 +33,8 @@ Income.getUserIncome = (_income, result) => {
       return;
     }
 
-    console.log("User Income Entries: ", {..._income });
-    result(null, {..._income });
+    console.log("User Income Entries: ", {...res });
+    result(null, {...res });
   });
 };
 
