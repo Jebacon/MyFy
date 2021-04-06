@@ -32,8 +32,8 @@ exports.getAll = (req, res) => {
 //Login function.
 exports.login = (req, res) => {
     const user = new User({
-        email: req.params.email,
-        password: req.params.password
+        email: req.body.email,
+        password: req.body.password
     });
 
     User.login(user, (err, data) => {
@@ -75,7 +75,7 @@ exports.updateEmail = (req, res) => {
 
 //Controller method to update Password.
 exports.updatePassword = (req, res) => {
-    User.updatePassword(req.params.email, (err, data) => {
+    User.updatePassword(req.body.password, (err, data) => {
         const user = new User({
             email: req.body.email,
             password: req.body.password
@@ -91,7 +91,7 @@ exports.updatePassword = (req, res) => {
 
 
 exports.updatefName = (req, res) => {
-    User.findByEmail(req.params.email, (err, data) => {
+    User.findByEmail(req.body.email, (err, data) => {
         const user = new User({
             email: req.body.email,
             fName: req.body.fName
@@ -100,7 +100,6 @@ exports.updatefName = (req, res) => {
           User.updatefName(user, (err, data) => {
               res.send(data);
           })
-        res.send("Updated First Name!");
     });
 };
 
@@ -114,6 +113,19 @@ exports.updatelName = (req, res) => {
           User.updatelName(user, (err, data) => {
               res.send(data);
           })
-        res.send("Updated Password!");
     });
 };
+
+exports.updateName = (req, res) => {
+    User.findByEmail(req.body.email, (err, data) => {
+        const user = new User({
+            email: req.body.email,
+            fName: req.body.fName,
+            lName: req.body.lName
+        });
+
+        User.updateName(user, (err, data => {
+            res.send(data);
+        }))
+    })
+}

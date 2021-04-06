@@ -6,6 +6,7 @@ const User = function(user) {
   this.lName = user.lName;
   this.email = user.email;
   this.password = user.password;
+  this.newPassword = user.newPassword;
 };
 
 User.create = (user, result) => {
@@ -105,7 +106,7 @@ User.updateById = (id, customer, result) => {
 
 User.updatePassword = (user, result) => {
   sql.query(
-    "UPDATE Users SET PASSWORD = ? WHERE EMAIL = ?", [user.password, user.email],
+    "UPDATE Users SET PASSWORD = ? WHERE EMAIL = ?", [user.newPassword, user.password, user.email],
     (err, res) => {
       if (err) {
         console.log("error: ", err);
@@ -164,6 +165,28 @@ User.updatelName = (user, result) => {
       }
 
       console.log("updated User: " +user.email);
+      result(null, {...user.email });
+    }
+  );
+};
+
+User.updateName = (user, result) => {
+  sql.query(
+    "UPDATE Users SET FNAME = ? ,LNAME = ?  WHERE EMAIL = ?", [user.fName, user.lName, user.email],
+    (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(null, err);
+        return;
+      }
+
+      if (res.affectedRows == 0) {
+        // not found Customer with the id
+        result({ kind: "not_found" }, null);
+        return;
+      }
+
+      console.log("updated User: "+  user.email + user.lname + user.fName);
       result(null, {...user.email });
     }
   );

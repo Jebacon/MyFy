@@ -28,6 +28,8 @@ module.exports = app => {
 
     app.post("/updatelName", _user.updatelName);
 
+    app.post("/updateName", _user.updateName);
+
     //Remove User
     app.delete("/deleteUser", _user.remove);
 
