@@ -13,27 +13,29 @@ input fields.-->
             <form>
                 <div class = 'field'>
                     <label class = "label"> Name </label>
-                    <input type = "text" name = "name" class = "input" placeholder = "Name" ng-model="name">
+                    <input type = "text" id = "name" name = "name" class = "input" placeholder = "Name" ng-model="name">
                 </div>
                 <br>
                 <div class = 'field'>
                     <label class = "label"> Email </label>
-                    <input type = "email" name = "email" class = "input" placeholder = " Email" ng-model="email">
+                    <input type = "email" id="returnEmail" name = "email" class = "input" placeholder = " Email" ng-model="returnEmail">
                 </div>
                 <br>
                 <div class = 'field'>
                     <label class = "label"> Message </label>
-                    <textarea name = "message" class = "textarea" placeholder = 
-                    "Please type your compliments/concerns here." ng-model = "message"></textarea>
+                    <textarea name = "message" id = "emailBody" class = "textarea" placeholder = 
+                    "Please type your compliments/concerns here." ng-model = "emailBody"></textarea>
                 </div>
+            </form>
                 <div class="field">
                     <p class="control has-text-centered">
-                      <button class="button is-success" id="submit">
+                      <button class="button is-success" id="submit"  on-click="submitForm()">
                         Send
                       </button>
                     </p>
                   </div>
-            </form>
+            
+            <span>{{ message }}</span>
         </div>
     </div>
 </section>

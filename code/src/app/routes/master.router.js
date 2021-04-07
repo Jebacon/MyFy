@@ -1,9 +1,11 @@
 const { User } = require("../models/user.model");
 const { Income } = require("../models/income.model");
+const { Email } = require("nodemailer");
 
 module.exports = app => {
     const user = require("../controllers/user.controller");
     const income = require("../controllers/income.controller");
+    const _email = require("../controllers/email.controller");
 
 
     //User CRUD Group
@@ -24,5 +26,8 @@ module.exports = app => {
     //End User CRUD Group
     
     app.get("/allIncome", income.getAll);
+
+    //Begin Email Contact Form
+    app.post("/emailTeam", _email.sendEmail);
     
 };
