@@ -32,30 +32,29 @@ export class AccountsetupComponent implements OnInit {
     this.user.email = (document.getElementById("email") as HTMLInputElement).value
     this.user.password = (document.getElementById("password") as HTMLInputElement).value
     var repass = (document.getElementById("confirm_password") as HTMLInputElement).value
-
+    var regex = new RegExp(/[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$/)
+    var isvalid = regex.test(this.user.email)
     //checks to insure the two passwords provided are the same
-    if(this.user.password === repass){
+    if((this.user.password === repass) && isvalid){
       //posts the data to add the user to the database
-      this.dbService.post("newUser",{"fName": this.user.fName, "lName":this.user.lName, "email":this.user.email, "password":this.user.password}).subscribe(
-        response => {
-          //if the response is empty it means an account exists already by the email given
-          if (response === null) {
-            //this displays to the user the email is taken
-            this.message = "There exists an account by that email already"
-          } else{
-            //displays to the user that the account was created successfuly 
-            this.message = "Account creation successful!"
-            console.log(response);
-            this.created = true;
-          }
-        },
-        //in the event of an error this will catch and print it without crashing
-        error => {
-          console.log("an error has occured")
-          console.log(error)
-        });
-    }else{
+      this.dbService.post("newUser",{"fName": this.user.fName, "lName":this.user.lName, "email":this.user.email, "password":this.user.password}).subscribe( data => this.addUserHelper(data))
+    }else if(isvalid){
       this.message = ("The passwords provided to not match!")
+    } else {
+      this.message = ("The email is not a valid email address")
+    }
+  }
+  addUserHelper(data: any) : void {
+    if(data.sqlMessage.includes("fNameLengthCheck") || data.sqlMessage.includes("lNameLengthCheck")){
+      alert("First and last name must be atleast one character")
+    } else if (data.sqlMessage.includes("emailLengthCheck")){
+      alert("Email address must be atleast 6 characters long")
+    } else if (data.sqlMessage.includes("passwordLengthCheck")){
+      alert("Password must be atleast 3 characters long")
+    } else if (data.sqlMessage.includes("Duplicate entry")){
+      alert("Email is already in use")
+    } else {
+      alert("Account Creation Successful")
     }
   }
 

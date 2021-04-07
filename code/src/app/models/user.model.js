@@ -1,49 +1,39 @@
 const sql = require("./db.js");
-const ErrorData = require("../logging/error.js");
 
 const User = function(user) {
   this.fName = user.fName;
   this.lName = user.lName;
   this.email = user.email;
   this.password = user.password;
+  this.newEmail = user.newEmail;
+  this.newPassword = user.newPassword;
 };
 
 User.create = (user, result) => {
   sql.query("INSERT INTO Users(FNAME, LNAME, EMAIL, PASSWORD, ISADMIN, INITIALCREATION) VALUES(?, ?, ?, ?, 0, now());",[user.fName, user.lName, user.email, user.password], (err, res) => {
     if (err) {
       console.log("error: ", err);
-      error = "That email is already in use!"
-      result(null, error);
+      result(err, err);
       return;
     }
 
     console.log("created user: ", {...user });
-    result(null, {...user });
+    result({...user, 'sqlMessage':"success" }, {...user, 'sqlMessage':"success" });
   });
 };
 
 User.login = (user, result) => {
-  var error = new ErrorData();
   sql.query('SELECT ID,EMAIL, PASSWORD, FNAME, LNAME FROM Users WHERE EMAIL = ? AND PASSWORD = ?;', [user.email, user.password], (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
       return;
-    }
-    /*This if checks for return data and the only thing that can happen is that there isn't a match, if there is no match, an ErrorData object is created and printed
-    * to keep track of what exactly went wrong and what time the error occured. 
-    */
-    if (res.length == 0) {
-      error.message("No user/password combination found for:\n Email: " + user.email + "\n Password: " + user.password);
-      console.log(error.data());
-      result(null, error.errorMsg);
-      return;
-    }
+    } 
       console.log("Login Accepted:", res);
       result(null, res);
       return;
-  });
-  }
+  })
+}
 
 User.findByEmail = (user, result) => {
   sql.query(`SELECT EMAIL FROM Users WHERE EMAIL = ?`,[user.email], (err, res) => {
@@ -51,10 +41,6 @@ User.findByEmail = (user, result) => {
       console.log(err);
       result(err, null);
       return next(err);
-    } if (res.length == 0) {
-      console.log("No user found by that email.");
-      result(null, "No email found!");
-      return;
     }
     if (res.length == 1) {
       console.log("found user: ", res);
@@ -80,15 +66,14 @@ User.getAll = result => {
   });
 };
 
-User.updateById = (id, customer, result) => {
+User.updateName = (user, result) => {
   sql.query(
-    "UPDATE customers SET email = ?, name = ?, active = ? WHERE id = ?",
-    [customer.email, customer.name, customer.active, id],
+    "UPDATE Users SET FNAME = ? ,LNAME = ?  WHERE EMAIL = ?", [user.fName, user.lName, user.email],
     (err, res) => {
       if (err) {
         console.log("error: ", err);
-        result(null, err);
-        return;
+        result(err, err);
+        return err;
       }
 
       if (res.affectedRows == 0) {
@@ -97,15 +82,37 @@ User.updateById = (id, customer, result) => {
         return;
       }
 
-      console.log("updated customer: ", { id: id, ...customer });
-      result(null, { id: id, ...customer });
+      console.log("updated User: "+  user.email + user.lName + user.fName);
+      result({...user.email }, {...user.email });
+    }
+  );
+};
+
+User.updateEmail = (user, result) => {
+  sql.query(
+    "UPDATE Users SET EMAIL = ? WHERE EMAIL = ?", [user.newEmail, user.email],
+    (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(null, err);
+        return err;
+      }
+
+      if (res.affectedRows == 0) {
+        // not found Customer with the id
+        result({ kind: "not_found" }, null);
+        return;
+      }
+
+      console.log("updated User: " + user.email +" to "+ user.newEmail);
+      result("cockandballtorture", {...user.email });
     }
   );
 };
 
 User.updatePassword = (user, result) => {
   sql.query(
-    "UPDATE Users SET PASSWORD = ? WHERE EMAIL = ?", [user.password, user.email],
+    "UPDATE Users SET PASSWORD = ? WHERE EMAIL = ?", [user.newPassword, user.email],
     (err, res) => {
       if (err) {
         console.log("error: ", err);
@@ -119,51 +126,7 @@ User.updatePassword = (user, result) => {
         return;
       }
 
-      console.log("updated User: " +user.email);
-      result(null, {...user.email });
-    }
-  );
-};
-
-User.updatefName = (user, result) => {
-  sql.query(
-    "UPDATE Users SET FNAME = ? WHERE EMAIL = ?", [user.fName, user.email],
-    (err, res) => {
-      if (err) {
-        console.log("error: ", err);
-        result(null, err);
-        return;
-      }
-
-      if (res.affectedRows == 0) {
-        // not found Customer with the id
-        result({ kind: "not_found" }, null);
-        return;
-      }
-
-      console.log("updated User: " +user.email);
-      result(null, {...user.email });
-    }
-  );
-};
-
-User.updatelName = (user, result) => {
-  sql.query(
-    "UPDATE Users SET LNAME = ? WHERE EMAIL = ?", [user.lName, user.email],
-    (err, res) => {
-      if (err) {
-        console.log("error: ", err);
-        result(null, err);
-        return;
-      }
-
-      if (res.affectedRows == 0) {
-        // not found Customer with the id
-        result({ kind: "not_found" }, null);
-        return;
-      }
-
-      console.log("updated User: " +user.email);
+      console.log("updated User: " +user.email + "'s password");
       result(null, {...user.email });
     }
   );
@@ -178,12 +141,11 @@ User.remove = (user, result) => {
     }
 
     if (res.affectedRows == 0) {
-      // not found Customer with the id
       result({ kind: "not_found" }, null);
       return;
     }
 
-    console.log("deleted user with id: ", id);
+    console.log("Deleted User: ", user.email);
     result(null, res);
   });
 };

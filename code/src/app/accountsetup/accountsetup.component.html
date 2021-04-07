@@ -1,65 +1,102 @@
+<!--Account creation form component-->
 <!-- Created by Lavante Hammond & Ashim Chalise -->
 
 <app-toolbar></app-toolbar>
 
-
 <section class="hero is-info is-fullheight is-bold">
-    <div class="hero-body">
+  <div class="hero-body">
     <div class="container">
-        <div class="card has-text-centered has-background-success">
-            <div class="card-content">
-                  <figure class="image is-48x48">
-                    <img src="assets/img/TopMLogo.png" alt="Placeholder image">
-                  </figure>
-                  <div class="content is-size-3 has-text-light">
-                    Welcome to MyFy! Your place for all your finances.
-                    <br>
-                    Please enter the information below.
-                    <br>
-                  </div>
-              </div>
-            </div>
-          <form #user="ngForm">
-                <div class="field">
-                    <p class="control">
-                      <input class="input" type="text" id="fName" ng-model="fName" placeholder="First Name" required>
-                    </p>
-                  </div>
-                  <div class="field">
-                    <p class="control">
-                      <input class="input" type="text" id="lName" ng-model="lName" placeholder="Last Name" required>
-                    </p>
-                  </div>
-        
-            <div class="field">
-                <p class="control">
-                  <input class="input" type="email" id="email" ng-model="email" placeholder="Email" required>
-                </p>
-              </div>
-        
-            <div>
-                <div class="field">
-                    <p class="control">
-                      <input class="input" id="password" type="password" ng-model="Password" placeholder="Password" required>
-                    </p>
-                  </div>
-                  <div class="field">
-                    <p class="control">
-                      <input class="input" id ="confirm_password" type="password" placeholder="Confirm Password" required>
-                    </p>
-                  </div>
-                <span>{{ message }}</span>
-            </div>
-          <br>
-          <br>
+      <div class="card has-text-centered has-background-success">
+        <div class="card-content">
+          <figure class="image is-48x48">
+            <img src="assets/img/TopMLogo.png" alt="Placeholder image" />
+          </figure>
+          <div class="content is-size-3 has-text-light">
+            Welcome to MyFy! Your place for all your finances.
+            <br />
+            Please enter the information below.
+            <br />
+          </div>
+        </div>
+      </div>
+      <form #user="ngForm" on-submit="addUser()">
+        <div class="field">
+          <p class="control">
+            <input
+              class="input"
+              type="text"
+              id="fName"
+              ng-model="fName"
+              placeholder="First Name"
+              required
+            />
+          </p>
+        </div>
+        <div class="field">
+          <p class="control">
+            <input
+              class="input"
+              type="text"
+              id="lName"
+              ng-model="lName"
+              placeholder="Last Name"
+              required
+            />
+          </p>
+        </div>
+
+        <div class="field">
+          <p class="control">
+            <input
+              class="input"
+              type="email"
+              id="email"
+              ng-model="email"
+              placeholder="Email"
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$"
+              required
+            />
+          </p>
+        </div>
+
+        <div>
           <div class="field">
-            <p class="control has-text-centered">
-              <button class="button is-success" on-click="addUser()">
-                Let's Budget
-              </button>
+            <p class="control">
+              <input
+                class="input"
+                id="password"
+                type="password"
+                ng-model="Password"
+                placeholder="Password"
+                pattern=".{3,}"
+                required
+              />
             </p>
-          </div>                    
-        </form>
+          </div>
+          <div class="field">
+            <p class="control">
+              <input
+                class="input"
+                id="confirm_password"
+                type="password"
+                placeholder="Confirm Password"
+                pattern=".{3,}"
+                required
+              />
+            </p>
+          </div>
+          <span>{{ message }}</span>
+        </div>
+        <br />
+        <br />
+        <div class="field">
+          <p class="control has-text-centered">
+            <button class="button is-success" type="submit">
+              Let's Budget
+            </button>
+          </p>
+        </div>
+      </form>
     </div>
-</div>
+  </div>
 </section>
