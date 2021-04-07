@@ -39,6 +39,18 @@ Invest.getUserInvestments = (invest, result) => {
     });
   };
 
+Invest.getUserInvestmentSum = (invest, result) => {
+  sql.query("SELECT SUM(AMOUNT) FROM UserData.Income WHERE USERID = ?;", [invest.userId], (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(err, err);
+      return;
+    }
+    console.log("User Sum: "+  JSON.stringify(res));
+    result(JSON.stringify(res), res);
+  })
+}
+
 
 Invest.findbyInvestId = (invest, result) => {
   sql.query("SELECT * FROM Invest_Save WHERE INVESTID = ?" , [invest.investId], (err, res) => {
@@ -55,6 +67,18 @@ Invest.findbyInvestId = (invest, result) => {
     result(null, res);
   })
 }
+Invest.getUserInvestmentSum = (invest, result) => {
+  sql.query("SELECT SUM(AMOUNT) FROM UserData.Income WHERE USERID = ?;", [invest.userId], (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(err, err);
+      return;
+    }
+    console.log("User Sum: "+  JSON.stringify(res));
+    result(JSON.stringify(res), res);
+  })
+}
+
 
 Invest.updateInvestments = (invest, result) => {
   sql.query(
