@@ -4,7 +4,7 @@ exports.sendEmail = (req, res) => {
     const emailData = new Email({
         userName: req.body.userName,
         name: req.body.name,
-        returnEmail: req.body.returnAddress,
+        returnEmail: req.body.returnEmail,
         subjectHeader: req.body.subjectHeader,
         emailBody: req.body.emailBody,
     });
@@ -12,4 +12,5 @@ exports.sendEmail = (req, res) => {
     Email.sendEmail(emailData, (err, data) => {
         res.send(data);
     });
+    res.send("Email Sent Succesfully!");
 };

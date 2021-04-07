@@ -13,17 +13,19 @@ Email.sendEmail = (email, result) => {
 var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'brandonpozil@gmail.com',
-      pass: '@Houhai7'
+      user: 'MyFyTeam@gmail.com',
+      pass: 'FinalSemester'
     }
   });
+
+  var returnAddresses = ["MyFyTeam@gmail.com", email.returnEmail];
   
   var mailOptions = {
     from: email.returnEmail,
-    to: 'brandonpozil@gmail.com',
+    to: returnAddresses,
     subject: email.subjectHeader,
-    text: email.emailBody
-  };
+    text: "From: " + email.name + "\n\n" + email.emailBody
+  }
   
   transporter.sendMail(mailOptions, function(error, info){
     if (error) {
