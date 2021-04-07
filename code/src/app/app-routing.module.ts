@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'account-setup', component: AccountsetupComponent},
   { path: 'dashboard', component: DashboardComponent},
   { path: 'settings', component: SettingsComponent},
-  {path: 'income', component: IncomeComponent}
+  { path: 'income', component: IncomeComponent}
 ];
 
 @NgModule({
@@ -22,4 +22,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents = [LoginComponent, ToolbarComponent, HomeComponent, AccountsetupComponent, DashboardComponent, SettingsComponent]
+export const routingComponents = [IncomeComponent, LoginComponent, ToolbarComponent, HomeComponent, AccountsetupComponent, DashboardComponent, SettingsComponent]

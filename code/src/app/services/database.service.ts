@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../models/user.model';
-
+import { Income } from '../models/income.model';
 const baseUrl = 'http://localhost:8080/';
 
 @Injectable({

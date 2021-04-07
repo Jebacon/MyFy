@@ -46,8 +46,6 @@ import { BarChartComponent } from './charts/bar-chart/bar-chart.component';
     AssessmentComponent,
     CardComponent,
     DashComponent,
-    BarChartComponent
-
   ],
   imports: [
     BrowserModule,
