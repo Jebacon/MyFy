@@ -37,7 +37,7 @@ Income.getUserIncome = (_income, result) => {
     //console.log("User Income Entries: ", {...res });
     //result(null, {...res });
     console.log("User Income Entries: ", {...res });
-    res.forEach(AMOUNT => _income.userIncomeT += _income.AMOUNT);   
+    res.forEach(AMOUNT => this._income.userIncomeT += this._income.AMOUNT);   
     console.log("Total Income for this user: Should show here",_income.userIncomeT );
     result(null, {...res });
   });
