@@ -150,18 +150,4 @@ User.remove = (user, result) => {
   });
 };
 
-User.removeAll = result => {
-  sql.query("DELETE FROM customers", (err, res) => {
-    if (err) {
-      console.log("error: ", err);
-      result(null, err);
-      return;
-    }
-
-    console.log(`deleted ${res.affectedRows} customers`);
-    result(null, res);
-  });
-};
-
-
 module.exports = User;

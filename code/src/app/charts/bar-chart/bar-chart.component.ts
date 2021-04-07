@@ -39,9 +39,11 @@ export class BarChartComponent implements OnInit{
       { data: [this.housingTarget, this.expTarget, this.discTarget, this.investSaveTarget, this.debtTarget], label: 'Target'},
       { data: [this.housingActual, this.expActual, this.discActual, this.investSaveActual, this.debtActual], label: 'Actual'}
     ];
+  user: any;
 
   constructor(private dbService: DatabaseService, private router: Router) {
     //this.userID =storageID.setItem("ID",data[0]["ID"]);
+    
    
 
     
@@ -58,6 +60,7 @@ export class BarChartComponent implements OnInit{
   getUserID(): void{
     let storageId = window.sessionStorage;
     this.userID = storageId.getItem("ID")!;
+    console.log("local stored ID: ", this.user.userID);
     //Maybe model/controllers for bar chart
     // - for entry in data
     //- check Brandon's code for functions
