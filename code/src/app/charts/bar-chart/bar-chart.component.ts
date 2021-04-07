@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { DatabaseService } from '../../services/database.service'; 
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
-import { ChartsModule } from 'ng2-charts/ng2-charts';
+import { ChartsModule } from'ng2-charts';
 import { Label } from 'ng2-charts';
 import { Income} from '../../models/income.model';
 import { Router } from '@angular/router';

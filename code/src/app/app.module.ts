@@ -46,6 +46,7 @@ import { BarChartComponent } from './charts/bar-chart/bar-chart.component';
     AssessmentComponent,
     CardComponent,
     DashComponent,
+    BarChartComponent,
   ],
   imports: [
     BrowserModule,
@@ -83,7 +84,8 @@ import { BarChartComponent } from './charts/bar-chart/bar-chart.component';
       },
       {
         path: 'income', component: IncomeComponent
-      }
+      }, 
+      { path: 'bar-chart', component: BarChartComponent}
     ]),
     NoopAnimationsModule,
     MatGridListModule,
