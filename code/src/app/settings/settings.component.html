@@ -1,0 +1,200 @@
+<body>
+  <style>
+    .tab-option {
+      border: 2px solid black;
+    }
+  </style>
+  <!--Toolbar-->
+  <app-dashboard-toolbar></app-dashboard-toolbar>
+  <section class="hero is-info is-fullheight is-bold">
+    <div class="card has-text-centered has-background-success">
+      <div class="card-content" id="settingsDiv" style="display: none">
+        <div class="content is-size-3 has-text-light is-bold">
+          Account Settings Menu
+          <br />
+          <div
+            class="tabs tabs-link-active-color is-medium is-centered is-fullwidth is-boxed is-outlined"
+          >
+            <ul>
+              <li
+                class="tab-option"
+                id="changeEmail"
+                on-click="verifyStep('changeEmailDiv')"
+              >
+                <a>Change Email</a>
+              </li>
+              <li
+                class="tab-option"
+                id="changePassword"
+                on-click="verifyStep('changePasswordDiv')"
+              >
+                <a>Change Password</a>
+              </li>
+              <li
+                class="tab-option"
+                id="changeName"
+                on-click="verifyStep('changeNameDiv')"
+              >
+                <a>Change Name</a>
+              </li>
+              <li
+                class="tab-option"
+                id="deleteUser"
+                on-click="verifyStep('deleteUserDiv')"
+              >
+                <a>Delete User</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <br />
+      <p style="color: red">{{ message }}</p>
+      <br />
+      <form on-submit="verifyStep('changeEmailDiv')">
+        <div id="verifyDiv" style="display: block">
+          <p class="control has-text-centered">
+            To access account settings you must verify your login credentials
+            <br />
+            <br />
+          </p>
+          <p class="control has-text-centered">
+            <input
+              type="email"
+              id="verify-email"
+              placeholder="Email"
+              required
+            />
+            <br />
+            <input
+              type="password"
+              id="verify-password"
+              placeholder="Password"
+              minlength="5"
+              required
+            />
+            <br />
+            <br />
+            <button class="button is-success" id="submit" type="submit">
+              Verify
+            </button>
+          </p>
+        </div>
+      </form>
+      <div id="changeEmailDiv" style="display: none">
+        <div id="changeEmailDiv-New">
+          <p class="control has-text-centered">
+            Please enter your new email
+            <br />
+            <br />
+            <input
+              type="email"
+              id="changeEmail-newEmail"
+              placeholder="New Email"
+            />
+            <br />
+            <br />
+          </p>
+          <p class="control has-text-centered">
+            <button
+              class="button is-success"
+              id="submit"
+              on-click="updateEmail()"
+            >
+              Update Email
+            </button>
+          </p>
+        </div>
+      </div>
+      <div id="changePasswordDiv" style="display: none">
+        <div id="changePasswordDiv-New">
+          <p class="control has-text-centered">
+            Please enter your new password
+            <br />
+            <br />
+            <input
+              type="password"
+              id="changePassword-newPassword"
+              placeholder="New password"
+            />
+            <br />
+            <br />
+          </p>
+          <p class="control has-text-centered">
+            <button
+              class="button is-success"
+              id="submit"
+              on-click="updatePassword()"
+            >
+              Update Password
+            </button>
+          </p>
+        </div>
+      </div>
+      <div id="changeNameDiv" style="display: none">
+        <div id="changeNameDiv-New">
+          <p class="control has-text-centered">
+            Please enter your new first and last name
+            <br />
+            <br />
+            <input
+              type="text"
+              id="changeName-newFName"
+              placeholder="New First Name"
+              style="margin-right: 10px"
+            />
+            <input
+              type="text"
+              id="changeName-newLName"
+              placeholder="New Last Name"
+            />
+            <br />
+            <br />
+          </p>
+          <p class="control has-text-centered">
+            <button
+              class="button is-success"
+              id="submit"
+              on-click="updateName()"
+            >
+              Update Name
+            </button>
+          </p>
+        </div>
+      </div>
+      <div id="deleteUserDiv" style="display: none">
+        <div id="deleteUserVerifyDiv">
+          <p class="control has-text-centered">
+            To delete your account you must verify your login credentials
+            <br />
+            <br />
+          </p>
+          <p class="control has-text-centered">
+            <input
+              type="email"
+              id="deleteAccountVerify-email"
+              placeholder="Email"
+            />
+            <br />
+            <input
+              type="password"
+              id="deleteAccountVerify-password"
+              placeholder="Password"
+            />
+            <br />
+            <br />
+            <button
+              class="button is-success"
+              id="submit"
+              on-click="deleteAccount()"
+            >
+              Delete Account
+            </button>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>

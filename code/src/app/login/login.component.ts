@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
   message = ""
 
   ngOnInit(): void {
+    window.sessionStorage.clear()
   }
   //master method for controlling login
   login(): void {
