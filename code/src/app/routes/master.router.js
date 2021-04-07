@@ -2,12 +2,14 @@ const { User } = require("../models/user.model");
 const { Debt } = require("../models/debt.model");
 const { Expenses } = require("../models/expenses.model");
 const { Invest } = require("../models/invest.model");
+const { Email } = require("nodemailer");
 
 module.exports = app => {
     const _user = require("../controllers/user.controller");
     const _debt = require("../controllers/debt.controller");
     const _expenses = require("../controllers/expenses.controller");
     const _invest = require("../controllers/invest.controller");
+    const _email = require("../controllers/email.controller");
 
 
     //Begin User CRUD Group
@@ -99,4 +101,8 @@ module.exports = app => {
     app.delete("/deleteUserInvestments", _invest.removeAll);
 
     //End Invest CRUD Group 
+
+    //Begin Email Contact Form
+    app.post("/emailTeam", _email.sendEmail);
+
 };
