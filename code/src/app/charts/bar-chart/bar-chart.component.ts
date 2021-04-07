@@ -60,7 +60,7 @@ export class BarChartComponent implements OnInit{
   getUserID(): void{
     let storageId = window.sessionStorage;
     this.userID = storageId.getItem("ID")!;
-    console.log("local stored ID: ", this.user.userID);
+    console.log("local stored ID: ", this.userID);
     //Maybe model/controllers for bar chart
     // - for entry in data
     //- check Brandon's code for functions
