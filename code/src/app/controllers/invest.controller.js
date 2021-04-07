@@ -15,7 +15,15 @@ exports.create = (req, res) => {
         res.send(data);
         });
     };
-
+exports.getUserInvestmentSum = (req, res) => {
+    const invest = new Invest({
+        userId: req.body.userId,
+    });
+    Invest.getUserInvestmentSum(invest, (err, data) => {
+        res.send(data);
+    })
+}
+    
 //Grab all Investments for a certain User based on their ID.
 exports.getUserInvestments = (req, res) => {
     const invest = new Invest({
