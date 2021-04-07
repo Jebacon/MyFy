@@ -83,3 +83,14 @@ exports.getUserIncome = (req, res) => {
         res.send(data);
     });
 };
+
+exports.getUserAllIncome = (req, res) => {
+    const _income = new Income({
+        USERID: req.body.USERID,
+        userIncomeT: 0,
+    });
+
+    Income.getUserIncome(_income, (err, data) => {
+        res.send(data);
+    });
+};

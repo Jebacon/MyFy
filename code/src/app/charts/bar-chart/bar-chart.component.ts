@@ -22,6 +22,7 @@ export class BarChartComponent implements OnInit{
   public barChartType: ChartType = 'bar';
   public barChartLegend = true;
   public barChartPlugins = [];
+ // chartIncome = Income.getUserIncome;
   public housingActual = 500;
   public expActual = 50;
   public discActual = 50;
@@ -32,19 +33,19 @@ export class BarChartComponent implements OnInit{
   public discTarget = 100;
   public investSaveTarget = 100;
   public debtTarget = 100;
-  userID = "";
+  userID ="";
   
 
     public barChartData: ChartDataSets[] = [
       { data: [this.housingTarget, this.expTarget, this.discTarget, this.investSaveTarget, this.debtTarget], label: 'Target'},
       { data: [this.housingActual, this.expActual, this.discActual, this.investSaveActual, this.debtActual], label: 'Actual'}
     ];
-  user: any;
+     User: any;
 
   constructor(private dbService: DatabaseService, private router: Router) {
     //this.userID =storageID.setItem("ID",data[0]["ID"]);
     
-   
+    this.userID = this.User.getUserID();
 
     
    }
@@ -56,6 +57,7 @@ export class BarChartComponent implements OnInit{
     //- look at login.ts line 34-38 and sortingmethod below it. 
     //baseIncome = getUserIncome();
     //look at services. db,services.ts http services
+   
   }
   getUserID(): void{
     let storageId = window.sessionStorage;

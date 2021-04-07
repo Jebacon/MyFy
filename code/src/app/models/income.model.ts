@@ -6,6 +6,7 @@ export class Income{
     INCOMEID?: any;
     SRCNAME?: string;
     AMOUNT?: number;
-    PAYCYCLE?: number;
+    PAYCYCLE?: string;
     USERID?: number;
+    userIncomeT?: number;
 }

@@ -11,6 +11,7 @@ const Income = function(_income) {
   this.new_SRCNAME =_income.new_SRCNAME;
   this.new_AMOUNT = _income.new_AMOUNT;
   this.new_PAYCYCLE = _income.new_PAYCYCLE; 
+  this.userIncomeT = 0;
 };
 
 Income.create = (_income, result) => {
@@ -33,7 +34,26 @@ Income.getUserIncome = (_income, result) => {
       return;
     }
 
+    //console.log("User Income Entries: ", {...res });
+    //result(null, {...res });
     console.log("User Income Entries: ", {...res });
+    res.forEach(AMOUNT => _income.userIncomeT += _income.AMOUNT);   
+    console.log("Total Income for this user: Should show here",_income.userIncomeT );
+    result(null, {...res });
+  });
+};
+
+Income.getAllUserIncome = (_income, result) => {
+  sql.query("SELECT * FROM Income WHERE USERID = ?",[_income.USERID], (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+
+    console.log("User Income Entries: ", {...res });
+    //res.forEach(AMOUNT => _income.userIncomeT += AMOUNT.value);   
+    console.log("Total Income for this user: Should show here",{...res} );
     result(null, {...res });
   });
 };
