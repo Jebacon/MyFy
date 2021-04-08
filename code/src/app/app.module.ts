@@ -22,7 +22,7 @@ import { DashboardToolbarComponent } from './dashboard-toolbar/dashboard-toolbar
 import { AssessmentComponent } from './assessment/assessment.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartsModule } from 'ng2-charts';
-
+import { SettingsComponent } from './settings/settings.component';
 import { CardComponent } from './card/card.component';
 import { DashComponent } from './dash/dash.component';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -55,7 +55,8 @@ import { EducationComponent } from './education/education.component';
     CardComponent,
     DashComponent,
     BarChartComponent,
-    EducationComponent
+    EducationComponent,
+    SettingsComponent
 
   ],
   imports: [

@@ -6,18 +6,19 @@ const User = function(user) {
   this.email = user.email;
   this.password = user.password;
   this.newEmail = user.newEmail;
+  this.newPassword = user.newPassword;
 };
 
 User.create = (user, result) => {
   sql.query("INSERT INTO Users(FNAME, LNAME, EMAIL, PASSWORD, ISADMIN, INITIALCREATION) VALUES(?, ?, ?, ?, 0, now());",[user.fName, user.lName, user.email, user.password], (err, res) => {
     if (err) {
       console.log("error: ", err);
-      result(err, null);
+      result(err, err);
       return;
     }
 
     console.log("created user: ", {...user });
-    result(null, {...user });
+    result({...user, 'sqlMessage':"success" }, {...user, 'sqlMessage':"success" });
   });
 };
 
@@ -65,6 +66,28 @@ User.getAll = result => {
   });
 };
 
+User.updateName = (user, result) => {
+  sql.query(
+    "UPDATE Users SET FNAME = ? ,LNAME = ?  WHERE EMAIL = ?", [user.fName, user.lName, user.email],
+    (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(err, err);
+        return err;
+      }
+
+      if (res.affectedRows == 0) {
+        // not found Customer with the id
+        result({ kind: "not_found" }, null);
+        return;
+      }
+
+      console.log("updated User: "+  user.email + user.lName + user.fName);
+      result({...user.email }, {...user.email });
+    }
+  );
+};
+
 User.updateEmail = (user, result) => {
   sql.query(
     "UPDATE Users SET EMAIL = ? WHERE EMAIL = ?", [user.newEmail, user.email],
@@ -72,7 +95,7 @@ User.updateEmail = (user, result) => {
       if (err) {
         console.log("error: ", err);
         result(null, err);
-        return;
+        return err;
       }
 
       if (res.affectedRows == 0) {
@@ -81,15 +104,15 @@ User.updateEmail = (user, result) => {
         return;
       }
 
-      console.log("updated User: " + user.email);
-      result(null, {...user.email });
+      console.log("updated User: " + user.email +" to "+ user.newEmail);
+      result("cockandballtorture", {...user.email });
     }
   );
 };
 
 User.updatePassword = (user, result) => {
   sql.query(
-    "UPDATE Users SET PASSWORD = ? WHERE EMAIL = ?", [user.password, user.email],
+    "UPDATE Users SET PASSWORD = ? WHERE EMAIL = ?", [user.newPassword, user.email],
     (err, res) => {
       if (err) {
         console.log("error: ", err);
@@ -103,7 +126,7 @@ User.updatePassword = (user, result) => {
         return;
       }
 
-      console.log("updated User: " +user.email);
+      console.log("updated User: " +user.email + "'s password");
       result(null, {...user.email });
     }
   );

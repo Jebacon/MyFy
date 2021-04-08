@@ -1,51 +1,85 @@
 const { nextTick } = require('process');
 const Income = require('../models/income.model');
 
-// Create and Save a new User Object into the DB.
-/*
+// Create and Save a new income Object into the DB.
 exports.create = (req, res) => {
-    const user = new User({
-        fName: req.params.fName,
-        lName: req.params.lName,
-        email: req.params.email,
-        password: req.params.password
+    const _income = new Income({
+        SRCNAME: req.body.SRCNAME,
+        AMOUNT: req.body.AMOUNT,
+        PAYCYCLE: req.body.PAYCYCLE,
+        USERID: req.body.USERID
       });
 
-    User.create(user,(err, data) => {
+    Income.create(_income,(err, data) => {
         res.send(data);
         });
     };
-*/
+
 
 exports.getAll = (req, res) => {
     Income.getAll((err, data) => {
     if (err)
         res.status(500).send({
         message:
-        err.message || "Some error occurred while retrieving users."
+        err.message || "Some error occurred while retrieving income."
         });
         else res.send(data);
     });
 };
-/*
-exports.login = (req, res) => {
-    const user = new User({
-        email: req.params.email,
-        password: req.params.password
+exports.findByIncomeId = (req, res) =>{
+    const _income = new Income({
+        INCOMEID: req.body.INCOMEID,
+        USERID: req.body.USERID,
+    });
+    Income.findByIncomeId(_income, (err, data) => {
+        res.send(data);
+        
+    })
+    
+};
+exports.updateIncome = (req, res) => {
+    const _income = new Income({
+        INCOMEID: req.body.INCOMEID,
+        USERID: req.body.USERID,
+        new_SRCNAME:req.body.new_SRCNAME,           
+        new_AMOUNT: req.body.new_AMOUNT,           
+        new_PAYCYCLE: req.body.new_PAYCYCLE,      
+    });
+    Income.findByIncomeId(_income,(err, data) => {       
+
+          Income.updateIncome(_income, (err, data) => {
+              res.send(data);
+          })
+       
+    });
+}
+exports.remove = (req, res) =>{
+    const _income = new Income({
+        INCOMEID: req.body.INCOMEID,
     });
 
-    User.login(user, (err, data) => {
+    Income.remove(_income,(err, data) =>{
+        //res.send(data);
+        //console.log(data)
+    })
+    //res.send("Deleted: " + _income.SRCNAME)
+}
+exports.removeAll = (req, res) => {
+    const _income = new Income({
+        USERID: req.body.USERID
+    });
+
+    Income.removeAll(_income, (err, data) => {
+        res.send.data;
+    })
+    res.send("Deleted All Incomes For: " + _income.USERID);
+}
+exports.getUserIncome = (req, res) => {
+    const _income = new Income({
+        USERID: req.body.USERID,
+    });
+
+    Income.getUserIncome(_income, (err, data) => {
         res.send(data);
     });
 };
-
-exports.findByEmail = (req, res) => {
-    User.findByEmail(req.params.email, (err, data) => {
-        if (err) {
-            res.send("No user by that email/password.")
-        }
-        res.send(data);
-    });
-
-};
-    */

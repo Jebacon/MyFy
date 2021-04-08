@@ -7,6 +7,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { WhoIsItForComponent } from './who-is-it-for/who-is-it-for.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EducationComponent } from './education/education.component';
+import { SettingsComponent } from './settings/settings.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,8 @@ const routes: Routes = [
   { path: 'who-is-it-for', component: WhoIsItForComponent},
   { path: 'dashboard', component: DashboardComponent},
   { path: 'education', component: EducationComponent},
+  {path: 'dashboard', component: DashboardComponent},
+  { path: 'settings', component: SettingsComponent}
 ];
 
 @NgModule({
@@ -24,4 +27,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents = [LoginComponent, ToolbarComponent, HomeComponent, AccountsetupComponent, WhoIsItForComponent, DashboardComponent]
+export const routingComponents = [LoginComponent, ToolbarComponent, HomeComponent, AccountsetupComponent, WhoIsItForComponent, DashboardComponent, SettingsComponent]
