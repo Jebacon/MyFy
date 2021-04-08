@@ -32,6 +32,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { LayoutModule } from '@angular/cdk/layout';
 import { BarChartComponent } from './charts/bar-chart/bar-chart.component';
+import { EducationComponent } from './education/education.component';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { BarChartComponent } from './charts/bar-chart/bar-chart.component';
     AssessmentComponent,
     CardComponent,
     DashComponent,
-    BarChartComponent
+    BarChartComponent,
+    EducationComponent
 
   ],
   imports: [
@@ -92,6 +94,10 @@ import { BarChartComponent } from './charts/bar-chart/bar-chart.component';
       {
         path: 'contact',
         component : ContactComponent
+      },
+      {
+        path : 'education',
+        component: EducationComponent
       }
     ]),
     NoopAnimationsModule,

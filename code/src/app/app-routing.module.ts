@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { WhoIsItForComponent } from './who-is-it-for/who-is-it-for.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { EducationComponent } from './education/education.component';
 
 
 const routes: Routes = [
@@ -14,7 +15,8 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: 'account-setup', component: AccountsetupComponent},
   { path: 'who-is-it-for', component: WhoIsItForComponent},
-  {path: 'dashboard', component: DashboardComponent}
+  { path: 'dashboard', component: DashboardComponent},
+  { path: 'education', component: EducationComponent},
 ];
 
 @NgModule({
