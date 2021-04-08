@@ -1,415 +1,269 @@
- <!--The main part of the input fields starts here-->
- <section class="hero is-white is-medium">
-    <!--This code is for the information-->
-    <section class="hero">
-      <div class="hero">
-        <div class="container is-max-desktop">
-          <div class="notification">
-            <strong>Enter your information here.</strong>
-          </div>
-        </div>
-      </div>
-      <br>
-      <div class="hero-foot">
-        <nav class="tabs is-boxed is-fullwidth is-large">
-          <div class="container">
-            <ul>
-              <li class="tab is-active" onclick="openTab(event,'Income')"><a>Income</a></li>
-              <li class="tab" onclick="openTab(event,'Assets')"><a>Assets</a></li>
-              <li class="tab" onclick="openTab(event,'Loans')"><a>Loans</a></li>
-            </ul>
-          </div>
-        </nav>
-      </div>
-    </section>
-    <!--The code for the income tab starts here-->
-    <div class="container section">
-      <div id="Income" class="content-tab">
-        <!-- Income tab, add salary-->
-        <div class="field has-addons">
-          <p class="control">
-            <span class="select">
-              <select>
-                <option>Select Frequency</option>
-                <option>Bi-weekly</option>
-                <option>Monthly</option>
-                <option>Yearly</option>
-              </select>
-            </span>
-          </p>
-          <p class="control">
-            <input class="input" type="number" placeholder="Salary">
-          </p>
-          <p class="control">
-            <a class="button has-background-success-light">
-              Add another field
-            </a>
-          </p>
-        </div>
-        <br>
-        <!-- Income tab, add dividend-->
-        <div class="field has-addons">
-          <p class="control">
-            <span class="select">
-              <select>
-                <option>Select Frequency</option>
-                <option>Quarterly</option>
-                <option>Yearly</option>
-              </select>
-            </span>
-          </p>
-          <p class="control is-expanded">
-            <input class="input" type="number" placeholder="Dividend Income">
-          </p>
-          <p class="control">
-            <a class="button has-background-success-light">
-              Add another field
-            </a>
-          </p>
-        </div>
-        <br>
-        <!-- Income tab, add interest income-->
-        <div class="field has-addons">
-          <p class="control">
-            <span class="select">
-              <select>
-                <option>Select Frequency</option>
-                <option>Monthly</option>
-                <option>Quarterly</option>
-                <option>Semi-anually</option>
-                <option>Yearly</option>
-              </select>
-            </span>
-          </p>
-          <p class="control is-expanded">
-            <input class="input" type="number" placeholder="Interest Income">
-          </p>
-          <p class="control">
-            <a class="button has-background-success-light">
-              Add another field
-            </a>
-          </p>
-        </div>
-        <br>
-        <!-- Income tab, add rental income-->
-        <div class="field has-addons">
-          <p class="control">
-            <span class="select">
-              <select>
-                <option>Select Frequency</option>
-                <option>Bi-weekly</option>
-                <option>Monthly</option>
-                <option>Quarterly</option>
-                <option>Semi-anually</option>
-                <option>Yearly</option>
-              </select>
-            </span>
-          </p>
-          <p class="control is-expanded">
-            <input class="input" type="number" placeholder="Rental Income">
-          </p>
-          <p class="control">
-            <a class="button has-background-success-light">
-              Add another field
-            </a>
-          </p>
-        </div>
-        <br>
-        <!-- Income tab, add other investment income-->
-        <div class="field has-addons">
-          <p class="control">
-            <span class="select">
-              <select>
-                <option>Select Frequency</option>
-                <option>Bi-weekly</option>
-                <option>Monthly</option>
-                <option>Quarterly</option>
-                <option>Semi-anually</option>
-                <option>Yearly</option>
-              </select>
-            </span>
-          </p>
-          <p class="control is-expanded">
-            <input class="input" type="number" placeholder="Other Investments">
-          </p>
-          <p class="control">
-            <a class="button has-background-success-light">
-              Add another field
-            </a>
-          </p>
-        </div>
-        <br>
-        <!--Submit button for income-->
-        <div class="field">
-          <p class="control has-text-centered">
-            <button class="button is-link">Submit</button>
-          </p>
-        </div>
-      </div>
-      <!--The code for the assets tab starts here-->
-      <div id="Assets" class="content-tab" style="display:none">
-        <!-- Assets tab, add house-->
-        <div class="field has-addons">
-
-          <p class="control">
-            <input class="input" type="number" placeholder="Home Value">
-          </p>
-          <p class="control">
-            <a class="button has-background-success-light">
-              Add another field
-            </a>
-          </p>
-        </div>
-        <br>
-        <!-- Assets tab, add other properties-->
-        <div class="field has-addons">
-          <p class="control ">
-            <input class="input" type="number" placeholder="Other properties">
-          </p>
-          <p class="control">
-            <a class="button has-background-success-light">
-              Add another field
-            </a>
-          </p>
-        </div>
-        <br>
-        <!-- Assets tab, add Businesses-->
-        <div class="field has-addons">
-          <p class="control">
-            <input class="input" type="number" placeholder="Businesses">
-          </p>
-          <p class="control">
-            <a class="button has-background-success-light">
-              Add another field
-            </a>
-          </p>
-        </div>
-        <br>
-        <!-- Assets tab, add other assets-->
-        <div class="field has-addons">
-          <p class="control">
-            <input class="input" type="number" placeholder="Other assets">
-          </p>
-          <p class="control">
-            <a class="button has-background-success-light">
-              Add another field
-            </a>
-          </p>
-        </div>
-        <br>
-        <!--Submit button for assets-->
-        <div class="field">
-          <p class="control has-text-centered">
-            <button class="button is-link">Submit</button>
-          </p>
-        </div>
-      </div>
-      <!--The code for the loans tab starts here-->
-      <div id="Loans" class="content-tab" style="display:none">
-        <p>
-          <!-- Loans tab, add house loan-->
-        <div class="field has-addons">
-
-          <p class="control">
-            <input class="input" type="number" placeholder="House loan">
-          </p>
-          <p class="control">
-            <input class="input" type="number" placeholder="Add APR">
-          </p>
-          <p class="control">
-            <a class="button has-background-success-light">
-              Add another field
-            </a>
-          </p>
-        </div>
-        <br>
-        <!-- Loans tab, add credit card loan-->
-        <div class="field has-addons">
-          <p class="control ">
-            <input class="input" type="number" placeholder="Credit card debt">
-          </p>
-          <p class="control">
-            <input class="input" type="number" placeholder="Add APR">
-          </p>
-          <p class="control">
-            <a class="button has-background-success-light">
-              Add another field
-            </a>
-          </p>
-        </div>
-        <br>
-        <!-- Loans tab, add business loan-->
-        <div class="field has-addons">
-          <p class="control">
-            <input class="input" type="number" placeholder="Business Loan">
-          </p>
-          <p class="control">
-            <input class="input" type="number" placeholder="Add APR">
-          </p>
-          <p class="control">
-            <a class="button has-background-success-light">
-              Add another field
-            </a>
-          </p>
-        </div>
-        <br>
-        <!-- Loans tab, add car loan-->
-        <div class="field has-addons">
-          <p class="control">
-            <input class="input" type="number" placeholder="Car loan">
-          </p>
-          <p class="control">
-            <input class="input" type="number" placeholder="Add APR">
-          </p>
-          <p class="control">
-            <a class="button has-background-success-light">
-              Add another field
-            </a>
-          </p>
-        </div>
-        <br>
-        <!-- Loans tab, add other loan-->
-        <div class="field has-addons">
-          <p class="control">
-            <input class="input" type="number" placeholder="Other Loans">
-          </p>
-          <p class="control">
-            <input class="input" type="number" placeholder="Add APR">
-          </p>
-          <p class="control">
-            <a class="button has-background-success-light">
-              Add another field
-            </a>
-          </p>
-        </div>
-        <br>
-
-        <!--Submit button for loans-->
-        <div class="field">
-          <p class="control has-text-centered">
-            <button class="button is-link">Submit</button>
-          </p>
+<!--The main part of the input fields starts here-->
+<section class="hero is-white is-medium">
+  <!--This code is for the information-->
+  <section class="hero">
+    <div class="hero">
+      <div class="container is-max-desktop">
+        <div class="notification">
+          <strong>Enter your information here.</strong>
         </div>
       </div>
     </div>
-  </section>
-
-
-
-
-  <!-- 
-
-    Ashim's Dashboard code
-<html>
-<body>
-  <style>
-    .bordered {
-      border: 2px solid black;
-    }
-  </style>
-
-  Toolbar
-  <app-dashboard-toolbar></app-dashboard-toolbar>
-
-  //Dashboard intro
-
-  <section class="hero is-info is-bold bordered">
-    <div class="card has-text-centered has-background-success">
-      <div class="card-content" id="settingsDiv">
-        <div class="content is-size-3 has-text-light is-bold">
-          Dashboard
-          <br />
+    <br />
+    <div class="hero-foot">
+      <nav class="tabs is-boxed is-fullwidth is-large">
+        <div class="container">
+          <ul>
+            <li class="tab is-active" onclick="openTab(event,'Income')">
+              <a>Income</a>
+            </li>
+            <li class="tab" onclick="openTab(event,'Assets')"><a>Assets</a></li>
+            <li class="tab" onclick="openTab(event,'Loans')"><a>Loans</a></li>
+          </ul>
         </div>
-      </div>
+      </nav>
     </div>
   </section>
-  <section class="hero is-info is-fullheight is-bold">
-    <div
-      class="is-info is-fullheight has-text-centered is-bold"
-      style="display: inline-flex; height: 50%"
-    >
-      <div
-        class="content is-size-3 has-text-light is-bold"
-        style="width: 33%; padding: 5px"
-      >
-        <br />
-        <b>Incomes</b>
-        <br />
-        <form id="incomeForm" on-submit="dataType('Income')">
-          <input type="text" id="incomeName" placeholder="name" required />
-          <input type="number" id="incomeWage" placeholder="wage" required />
-          <select id="incomeFreq">
-            <option>Weekly</option>
-            <option>Bi-Weekly</option>
-            <option>Monthly</option>
-            <option>Bi-Monthly</option>
-          </select>
-          <input type="submit" />
-        </form>
-        <br />
-        <table class="table is-bordered is-striped" id="incomeTable">
-          <tr>
-            <th>Name</th>
-            <th>Wage</th>
-            <th>Frequency</th>
-            <th></th>
-          </tr>
-        </table>
+  <!--The code for the income tab starts here-->
+  <div class="container section">
+    <div id="Income" class="content-tab">
+      <!-- Income tab, add salary-->
+      <div class="field has-addons">
+        <p class="control">
+          <span class="select">
+            <select>
+              <option>Select Frequency</option>
+              <option>Bi-weekly</option>
+              <option>Monthly</option>
+              <option>Yearly</option>
+            </select>
+          </span>
+        </p>
+        <p class="control">
+          <input class="input" type="number" placeholder="Salary" />
+        </p>
+        <p class="control">
+          <a class="button has-background-success-light"> Add another field </a>
+        </p>
       </div>
-      <div
-        class="content is-size-3 has-text-light is-bold"
-        style="width: 33%; padding: 5px"
-      >
-        <br />
-        <b>Debts</b>
-        <br />
-        <form id="debtForm" on-submit="dataType('Debt')">
-          <input type="text" id="debtName" placeholder="name" required />
-          <input type="number" id="debtAmount" placeholder="amount" required />
-          <input type="number" id="debtRate" placeholder="rate" required />
-          <select id="debtFreq">
-            <option>Weekly</option>
-            <option>Bi-Weekly</option>
-            <option>Monthly</option>
-            <option>Bi-Monthly</option>
-          </select>
-          <input type="submit" />
-        </form>
-        <br />
-        <table class="table is-bordered is-striped" id="debtTable">
-          <tr>
-            <th>Name</th>
-            <th>Balance</th>
-            <th>Rate</th>
-            <th>Frequency</th>
-            <th></th>
-          </tr>
-        </table>
+      <br />
+      <!-- Income tab, add dividend-->
+      <div class="field has-addons">
+        <p class="control">
+          <span class="select">
+            <select>
+              <option>Select Frequency</option>
+              <option>Quarterly</option>
+              <option>Yearly</option>
+            </select>
+          </span>
+        </p>
+        <p class="control is-expanded">
+          <input class="input" type="number" placeholder="Dividend Income" />
+        </p>
+        <p class="control">
+          <a class="button has-background-success-light"> Add another field </a>
+        </p>
       </div>
-      <div
-        class="content is-size-3 has-text-light is-bold"
-        style="width: 33%; padding: 5px"
-      >
-        <br />
-        <b>Expenses</b>
-        <br />
-        <form id="expenseForm" on-submit="dataType('Expense')">
-          <input type="text" id="expenseName" placeholder="name" required />
-          <input type="number" id="expenseCost" placeholder="amount" required />
-          <input type="submit" />
-        </form>
-        <br />
-        <table class="table is-bordered is-striped" id="expenseTable">
-          <tr>
-            <th>Name</th>
-            <th>Cost</th>
-            <th></th>
-          </tr>
-        </table>
+      <br />
+      <!-- Income tab, add interest income-->
+      <div class="field has-addons">
+        <p class="control">
+          <span class="select">
+            <select>
+              <option>Select Frequency</option>
+              <option>Monthly</option>
+              <option>Quarterly</option>
+              <option>Semi-anually</option>
+              <option>Yearly</option>
+            </select>
+          </span>
+        </p>
+        <p class="control is-expanded">
+          <input class="input" type="number" placeholder="Interest Income" />
+        </p>
+        <p class="control">
+          <a class="button has-background-success-light"> Add another field </a>
+        </p>
+      </div>
+      <br />
+      <!-- Income tab, add rental income-->
+      <div class="field has-addons">
+        <p class="control">
+          <span class="select">
+            <select>
+              <option>Select Frequency</option>
+              <option>Bi-weekly</option>
+              <option>Monthly</option>
+              <option>Quarterly</option>
+              <option>Semi-anually</option>
+              <option>Yearly</option>
+            </select>
+          </span>
+        </p>
+        <p class="control is-expanded">
+          <input class="input" type="number" placeholder="Rental Income" />
+        </p>
+        <p class="control">
+          <a class="button has-background-success-light"> Add another field </a>
+        </p>
+      </div>
+      <br />
+      <!-- Income tab, add other investment income-->
+      <div class="field has-addons">
+        <p class="control">
+          <span class="select">
+            <select>
+              <option>Select Frequency</option>
+              <option>Bi-weekly</option>
+              <option>Monthly</option>
+              <option>Quarterly</option>
+              <option>Semi-anually</option>
+              <option>Yearly</option>
+            </select>
+          </span>
+        </p>
+        <p class="control is-expanded">
+          <input class="input" type="number" placeholder="Other Investments" />
+        </p>
+        <p class="control">
+          <a class="button has-background-success-light"> Add another field </a>
+        </p>
+      </div>
+      <br />
+      <!--Submit button for income-->
+      <div class="field">
+        <p class="control has-text-centered">
+          <button class="button is-link">Submit</button>
+        </p>
       </div>
     </div>
-  </section>
-</body>
+    <!--The code for the assets tab starts here-->
+    <div id="Assets" class="content-tab" style="display: none">
+      <!-- Assets tab, add house-->
+      <div class="field has-addons">
+        <p class="control">
+          <input class="input" type="number" placeholder="Home Value" />
+        </p>
+        <p class="control">
+          <a class="button has-background-success-light"> Add another field </a>
+        </p>
+      </div>
+      <br />
+      <!-- Assets tab, add other properties-->
+      <div class="field has-addons">
+        <p class="control">
+          <input class="input" type="number" placeholder="Other properties" />
+        </p>
+        <p class="control">
+          <a class="button has-background-success-light"> Add another field </a>
+        </p>
+      </div>
+      <br />
+      <!-- Assets tab, add Businesses-->
+      <div class="field has-addons">
+        <p class="control">
+          <input class="input" type="number" placeholder="Businesses" />
+        </p>
+        <p class="control">
+          <a class="button has-background-success-light"> Add another field </a>
+        </p>
+      </div>
+      <br />
+      <!-- Assets tab, add other assets-->
+      <div class="field has-addons">
+        <p class="control">
+          <input class="input" type="number" placeholder="Other assets" />
+        </p>
+        <p class="control">
+          <a class="button has-background-success-light"> Add another field </a>
+        </p>
+      </div>
+      <br />
+      <!--Submit button for assets-->
+      <div class="field">
+        <p class="control has-text-centered">
+          <button class="button is-link">Submit</button>
+        </p>
+      </div>
+    </div>
+    <!--The code for the loans tab starts here-->
+    <div id="Loans" class="content-tab" style="display: none">
+      <p>
+        <!-- Loans tab, add house loan-->
+      </p>
 
-</html>
--->
+      <div class="field has-addons">
+        <p class="control">
+          <input class="input" type="number" placeholder="House loan" />
+        </p>
+        <p class="control">
+          <input class="input" type="number" placeholder="Add APR" />
+        </p>
+        <p class="control">
+          <a class="button has-background-success-light"> Add another field </a>
+        </p>
+      </div>
+      <br />
+      <!-- Loans tab, add credit card loan-->
+      <div class="field has-addons">
+        <p class="control">
+          <input class="input" type="number" placeholder="Credit card debt" />
+        </p>
+        <p class="control">
+          <input class="input" type="number" placeholder="Add APR" />
+        </p>
+        <p class="control">
+          <a class="button has-background-success-light"> Add another field </a>
+        </p>
+      </div>
+      <br />
+      <!-- Loans tab, add business loan-->
+      <div class="field has-addons">
+        <p class="control">
+          <input class="input" type="number" placeholder="Business Loan" />
+        </p>
+        <p class="control">
+          <input class="input" type="number" placeholder="Add APR" />
+        </p>
+        <p class="control">
+          <a class="button has-background-success-light"> Add another field </a>
+        </p>
+      </div>
+      <br />
+      <!-- Loans tab, add car loan-->
+      <div class="field has-addons">
+        <p class="control">
+          <input class="input" type="number" placeholder="Car loan" />
+        </p>
+        <p class="control">
+          <input class="input" type="number" placeholder="Add APR" />
+        </p>
+        <p class="control">
+          <a class="button has-background-success-light"> Add another field </a>
+        </p>
+      </div>
+      <br />
+      <!-- Loans tab, add other loan-->
+      <div class="field has-addons">
+        <p class="control">
+          <input class="input" type="number" placeholder="Other Loans" />
+        </p>
+        <p class="control">
+          <input class="input" type="number" placeholder="Add APR" />
+        </p>
+        <p class="control">
+          <a class="button has-background-success-light"> Add another field </a>
+        </p>
+      </div>
+      <br />
+
+      <!--Submit button for loans-->
+      <div class="field">
+        <p class="control has-text-centered">
+          <button class="button is-link">Submit</button>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
