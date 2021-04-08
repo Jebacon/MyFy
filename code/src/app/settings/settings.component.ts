@@ -80,34 +80,34 @@ export class SettingsComponent implements OnInit {
       }
     }
 
-    deleteAccount(): void {
-      console.log("deleting account")
-      var con = confirm("This will delete your account. Are you sure?")
-      var success = true
-      //checks if the user confirmed the delete
-      if(con){
-        console.log((document.getElementById("deleteAccountVerify-email") as HTMLInputElement).value)
-        var dbData = this.dbService.post("deleteUser",{"email": (document.getElementById("deleteAccountVerify-email") as HTMLInputElement).value, "password": (document.getElementById("deleteAccountVerify-password") as HTMLInputElement).value})
-        dbData.forEach(val => (val:any): void =>{
-        try{
-          console.log(val)
-          console.log("deletion Successful")
-          } catch (Error) {
-          console.log(Error)
-          }
-      })
-        if(success){
-          console.log("user deleted")
-          window.sessionStorage.clear()
-          alert("Your account has been deleted!")
-          this.router.navigate(["/"])
-        }else {
-          alert("Account deletion failed")
+  deleteAccount(): void {
+    console.log("deleting account")
+    var con = confirm("This will delete your account. Are you sure?")
+    var success = true
+    //checks if the user confirmed the delete
+    if(con){
+      console.log((document.getElementById("deleteAccountVerify-email") as HTMLInputElement).value)
+      var dbData = this.dbService.post("deleteUser",{"email": (document.getElementById("deleteAccountVerify-email") as HTMLInputElement).value, "password": (document.getElementById("deleteAccountVerify-password") as HTMLInputElement).value})
+      dbData.forEach(val => (val:any): void =>{
+      try{
+        console.log(val)
+        console.log("deletion Successful")
+        } catch (Error) {
+        console.log(Error)
         }
-      } else {
-        console.log("user deletion aborted")
+    })
+      if(success){
+        console.log("user deleted")
+        window.sessionStorage.clear()
+        alert("Your account has been deleted!")
+        this.router.navigate(["/"])
+      }else {
+        alert("Account deletion failed")
       }
+    } else {
+      console.log("user deletion aborted")
     }
+  }
   updateEmail(): void {
     console.log("Updating Email")
     var newEmail = (document.getElementById("changeEmail-newEmail") as HTMLInputElement).value
