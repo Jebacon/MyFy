@@ -39,7 +39,7 @@ Invest.getUserInvestments = (invest, result) => {
     });
   };
   Invest.getUserInvestmentSum = (invest, result) => {
-    sql.query("SELECT SUM(AMOUNT) FROM UserData.Income WHERE USERID = ?;", [invest.userId], (err, res) => {
+    sql.query("SELECT SUM(AMOUNT) FROM UserData.Invest_Save WHERE USERID = ?;", [invest.userId], (err, res) => {
       if (err) {
         console.log("error: ", err);
         result(err, err);

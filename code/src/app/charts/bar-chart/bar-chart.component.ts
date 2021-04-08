@@ -12,7 +12,7 @@ export class BarChartComponent  {
   public barChartOptions: ChartOptions = {
     responsive: true,
   };
-  public barChartLabels: Label[] = ['housing', 'Investments', '2008', '2009', '2010', '2011', '2012'];
+  public barChartLabels: Label[] = ['Housing', 'Investments/Savings', 'Debt', 'Expenses', 'Discretionary'];
   public barChartType: ChartType = 'bar';
   public barChartLegend = true;
   public barChartPlugins = [];
