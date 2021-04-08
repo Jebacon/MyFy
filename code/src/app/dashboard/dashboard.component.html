@@ -5,6 +5,14 @@
       .bordered {
         border: 2px solid black;
       }
+      .styled-table {
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 0.9em;
+        font-family: sans-serif;
+        min-width: 400px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+      }
     </style>
   </head>
   <app-dashboard-toolbar></app-dashboard-toolbar>
@@ -22,11 +30,11 @@
   <section class="hero is-info is-fullheight is-bold">
     <div
       class="is-info is-fullheight has-text-centered is-bold"
-      style="display: inline-flex; height: 50%"
+      style="display: inline-flex; height: 50%; float: left"
     >
       <div
         class="content is-size-3 has-text-light is-bold"
-        style="width: 33%; padding: 5px"
+        style="width: 33%; padding: 5px; float: left"
       >
         <br />
         <b>Incomes</b>
@@ -43,7 +51,7 @@
           <input type="submit" />
         </form>
         <br />
-        <table class="table is-bordered is-striped" id="incomeTable">
+        <table class="table is-bordered is-striped is-narrow" id="incomeTable">
           <tr>
             <th>Name</th>
             <th>Wage</th>
@@ -54,7 +62,7 @@
       </div>
       <div
         class="content is-size-3 has-text-light is-bold"
-        style="width: 33%; padding: 5px"
+        style="width: 33%; padding: 5px; float: left"
       >
         <br />
         <b>Debts</b>
@@ -84,7 +92,7 @@
       </div>
       <div
         class="content is-size-3 has-text-light is-bold"
-        style="width: 33%; padding: 5px"
+        style="width: 33%; padding: 5px; float: left"
       >
         <br />
         <b>Expenses</b>
