@@ -22,7 +22,10 @@ import { DashboardToolbarComponent } from './dashboard-toolbar/dashboard-toolbar
 import { AssessmentComponent } from './assessment/assessment.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartsModule } from 'ng2-charts';
+<<<<<<< HEAD
 import { SettingsComponent } from './settings/settings.component';
+=======
+>>>>>>> parent of 81e59af0... Bar chart is on the dashboard
 import { CardComponent } from './card/card.component';
 import { DashComponent } from './dash/dash.component';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -31,7 +34,6 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { LayoutModule } from '@angular/cdk/layout';
-import { BarChartComponent } from './charts/bar-chart/bar-chart.component';
 
 
 @NgModule({
@@ -52,9 +54,13 @@ import { BarChartComponent } from './charts/bar-chart/bar-chart.component';
     DashboardToolbarComponent,
     AssessmentComponent,
     CardComponent,
+<<<<<<< HEAD
     DashComponent,
     BarChartComponent,
     SettingsComponent
+=======
+    DashComponent
+>>>>>>> parent of 81e59af0... Bar chart is on the dashboard
 
   ],
   imports: [
@@ -62,7 +68,6 @@ import { BarChartComponent } from './charts/bar-chart/bar-chart.component';
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
-    ChartsModule,
     HttpClientModule,
     RouterModule.forRoot([
       {
