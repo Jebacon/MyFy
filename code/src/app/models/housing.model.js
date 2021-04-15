@@ -21,7 +21,7 @@ Housing.create = (_housing, result) => {
     result(null, {..._housing });
   });
 };
-Housing.findByUserId = (_housing, result) => {
+Housing.getUserHousing = (_housing, result) => {
   sql.query(`SELECT * FROM Housing WHERE USERID = ?`,[_housing.USERID], (err, res) => {
     if (err) {
      

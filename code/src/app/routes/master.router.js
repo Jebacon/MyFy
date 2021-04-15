@@ -88,7 +88,7 @@ module.exports = app => {
     app.post("/updateInvestment", _invest.updateInvestments);
 
     //Deletes a single user investment.
-    app.delete("/deleteInvestment", _invest.remove);
+    app.post("/deleteInvestment", _invest.remove);
 
     //Deletes all User Investments.
     app.delete("/deleteUserInvestments", _invest.removeAll);
@@ -107,10 +107,10 @@ module.exports = app => {
     app.post("/updateHousing", _housing.updateHousing);
 
     //Finds an individual Hosuing entry.- Works 4/3
-    app.post("/findByUserId", _housing.findByUserId);
+    app.post("/getUserHousing", _housing.getUserHousing);
 
     //Deletes a single Housing entry.-Works 4/3
-    app.delete("/deleteHousing", _housing.remove);
+    app.post("/deleteHousing", _housing.remove);
 
     //Deletes all Housing entries for a specific user.-Works 4/3
     app.delete("/deleteUserHousing", _housing.removeAll);
@@ -150,10 +150,10 @@ module.exports = app => {
     app.post("/updateHousing", _housing.updateHousing);
 
     //Finds an individual Hosuing entry.- Works 4/3
-    app.post("/findByUserId", _housing.findByUserId);
+    //app.post("/findByUserId", _housing.findByUserId);
 
     //Deletes a single Housing entry.-Works 4/3
-    app.delete("/deleteHousing", _housing.remove);
+    //app.delete("/deleteHousing", _housing.remove);
 
     //Deletes all Housing entries for a specific user.-Works 4/3
     app.delete("/deleteUserHousing", _housing.removeAll);

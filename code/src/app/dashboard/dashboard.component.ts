@@ -59,6 +59,7 @@ export class DashboardComponent implements OnInit {
     console.log("deleting: "+id)
     document.getElementById(id)?.remove()
     var ID = this.table.get(id)[0]
+    console.log(ID)
     switch(this.Current_table){
       case "Income":{
         this.dbService.post("deleteIncome",{"INCOMEID":ID}).subscribe()
@@ -73,7 +74,11 @@ export class DashboardComponent implements OnInit {
         break;
       }
       case "Housing": {
-        console.log("Not Yet Implemented")
+        this.dbService.post("deleteHousing",{"HOUSINGID":ID}).subscribe()
+        break;
+      }
+      case "Investing": {
+        this.dbService.post("deleteInvestment",{"investId":ID}).subscribe()
         break;
       }
       default: {
@@ -125,9 +130,13 @@ export class DashboardComponent implements OnInit {
     dataType(data: string) : void{
       this.Current_input = data
       if(data == "Debt"){
-        (document.getElementById("rateDiv") as HTMLElement).style.display = "block"
+        (document.getElementById("rateDiv") as HTMLElement).style.display = "block";
+      } else if((data == "Housing") ||(data == "Investing")){
+        (document.getElementById("freqDiv") as HTMLElement).style.display = "none";
+        (document.getElementById("rateDiv") as HTMLElement).style.display = "none";
       } else {
-        (document.getElementById("rateDiv") as HTMLElement).style.display = "none"
+        (document.getElementById("rateDiv") as HTMLElement).style.display = "none";
+        (document.getElementById("freqDiv") as HTMLElement).style.display = "block";
       }
     }
     //handles submitting data to tables
@@ -154,6 +163,12 @@ export class DashboardComponent implements OnInit {
         }
         case "Housing": {
           console.log("submitting housing");
+          this.dbService.post("newHousing",{"OWNERSHIP":name,"COSTS":value,"USERID":window.sessionStorage.getItem("ID")}).subscribe()
+          break;
+        }
+        case "Investing": {
+          console.log("submitting investment")
+          this.dbService.post("newInvestment",{"investName":name,"investAmount":value,"userId":window.sessionStorage.getItem("ID")}).subscribe()
           break;
         }
         default: {
@@ -269,7 +284,58 @@ export class DashboardComponent implements OnInit {
         }
         case "Housing": {
           console.log("changing table to housing");
+          this.dbService.post("getUserHousing",{"USERID":window.sessionStorage.getItem("ID")}).subscribe(data => {
+            //selects the table in our HTML
+            var table = (document.getElementById("Table") as HTMLTableElement)
+            table.innerHTML = "<tr><th>Name</th><th>Amount</th><th></th></tr>"
+            console.log(data[0])
+            for(var element in data){
+              var stringify = JSON.parse(JSON.stringify(data[element]))
+              var ID = stringify["HOUSINGID"]
+              var name = stringify["OWNERSHIP"]
+              var cost = stringify["COSTS"]
+      
+              this.rows += 1
+              //creates a new row at the end of the existing table
+              var newRow = table.insertRow(-1)
+
+              newRow.setAttribute("id", ""+this.rows)
+              console.log("setting id: " + this.rows)
+              this.table.set(""+this.rows,[ID,name,cost])
+              //sets the inner html for our new row
+              newRow.innerHTML = "<td>"+name+"</td><td>$"+cost+"</td>"
+              newRow.appendChild(this.generateButton())
+    };
+          })
           break;
+        }
+        case "Investing": {
+          console.log("changing table to investing");
+          this.dbService.post("getUserInvestments",{"userId":window.sessionStorage.getItem("ID")}).subscribe(data => {
+            //selects the table in our HTML
+            var table = (document.getElementById("Table") as HTMLTableElement)
+            table.innerHTML = "<tr><th>Name</th><th>Amount</th><th></th></tr>"
+            console.log(data[0])
+            for(var element in data){
+              var stringify = JSON.parse(JSON.stringify(data[element]))
+              var ID = stringify["INVESTID"]
+              var name = stringify["INVESTNAME"]
+              var cost = stringify["INVEST_AMNT$"]
+      
+              this.rows += 1
+              //creates a new row at the end of the existing table
+              var newRow = table.insertRow(-1)
+
+              newRow.setAttribute("id", ""+this.rows)
+              console.log("setting id: " + this.rows)
+              this.table.set(""+this.rows,[ID,name,cost])
+              //sets the inner html for our new row
+              newRow.innerHTML = "<td>"+name+"</td><td>$"+cost+"</td>"
+              newRow.appendChild(this.generateButton())
+    };
+          })
+          break;
+
         }
       }
     }

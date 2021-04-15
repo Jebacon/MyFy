@@ -51,6 +51,7 @@
                 <option on-click="dataType('Debt')">Debt</option>
                 <option on-click="dataType('Expense')">Expense</option>
                 <option on-click="dataType('Housing')">Housing</option>
+                <option on-click="dataType('Investing')">Investing</option>
               </select>
             </div>
           </div>
@@ -70,7 +71,7 @@
               />
             </div>
           </div>
-          <div class="field">
+          <div id="freqDiv" class="field">
             <label class="label">Frequency:</label>
             <div class="control">
               <select id="freq">
@@ -111,11 +112,18 @@
                   <a>Expenses</a>
                 </li>
                 <li
-                  class="tab-option is-tab-button"
+                  class="tab-option is-tab-button needs-space"
                   id="deleteUser"
                   on-click="changeTable('Housing')"
                 >
                   <a>Housing</a>
+                </li>
+                <li
+                  class="tab-option is-tab-button"
+                  id="changeEmail"
+                  on-click="changeTable('Investing')"
+                >
+                  <a>Investing</a>
                 </li>
               </ul>
             </div>
