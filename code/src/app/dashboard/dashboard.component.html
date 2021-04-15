@@ -1,25 +1,132 @@
-<head>
-  <meta name="viewport" content="width=device-width, initital-scale=1">
-  <style>
-  </style>
-</head>
-
-
-  <!--Toolbar-->
+<body>
+  <head>
+    <meta name="viewport" content="width=device-width, initital-scale=1" />
+    <style>
+      .bordered {
+        border: 2px solid black;
+      }
+      .styled-table {
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 0.9em;
+        font-family: sans-serif;
+        min-width: 400px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+      }
+      .is-tab-button {
+        background-color: rgba(0, 0, 0, 0.15);
+      }
+      .needs-space {
+        margin-right: 5px;
+      }
+    </style>
+  </head>
   <app-dashboard-toolbar></app-dashboard-toolbar>
-  <!--Intro-->
-  <section class="hero is-info">
-    <div class="hero-body">
-      <div class="container has-text-centered">
-        <div class="notification is-primary">
-          <h1><strong>{{message}}</strong></h1>
-        </div>
-    </div>
-    <br>
 
-  <!--Portfolio-->
-  <div class="chart-placement"></div>
-  <div class="portfolio" style="background-color: white;">
-    <app-chart></app-chart>  
-  </div>
- </div>
+  <section class="hero is-info is-bold bordered">
+    <div class="card has-text-centered has-background-success">
+      <div class="card-content" id="settingsDiv">
+        <div class="content is-size-3 has-text-light is-bold">
+          Dashboard
+          <br />
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="hero is-info is-fullheight is-bold">
+    <div
+      class="is-info is-fullheight has-text-centered is-bold"
+      style="height: 50%"
+    >
+      <div class="content is-size-3 has-text-light is-bold">
+        <br />
+        <b>Create {{ Current_input }} entry</b>
+        <br />
+        <form id="input" on-submit="submitEntry()">
+          <div class="field">
+            <label class="label">Type: </label>
+            <div class="control">
+              <select id="Type">
+                <option on-click="dataType('Income')">Income</option>
+                <option on-click="dataType('Debt')">Debt</option>
+                <option on-click="dataType('Expense')">Expense</option>
+                <option on-click="dataType('Housing')">Housing</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <div class="control">
+              <input type="text" id="name" placeholder="name" required />
+              <input type="number" id="value" placeholder="amount" required />
+            </div>
+          </div>
+          <div class="field" id="rateDiv" style="display: none">
+            <div class="control">
+              <input
+                type="number"
+                id="rate"
+                placeholder="interest rate"
+                required
+              />
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Frequency:</label>
+            <div class="control">
+              <select id="freq">
+                <option>Weekly</option>
+                <option>Bi-Weekly</option>
+                <option>Monthly</option>
+                <option>Bi-Monthly</option>
+              </select>
+            </div>
+          </div>
+          <input type="submit" />
+        </form>
+        <div class="card-content" id="settingsDiv">
+          <div class="content is-size-3 has-text-light is-bold">
+            <div
+              class="tabs tabs-link-active-color is-medium is-centered is-fullwidth is-boxed is-outlined"
+            >
+              <ul>
+                <li
+                  class="tab-option is-tab-button needs-space"
+                  id="changeEmail"
+                  on-click="changeTable('Income')"
+                >
+                  <a>Incomes</a>
+                </li>
+                <li
+                  class="tab-option is-tab-button needs-space"
+                  id="changePassword"
+                  on-click="changeTable('Debt')"
+                >
+                  <a>Debts</a>
+                </li>
+                <li
+                  class="tab-option is-tab-button needs-space"
+                  id="changeName"
+                  on-click="changeTable('Expense')"
+                >
+                  <a>Expenses</a>
+                </li>
+                <li
+                  class="tab-option is-tab-button"
+                  id="deleteUser"
+                  on-click="changeTable('Housing')"
+                >
+                  <a>Housing</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <br />
+        <table
+          class="table is-bordered is-striped is-narrow"
+          id="Table"
+        ></table>
+      </div>
+    </div>
+  </section>
+</body>
