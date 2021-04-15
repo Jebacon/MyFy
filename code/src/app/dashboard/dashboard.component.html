@@ -13,6 +13,12 @@
         min-width: 400px;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
       }
+      .is-tab-button {
+        background-color: rgba(0, 0, 0, 0.15);
+      }
+      .needs-space {
+        margin-right: 5px;
+      }
     </style>
   </head>
   <app-dashboard-toolbar></app-dashboard-toolbar>
@@ -30,86 +36,96 @@
   <section class="hero is-info is-fullheight is-bold">
     <div
       class="is-info is-fullheight has-text-centered is-bold"
-      style="display: inline-flex; height: 50%; float: left"
+      style="height: 50%"
     >
-      <div
-        class="content is-size-3 has-text-light is-bold"
-        style="width: 33%; padding: 5px; float: left"
-      >
+      <div class="content is-size-3 has-text-light is-bold">
         <br />
-        <b>Incomes</b>
+        <b>Create {{ Current_input }} entry</b>
         <br />
-        <form id="incomeForm" on-submit="dataType('Income')">
-          <input type="text" id="incomeName" placeholder="name" required />
-          <input type="number" id="incomeWage" placeholder="wage" required />
-          <select id="incomeFreq">
-            <option>Weekly</option>
-            <option>Bi-Weekly</option>
-            <option>Monthly</option>
-            <option>Bi-Monthly</option>
-          </select>
+        <form id="input" on-submit="submitEntry()">
+          <div class="field">
+            <label class="label">Type: </label>
+            <div class="control">
+              <select id="Type">
+                <option on-click="dataType('Income')">Income</option>
+                <option on-click="dataType('Debt')">Debt</option>
+                <option on-click="dataType('Expense')">Expense</option>
+                <option on-click="dataType('Housing')">Housing</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <div class="control">
+              <input type="text" id="name" placeholder="name" required />
+              <input type="number" id="value" placeholder="amount" required />
+            </div>
+          </div>
+          <div class="field" id="rateDiv" style="display: none">
+            <div class="control">
+              <input
+                type="number"
+                id="rate"
+                placeholder="interest rate"
+                required
+              />
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Frequency:</label>
+            <div class="control">
+              <select id="freq">
+                <option>Weekly</option>
+                <option>Bi-Weekly</option>
+                <option>Monthly</option>
+                <option>Bi-Monthly</option>
+              </select>
+            </div>
+          </div>
           <input type="submit" />
         </form>
+        <div class="card-content" id="settingsDiv">
+          <div class="content is-size-3 has-text-light is-bold">
+            <div
+              class="tabs tabs-link-active-color is-medium is-centered is-fullwidth is-boxed is-outlined"
+            >
+              <ul>
+                <li
+                  class="tab-option is-tab-button needs-space"
+                  id="changeEmail"
+                  on-click="changeTable('Income')"
+                >
+                  <a>Incomes</a>
+                </li>
+                <li
+                  class="tab-option is-tab-button needs-space"
+                  id="changePassword"
+                  on-click="changeTable('Debt')"
+                >
+                  <a>Debts</a>
+                </li>
+                <li
+                  class="tab-option is-tab-button needs-space"
+                  id="changeName"
+                  on-click="changeTable('Expense')"
+                >
+                  <a>Expenses</a>
+                </li>
+                <li
+                  class="tab-option is-tab-button"
+                  id="deleteUser"
+                  on-click="changeTable('Housing')"
+                >
+                  <a>Housing</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
         <br />
-        <table class="table is-bordered is-striped is-narrow" id="incomeTable">
-          <tr>
-            <th>Name</th>
-            <th>Wage</th>
-            <th>Frequency</th>
-            <th></th>
-          </tr>
-        </table>
-      </div>
-      <div
-        class="content is-size-3 has-text-light is-bold"
-        style="width: 33%; padding: 5px; float: left"
-      >
-        <br />
-        <b>Debts</b>
-        <br />
-        <form id="debtForm" on-submit="dataType('Debt')">
-          <input type="text" id="debtName" placeholder="name" required />
-          <input type="number" id="debtAmount" placeholder="amount" required />
-          <input type="number" id="debtRate" placeholder="rate" required />
-          <select id="debtFreq">
-            <option>Weekly</option>
-            <option>Bi-Weekly</option>
-            <option>Monthly</option>
-            <option>Bi-Monthly</option>
-          </select>
-          <input type="submit" />
-        </form>
-        <br />
-        <table class="table is-bordered is-striped" id="debtTable">
-          <tr>
-            <th>Name</th>
-            <th>Balance</th>
-            <th>Rate</th>
-            <th>Frequency</th>
-            <th></th>
-          </tr>
-        </table>
-      </div>
-      <div
-        class="content is-size-3 has-text-light is-bold"
-        style="width: 33%; padding: 5px; float: left"
-      >
-        <br />
-        <b>Expenses</b>
-        <br />
-        <form id="expenseForm" on-submit="dataType('Expense')">
-          <input type="text" id="expenseName" placeholder="name" required />
-          <input type="number" id="expenseCost" placeholder="amount" required />
-          <input type="submit" />
-        </form>
-        <br />
-        <table class="table is-bordered is-striped" id="expenseTable">
-          <tr>
-            <th>Name</th>
-            <th>Cost</th>
-            <th></th>
-          </tr>
-        </table>
+        <table
+          class="table is-bordered is-striped is-narrow"
+          id="Table"
+        ></table>
       </div>
     </div>
   </section>
