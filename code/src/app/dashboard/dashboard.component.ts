@@ -59,6 +59,7 @@ export class DashboardComponent implements OnInit {
     console.log("deleting: "+id)
     document.getElementById(id)?.remove()
     var ID = this.table.get(id)[0]
+
     console.log(ID)
     switch(this.Current_table){
       case "Income":{
@@ -163,6 +164,7 @@ export class DashboardComponent implements OnInit {
         }
         case "Housing": {
           console.log("submitting housing");
+
           this.dbService.post("newHousing",{"OWNERSHIP":name,"COSTS":value,"USERID":window.sessionStorage.getItem("ID")}).subscribe()
           break;
         }
@@ -284,6 +286,7 @@ export class DashboardComponent implements OnInit {
         }
         case "Housing": {
           console.log("changing table to housing");
+
           this.dbService.post("getUserHousing",{"USERID":window.sessionStorage.getItem("ID")}).subscribe(data => {
             //selects the table in our HTML
             var table = (document.getElementById("Table") as HTMLTableElement)
