@@ -10,17 +10,17 @@ import { DatabaseService } from '../../services/database.service'
   styleUrls: [ './bar-chart.component.css' ]
 })
 export class BarChartComponent  {
-  public barChartOptions: ChartOptions = {
+  barChartOptions: ChartOptions = {
     responsive: true,
   };
-  public barChartLabels: Label[] = ['Housing', 'Investments/Savings', 'Debt', 'Expenses'];
-  public barChartType: ChartType = 'bar';
-  public barChartLegend = true;
-  public barChartPlugins = [];
+  barChartLabels: Label[] = ['Housing', 'Investments/Savings', 'Debt', 'Expenses'];
+  barChartType: ChartType = 'bar';
+  barChartLegend = true;
+  barChartPlugins = [];
 
-    public barChartData: ChartDataSets[] = [
-      { data: [100, 100, 100, 100, 100, 100, 100], label: 'Target'},
-      { data: [(28), 48, 40, 19, 86, 27, 90], label: 'Actual'}
+  barChartData: ChartDataSets[] = [
+      { data: [], label: ''},
+      { data: [], label: ''}
     ];
 
   constructor(private dbService: DatabaseService) { }
@@ -83,8 +83,11 @@ export class BarChartComponent  {
     
     //['Housing', 'Investments/Savings', 'Debt', 'Expenses', 'Discretionary']
     //var targets by percents- will store in the list below
-    this.barChartData[0].data = [housingT, investT, debtT, expenseT];
-    this.barChartData[1].data = [total_housing, total_invest_save, total_debts, total_expense];
+   // this.barChartData[0].data = [housingT, investT, debtT, expenseT];
+    //this.barChartData[1].data = [total_housing, total_invest_save, total_debts, total_expense];
+    this.barChartData = [{data:[housingT, investT, debtT, expenseT],label: 'Target'},
+                          {data:[total_housing, total_invest_save, total_debts, total_expense], label: 'Actual'}];
+    
 
     
     

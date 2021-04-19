@@ -6,7 +6,7 @@ module.exports = app => {
     const user = require("../controllers/user.controller");
     const income = require("../controllers/income.controller");
     const _email = require("../controllers/email.controller");
-    const _debt = require("../controllers/debt.controller");
+    const debt = require("../controllers/debt.controller");
     const _expenses = require("../controllers/expenses.controller");
     const _invest = require("../controllers/invest.controller");
     const _income = require("../controllers/income.controller");
@@ -37,19 +37,19 @@ module.exports = app => {
     //Begin Debt CRUD Group
 
     //Posts new Debt object to the database.
-    app.post("/newDebt", _debt.create);
+    app.post("/newDebt", debt.create);
 
     //Get's all of a User's Debts.
-    app.post("/getUserDebts", _debt.getUserDebts);
+    app.post("/getUserDebts", debt.getUserDebts);
 
     //Updates a Debt object in the database.
-    app.post("/updateDebts", _debt.updateDebt);
+    app.post("/updateDebts", debt.updateDebt);
 
     ///Deletes a single debt object.
-    app.post("/deleteDebt", _debt.remove);
+    app.post("/deleteDebt", debt.remove);
 
     //Deletes ALL debt objects for any user.
-    app.delete("/deleteUserDebts", _debt.removeAll);
+    app.delete("/deleteUserDebts", debt.removeAll);
 
 
     //End Debt CRUD Group
