@@ -46,7 +46,7 @@ export class BarChartComponent  {
         var wage = stringify["AMOUNT"]
         total_income += wage;
       }
-      console.log('Total Income: ', total_income);
+      console.log('in barchart: Total Income: ', total_income);
     })
     this.dbService.post("getUserDebts", {"userId": sessionId}).subscribe(data =>{
       for (var element in data){
