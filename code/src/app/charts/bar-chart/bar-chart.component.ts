@@ -2,29 +2,38 @@ import { Component, OnInit } from '@angular/core';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { Label } from 'ng2-charts';
-
+import { DatabaseService } from '../../services/database.service'
 @Component({
   selector: 'app-chart',
   templateUrl: './bar-chart.component.html',
   styleUrls: [ './bar-chart.component.css' ]
 })
 export class BarChartComponent  {
-  public barChartOptions: ChartOptions = {
+  
+  barChartOptions: ChartOptions = {
     responsive: true,
   };
-  public barChartLabels: Label[] = ['Housing', 'Investments/Savings', 'Debt', 'Expenses', 'Discretionary'];
-  public barChartType: ChartType = 'bar';
-  public barChartLegend = true;
-  public barChartPlugins = [];
+  barChartLabels: Label[] = ['Housing', 'Investments/Savings', 'Debt', 'Expenses', 'Discretionary'];
+  barChartType: ChartType = 'bar';
+  barChartLegend = true;
+  barChartPlugins = [];
 
-    public barChartData: ChartDataSets[] = [
+    barChartData: ChartDataSets[] = [
       { data: [100, 100, 100, 100, 100, 100, 100], label: 'Target'},
       { data: [(28), 48, 40, 19, 86, 27, 90], label: 'Actual'}
     ];
 
-  constructor() { }
+  constructor(private dbService: DatabaseService) {
+    
+   
+   }
+ 
 
-  ngOnInit() {
+  ngOnInit(actual:any[], target:any[]) {
+    // target values
+    this.barChartData[0]['data'] = target;
+    this.barChartData[1]['data'] = actual;
+
   }
 }
 

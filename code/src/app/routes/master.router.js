@@ -170,9 +170,9 @@ module.exports = app => {
     app.post("/newIncome", _income.create);
 
       //get sum of all user investments
-      app.post("/getUserIncomeSum", _invest.getUserIncomeSum);
+      //app.post("/getUserIncomeSum", _invest.getUserIncomeSum);
 
-      app.post("/getUserInvestments", _income);
+      //node servapp.post("/getUserInvestments", _income);
 
     //Deletes a single Income object.- works 4/6
     app.post("/deleteIncome", _income.remove);
