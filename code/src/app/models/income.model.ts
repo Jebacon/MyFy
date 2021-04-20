@@ -8,4 +8,5 @@ export class Income{
     AMOUNT?: number;
     PAYCYCLE?: number;
     USERID?: number;
+    sum?: number;
 }

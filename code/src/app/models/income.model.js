@@ -10,7 +10,8 @@ const Income = function(_income) {
   this.USERID = _income.USERID;
   this.new_SRCNAME =_income.new_SRCNAME;
   this.new_AMOUNT = _income.new_AMOUNT;
-  this.new_PAYCYCLE = _income.new_PAYCYCLE; 
+  this.new_PAYCYCLE = _income.new_PAYCYCLE;
+  this.sum = _income.getUserincomeSum; 
 };
 
 Income.create = (_income, result) => {
@@ -37,7 +38,19 @@ Income.getUserIncome = (_income, result) => {
     result(null, {...res });
   });
 };
-
+Income.getUserincomeSum = (_income, result) => {
+  sql.query("SELECT SUM(AMOUNT) as sum FROM UserData.Income WHERE USERID = ?;", [_income.USERID], (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(err, err);
+      return;
+    }
+    console.log("User Income Sum: "+  JSON.stringify(res));    
+    result(JSON.stringify(res), res);
+    this_income.sum = res;
+    console.log('Sum: ' + this._income.sum)
+  })
+}
 
 Income.getAll = result => {
   sql.query("SELECT * FROM Income", (err, res) => {

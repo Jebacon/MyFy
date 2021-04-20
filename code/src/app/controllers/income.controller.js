@@ -15,7 +15,15 @@ exports.create = (req, res) => {
         });
     };
 
-
+exports.getUserIncomeSum = (req, res) => {
+        const _income = new Income({
+            USERID: req.body.USERID,
+        });
+    
+        Income.getUserIncome(_income, (err, data) => {
+            res.send(data);
+        })
+    }
 exports.getAll = (req, res) => {
     Income.getAll((err, data) => {
     if (err)

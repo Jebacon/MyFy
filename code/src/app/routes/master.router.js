@@ -4,7 +4,7 @@ const { Email } = require("nodemailer");
 
 module.exports = app => {
     const user = require("../controllers/user.controller");
-    const income = require("../controllers/income.controller");
+    //const _income = require("../controllers/income.controller");
     const _email = require("../controllers/email.controller");
     const debt = require("../controllers/debt.controller");
     const _expenses = require("../controllers/expenses.controller");
@@ -86,6 +86,7 @@ module.exports = app => {
 
     //Updates an individual User investment.
     app.post("/updateInvestment", _invest.updateInvestments);
+    app.post("/getUserInvestmentSum", _invest.getUserInvestmentSum);
 
     //Deletes a single user investment.
     app.post("/deleteInvestment", _invest.remove);
@@ -185,6 +186,7 @@ module.exports = app => {
     
     //Updates an Income object in the database.-working 4/6
     app.post("/updateIncome", _income.updateIncome);
+    app.get("/getUserIncomeSum", _income.getUserIncomeSum);
     
     app.get("/allIncome", _income.getAll);
 
