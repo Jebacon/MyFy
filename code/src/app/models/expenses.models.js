@@ -5,10 +5,11 @@ const  Expenses = function(_expense) {
   this.NAME = _expense.NAME;
   this.COSTS = _expense.COSTS; 
   this.USERID = _expense.USERID;
+  this.FREQUENCY = _expense.FREQUENCY;
 };
 
 Expenses.create = (_expense, result) => {
-  sql.query("INSERT INTO Expenses(NAME, COSTS, USERID) VALUES(?, ?, ?, ?);",[_expense.NAME, _expense.COSTS, _expense.USERID], (err, res) => {
+  sql.query("INSERT INTO Expenses(NAME, COSTS, USERID,FREQUENCY) VALUES(?, ?, ?, ?, ?);",[_expense.NAME, _expense.COSTS, _expense.USERID,_expense.FREQUENCY], (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);

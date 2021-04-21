@@ -32,6 +32,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { LayoutModule } from '@angular/cdk/layout';
 import { BarChartComponent } from './charts/bar-chart/bar-chart.component';
+import { AnalyticsComponent } from './analytics/analytics.component';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { BarChartComponent } from './charts/bar-chart/bar-chart.component';
     CardComponent,
     DashComponent,
     BarChartComponent,
-    SettingsComponent
+    SettingsComponent,
+    AnalyticsComponent
 
   ],
   imports: [

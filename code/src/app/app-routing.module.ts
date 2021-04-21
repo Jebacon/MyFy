@@ -7,6 +7,8 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { WhoIsItForComponent } from './who-is-it-for/who-is-it-for.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SettingsComponent } from './settings/settings.component';
+import { BarChartComponent } from './charts/bar-chart/bar-chart.component';
+import { AnalyticsComponent } from './analytics/analytics.component'
 
 
 const routes: Routes = [
@@ -15,8 +17,9 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: 'account-setup', component: AccountsetupComponent},
   { path: 'who-is-it-for', component: WhoIsItForComponent},
-  {path: 'dashboard', component: DashboardComponent},
-  { path: 'settings', component: SettingsComponent}
+  { path: 'dashboard', component: DashboardComponent},
+  { path: 'settings', component: SettingsComponent},
+  { path: 'analytics', component: AnalyticsComponent}
 ];
 
 @NgModule({
