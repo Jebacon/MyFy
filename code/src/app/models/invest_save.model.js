@@ -5,13 +5,14 @@ const Invest_Save = function(_invest_save) {
   this.INVESTID = _invest_save.INVESTID;
   this.INVESTNAME = _invest_save.INVESTNAME;
   this.INVEST_AMNT$ = _invest_save.INVEST_AMNT$;
+  this.FREQUENCY = _invest_save.FREQUENCY;
   this.SRC_ACCT = _invest_save.SRC_ACCT;
   this.DEST_ACCT = _invest_save.DEST_ACCT;
   this.USERID = _expense.USERID;
 };
 
 Invest_Save.create = (_invest_save, result) => {
-  sql.query("INSERT INTO Invest_Save(INVESTNAME, INVEST_AMNT$, SRC_ACCT, DEST_ACCT, USERID) VALUES(?, ?, ?, ?);",[_invest_save.INVESTNAME, _invest_save.INVEST_AMNT$, _invest_save.SRC_ACCT, _invest_save.DEST_ACCT, _invest_save.USERID], (err, res) => {
+  sql.query("INSERT INTO Invest_Save(INVESTNAME, INVEST_AMNT$, SRC_ACCT, DEST_ACCT, USERID, FREQUENCY) VALUES(?, ?, ?, ?, ?, ?);",[_invest_save.INVESTNAME, _invest_save.INVEST_AMNT$, _invest_save.SRC_ACCT, _invest_save.DEST_ACCT, _invest_save.USERID, _invest_save.FREQUENCY], (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);

@@ -9,6 +9,7 @@ exports.create = (req, res) => {
         srcAccount: req.body.srcAccount,
         destAccount: req.body.destAccount,
         userId: req.body.userId,
+        FREQUENCY: req.body.FREQUENCY
       });
 
     Invest.create(invest ,(err, data) => {

@@ -3,6 +3,7 @@ const sql = require("./db.js");
 const Invest = function(invest) {
   this.investName = invest.investName;
   this.investAmount = invest.investAmount;
+  this.FREQUENCY = invest.FREQUENCY;
   this.srcAccount = invest.srcAccount;
   this.destAccount = invest.destAccount;
   this.userId = invest.userId;
@@ -14,7 +15,7 @@ const Invest = function(invest) {
 };
 
 Invest.create = (invest, result) => {
-  sql.query("INSERT INTO Invest_Save(INVESTNAME, INVEST_AMNT$, SRC_ACCT, DEST_ACCT, USERID) VALUES(?, ?, ?, ?, ?);",[invest.investName, invest.investAmount, invest.srcAccount, invest.destAccount, invest.userId], (err, res) => {
+  sql.query("INSERT INTO Invest_Save(INVESTNAME, INVEST_AMNT$, SRC_ACCT, DEST_ACCT, USERID, FREQUENCY) VALUES(?, ?, ?, ?, ?,?);",[invest.investName, invest.investAmount, invest.srcAccount, invest.destAccount, invest.userId, invest.FREQUENCY], (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);

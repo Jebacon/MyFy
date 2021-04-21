@@ -6,6 +6,7 @@ exports.create = (req, res) => {
     const _housing = new Housing({
         OWNERSHIP: req.body.OWNERSHIP,        
         COSTS: req.body.COSTS,
+        FREQUENCY: req.body.FREQUENCY,
         USERID: req.body.USERID
       });
 

@@ -1,0 +1,97 @@
+<body>
+  <app-dashboard-toolbar></app-dashboard-toolbar>
+  <div class="columns">
+    <div class="column">
+      <h1 class="has-text-centered is-bold"><b>Year Long Budget Graph</b></h1>
+      <canvas id="chart-Year"></canvas>
+    </div>
+    <div class="column">
+      <h1 class="has-text-centered is-bold"><b>Month Long Budget Graph</b></h1>
+      <canvas id="chart-Month"></canvas>
+    </div>
+  </div>
+  <div class="columns">
+    <div class="column">
+      <h1 class="has-text-centered is-bold"><b>Year Long Budget Report</b></h1>
+      <table
+        class="table is-bordered is-striped is-narrow is-fullwidth"
+        id="Table-Year"
+      >
+        <tr>
+          <th><b>Name</b></th>
+          <th><b>Target</b></th>
+          <th><b>Actual</b></th>
+        </tr>
+        <tr>
+          <th>Housing</th>
+          <th>${{ targets_Year[0] }}</th>
+          <th>
+            <b>${{ actuals_Year[0] }}</b>
+          </th>
+        </tr>
+        <tr>
+          <th>Investments/Savings</th>
+          <th>${{ targets_Year[1] }}</th>
+          <th>
+            <b>${{ actuals_Year[1] }}</b>
+          </th>
+        </tr>
+        <tr>
+          <th>Debt</th>
+          <th>${{ targets_Year[2] }}</th>
+          <th>
+            <b>${{ actuals_Year[2] }}</b>
+          </th>
+        </tr>
+        <tr>
+          <th>Expenses</th>
+          <th>${{ targets_Year[3] }}</th>
+          <th>
+            <b>${{ actuals_Year[3] }}</b>
+          </th>
+        </tr>
+      </table>
+    </div>
+    <div class="column">
+      <h1 class="has-text-centered is-bold"><b>Month Long Budget Report</b></h1>
+      <table
+        class="table is-bordered is-striped is-narrow is-fullwidth"
+        id="Table-Month"
+      >
+        <tr>
+          <th><b>Name</b></th>
+          <th><b>Target</b></th>
+          <th><b>Actual</b></th>
+        </tr>
+        <tr>
+          <th>Housing</th>
+          <th>${{ targets_Month[0] }}</th>
+          <th>
+            <b>${{ actuals_Month[0] }}</b>
+          </th>
+        </tr>
+        <tr>
+          <th>Investments/Savings</th>
+          <th>${{ targets_Month[1] }}</th>
+          <th>
+            <b>${{ actuals_Month[1] }}</b>
+          </th>
+        </tr>
+        <tr>
+          <th>Debt</th>
+          <th>${{ targets_Month[2] }}</th>
+          <th>
+            <b>${{ actuals_Month[2] }}</b>
+          </th>
+        </tr>
+        <tr>
+          <th>Expenses</th>
+          <th>${{ targets_Month[3] }}</th>
+          <th>
+            <b>${{ actuals_Month[3] }}</b>
+          </th>
+        </tr>
+      </table>
+    </div>
+  </div>
+</body>
