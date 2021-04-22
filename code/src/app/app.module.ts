@@ -17,7 +17,6 @@ import { TeaminfoComponent } from './teaminfo/teaminfo.component';
 import { FormsModule } from '@angular/forms';
 import { ContactComponent } from './contact/contact.component';
 import { WhoIsItForComponent } from './who-is-it-for/who-is-it-for.component';
-import { WhyMyFyComponent } from './why-my-fy/why-my-fy.component';
 import { DashboardToolbarComponent } from './dashboard-toolbar/dashboard-toolbar.component';
 import { AssessmentComponent } from './assessment/assessment.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -34,7 +33,6 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { BarChartComponent } from './charts/bar-chart/bar-chart.component';
 import { EducationComponent } from './education/education.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +47,6 @@ import { EducationComponent } from './education/education.component';
     HousingComponent,
     ContactComponent,
     WhoIsItForComponent,
-    WhyMyFyComponent,
     DashboardToolbarComponent,
     AssessmentComponent,
     CardComponent,
@@ -99,6 +96,10 @@ import { EducationComponent } from './education/education.component';
       {
         path : 'education',
         component: EducationComponent
+      },
+      {
+        path: 'who-is-it-for',
+        component: WhoIsItForComponent
       }
     ]),
     NoopAnimationsModule,
