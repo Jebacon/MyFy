@@ -84,8 +84,10 @@ export class SettingsComponent implements OnInit {
     console.log("deleting account")
     var con = confirm("This will delete your account. Are you sure?")
     var success = true
+    var emailFlag = ((document.getElementById("deleteAccountVerify-email") as HTMLInputElement).value == window.sessionStorage.getItem("Email"))
+    var passwordFlag = ((document.getElementById("deleteAccountVerify-password") as HTMLInputElement).value == window.sessionStorage.getItem("Password"))
     //checks if the user confirmed the delete
-    if(con){
+    if(con && emailFlag && passwordFlag){
       console.log((document.getElementById("deleteAccountVerify-email") as HTMLInputElement).value)
       var dbData = this.dbService.post("deleteUser",{"email": (document.getElementById("deleteAccountVerify-email") as HTMLInputElement).value, "password": (document.getElementById("deleteAccountVerify-password") as HTMLInputElement).value})
       dbData.forEach(val => (val:any): void =>{
@@ -104,8 +106,11 @@ export class SettingsComponent implements OnInit {
       }else {
         alert("Account deletion failed")
       }
+    } else if ((!emailFlag || !passwordFlag)&& con){
+      alert("The email and password you entered is not valid")
     } else {
-      console.log("user deletion aborted")
+      console.log("User deletion aborted")
+      alert("User Deletion Aborted")
     }
   }
   updateEmail(): void {
