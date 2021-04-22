@@ -4,13 +4,14 @@ const Housing = function(_housing) {
   this.HOUSINGID= _housing.HOUSINGID;
   this.OWNERSHIP = _housing.OWNERSHIP;
   this.COSTS = _housing.COSTS;
+  this.FREQUENCY = _housing.FREQUENCY;
   this.USERID = _housing.USERID;
   this.new_OWNERSHIP = _housing.new_OWNERSHIP;
   this.new_COSTS = _housing.new_COSTS;
 };
 
 Housing.create = (_housing, result) => {
-  sql.query("INSERT INTO Housing (OWNERSHIP, COSTS, USERID) VALUES(?, ?, ?)",[_housing.OWNERSHIP, _housing.COSTS, _housing.USERID], (err, res) => {
+  sql.query("INSERT INTO Housing (OWNERSHIP, COSTS, USERID,FREQUENCY) VALUES(?, ?, ?, ?)",[_housing.OWNERSHIP, _housing.COSTS, _housing.USERID,_housing.FREQUENCY], (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -21,7 +22,7 @@ Housing.create = (_housing, result) => {
     result(null, {..._housing });
   });
 };
-Housing.findByUserId = (_housing, result) => {
+Housing.getUserHousing = (_housing, result) => {
   sql.query(`SELECT * FROM Housing WHERE USERID = ?`,[_housing.USERID], (err, res) => {
     if (err) {
      

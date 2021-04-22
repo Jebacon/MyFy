@@ -6,6 +6,7 @@ exports.create = (req, res) => {
     const _housing = new Housing({
         OWNERSHIP: req.body.OWNERSHIP,        
         COSTS: req.body.COSTS,
+        FREQUENCY: req.body.FREQUENCY,
         USERID: req.body.USERID
       });
 
@@ -25,12 +26,12 @@ exports.getAll = (req, res) => {
         else res.send(data);
     });
 };
-exports.findByUserId = (req, res) =>{
+exports.getUserHousing = (req, res) =>{
     const _housing = new Housing({
         
         USERID: req.body.USERID,
     });
-    Housing.findByUserId(_housing, (err, data) => {
+    Housing.getUserHousing(_housing, (err, data) => {
         res.send(data);
         
     })

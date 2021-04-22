@@ -46,11 +46,12 @@
           <div class="field">
             <label class="label">Type: </label>
             <div class="control">
-              <select id="Type">
-                <option on-click="dataType('Income')">Income</option>
-                <option on-click="dataType('Debt')">Debt</option>
-                <option on-click="dataType('Expense')">Expense</option>
-                <option on-click="dataType('Housing')">Housing</option>
+              <select id="Type" on-click="dataType()">
+                <option>Income</option>
+                <option>Debt</option>
+                <option>Expense</option>
+                <option>Housing</option>
+                <option>Investing</option>
               </select>
             </div>
           </div>
@@ -70,7 +71,7 @@
               />
             </div>
           </div>
-          <div class="field">
+          <div id="freqDiv" class="field">
             <label class="label">Frequency:</label>
             <div class="control">
               <select id="freq">
@@ -78,6 +79,7 @@
                 <option>Bi-Weekly</option>
                 <option>Monthly</option>
                 <option>Bi-Monthly</option>
+                <option>Yearly</option>
               </select>
             </div>
           </div>
@@ -91,31 +93,33 @@
               <ul>
                 <li
                   class="tab-option is-tab-button needs-space"
-                  id="changeEmail"
                   on-click="changeTable('Income')"
                 >
                   <a>Incomes</a>
                 </li>
                 <li
                   class="tab-option is-tab-button needs-space"
-                  id="changePassword"
                   on-click="changeTable('Debt')"
                 >
                   <a>Debts</a>
                 </li>
                 <li
                   class="tab-option is-tab-button needs-space"
-                  id="changeName"
                   on-click="changeTable('Expense')"
                 >
                   <a>Expenses</a>
                 </li>
                 <li
-                  class="tab-option is-tab-button"
-                  id="deleteUser"
+                  class="tab-option is-tab-button needs-space"
                   on-click="changeTable('Housing')"
                 >
                   <a>Housing</a>
+                </li>
+                <li
+                  class="tab-option is-tab-button"
+                  on-click="changeTable('Investing')"
+                >
+                  <a>Investing</a>
                 </li>
               </ul>
             </div>

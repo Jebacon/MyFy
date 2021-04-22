@@ -5,7 +5,8 @@ exports.create = (req, res) => {
     const expense = new Expenses({
         name: req.body.name,
         costs: req.body.costs,
-        userId: req.body.userId
+        userId: req.body.userId,
+        FREQUENCY: req.body.FREQUENCY
       });
 
     Expenses.create(expense ,(err, data) => {

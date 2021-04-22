@@ -9,6 +9,7 @@ exports.create = (req, res) => {
         srcAccount: req.body.srcAccount,
         destAccount: req.body.destAccount,
         userId: req.body.userId,
+        FREQUENCY: req.body.FREQUENCY
       });
 
     Invest.create(invest ,(err, data) => {
@@ -56,7 +57,7 @@ exports.remove = (req, res) => {
       Invest.remove(invest, (err, data) => {
           res.send.data;
       });
-      res.send("Deleted Investment ID: " + invest.investId)
+      //res.send("Deleted Investment ID: " + invest.investId)
 }
 
 exports.removeAll = (req, res) => {
