@@ -165,7 +165,7 @@ export class DashboardToolbarComponent implements OnInit {
    {
     this.router.navigate(['analytics'])
    },
-   2000);
+   2500);
     
   }
 }
