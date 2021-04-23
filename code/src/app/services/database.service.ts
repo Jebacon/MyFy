@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../models/user.model';
 
-const baseUrl = 'http://localhost:8080/';
+const baseUrl = 'http://myfy.s3-website-us-east-1.amazonaws.com/';
 
 @Injectable({
     providedIn: 'root'

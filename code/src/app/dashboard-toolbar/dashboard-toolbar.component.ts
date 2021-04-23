@@ -150,22 +150,26 @@ export class DashboardToolbarComponent implements OnInit {
      }
      window.sessionStorage.setItem("Invest_save", ""+local_invest_save)
    })
+   var total_income = 0
    setTimeout(()=>
    {
     console.log("timed wait")
-   },1000)
-   var total_income = 0
-   total_income = +window.sessionStorage.getItem("Income")!
+    total_income = +window.sessionStorage.getItem("Income")!
+   },500)
 
-   window.sessionStorage.setItem("housingT",""+(total_income * .3))
-   window.sessionStorage.setItem("investT",""+(total_income * .1))
-   window.sessionStorage.setItem("debtT",""+(total_income * .1))
-   window.sessionStorage.setItem("expenseT",""+(total_income * .5))
+   //window.sessionStorage.setItem("housingT",""+(total_income * .3))
+   //window.sessionStorage.setItem("investT",""+(total_income * .1))
+   //window.sessionStorage.setItem("debtT",""+(total_income * .1))
+   //window.sessionStorage.setItem("expenseT",""+(total_income * .5))
    setTimeout(()=>
    {
+    window.sessionStorage.setItem("housingT",""+(total_income * .3))
+    window.sessionStorage.setItem("investT",""+(total_income * .1))
+    window.sessionStorage.setItem("debtT",""+(total_income * .1))
+    window.sessionStorage.setItem("expenseT",""+(total_income * .5))
     this.router.navigate(['analytics'])
    },
-   2500);
+   600);
     
   }
 }

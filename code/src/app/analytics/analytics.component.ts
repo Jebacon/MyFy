@@ -29,7 +29,7 @@ export class AnalyticsComponent implements OnInit {
     var expenseA = +window.sessionStorage.getItem("Expense")!
     //clears placeholder 
     this.targets_Year.pop()
-    this.targets_Year = [housingT, housingA,investT, debtT, expenseT]
+    this.targets_Year = [housingT, investT, debtT, expenseT]
 
     //clear placeholder
     //this.actuals_Year.pop()

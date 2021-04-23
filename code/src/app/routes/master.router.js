@@ -16,7 +16,7 @@ module.exports = app => {
 
     //User CRUD Group
     // Test Method to Grab all Users
-    app.get("/allUsers", user.getAll);
+   // app.get("/allUsers", user.getAll);
 
     //Add New User
     app.post("/newUser", user.create);
@@ -182,6 +182,8 @@ module.exports = app => {
     app.post("/updateIncome", _income.updateIncome);
     
     app.get("/allIncome", _income.getAll);
+
+    
 
     //Begin Email Contact Form
     app.post("/emailTeam", _email.sendEmail);
